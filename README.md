@@ -16,6 +16,8 @@ npm run build    # version de production dans dist/
 
 Pile : React, Vite, Tailwind CSS, shadcn/ui, Magic UI (NumberTicker, Confetti, BlurFade), Motion, vite-plugin-pwa. Sons synthétisés avec Web Audio (`src/lib/sound.ts`). Contenu dans `src/data/content.json`. Référence de design : `DESIGN.md`.
 
+Contrôle : `node scripts/check-lesson.cjs <dossier> http://localhost:4173/ src/data/content.json` joue une leçon sans faute et affiche les erreurs de page (tableau vide attendu).
+
 ## Publication
 
 Le workflow `.github/workflows/pages.yml` publie `dist/` sur GitHub Pages à chaque envoi sur `main`. Dans les réglages du dépôt : Settings, Pages, Source : GitHub Actions.
