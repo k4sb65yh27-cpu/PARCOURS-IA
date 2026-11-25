@@ -1,0 +1,273 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/nunito/latin-600.css";
+@import "@fontsource/nunito/latin-700.css";
+@import "@fontsource/nunito/latin-800.css";
+@import "@fontsource/nunito/latin-900.css";
+@import "@fontsource/source-serif-4/latin-600.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-heading: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-teal-soft: var(--teal-soft);
+  --color-sun: var(--sun);
+  --color-sun-deep: var(--sun-deep);
+  --color-sun-soft: var(--sun-soft);
+  --color-ko: var(--ko);
+  --color-ko-deep: var(--ko-deep);
+  --color-ko-soft: var(--ko-soft);
+  --color-line: var(--line);
+  --color-line-deep: var(--line-deep);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* Piste B « Plateau » : sarcelle et ambre, gris chauds, aucun violet. */
+:root {
+  --background: #ffffff;
+  --foreground: #2b3138;
+  --card: #ffffff;
+  --card-foreground: #2b3138;
+  --popover: #ffffff;
+  --popover-foreground: #2b3138;
+  --primary: #0f8f7e;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f5f7;
+  --secondary-foreground: #2b3138;
+  --muted: #f3f5f7;
+  --muted-foreground: #6b747e;
+  --accent: #e9f6f3;
+  --accent-foreground: #0a6c5f;
+  --destructive: #b8381e;
+  --border: #e3e6ea;
+  --input: #e3e6ea;
+  --ring: #0f8f7e;
+  --radius: 0.875rem;
+
+  --teal: #0f8f7e;
+  --teal-deep: #0a6c5f;
+  --teal-soft: #ddf4ee;
+  --sun: #f2a516;
+  --sun-deep: #c98200;
+  --sun-soft: #fff4da;
+  --ko: #c9442a;
+  --ko-deep: #9c3019;
+  --ko-soft: #fce4de;
+  --line: #e3e6ea;
+  --line-deep: #c7ccd2;
+
+  /* Couleurs des blocs du parcours */
+  --u1: #0f8f7e; --u1-d: #0a6c5f; --u1-s: #ddf4ee;
+  --u2: #2f6fb0; --u2-d: #22527f; --u2-s: #e0ecf8;
+  --u3: #c2612b; --u3-d: #93461c; --u3-s: #fbe8dc;
+  --u4: #5f7f2a; --u4-d: #46601d; --u4-s: #e9f1da;
+}
+
+.dark {
+  --background: #141a1f;
+  --foreground: #e8edf1;
+  --card: #1b2228;
+  --card-foreground: #e8edf1;
+  --popover: #1b2228;
+  --popover-foreground: #e8edf1;
+  --primary: #2cb5a1;
+  --primary-foreground: #08201c;
+  --secondary: #222a31;
+  --secondary-foreground: #e8edf1;
+  --muted: #222a31;
+  --muted-foreground: #9aa6b1;
+  --accent: #173530;
+  --accent-foreground: #8fe0d2;
+  --destructive: #f07a5f;
+  --border: #2d363e;
+  --input: #2d363e;
+  --ring: #2cb5a1;
+
+  --teal: #23a491;
+  --teal-deep: #157567;
+  --teal-soft: #15302b;
+  --sun: #f2a516;
+  --sun-deep: #b57700;
+  --sun-soft: #3a2d12;
+  --ko: #e5694e;
+  --ko-deep: #a9432c;
+  --ko-soft: #3a1f19;
+  --line: #2d363e;
+  --line-deep: #3c4852;
+
+  --u1: #23a491; --u1-d: #157567; --u1-s: #15302b;
+  --u2: #4a8bd0; --u2-d: #2e6399; --u2-s: #182a3d;
+  --u3: #d9763d; --u3-d: #a45526; --u3-s: #3a2517;
+  --u4: #7c9e3c; --u4-d: #5a7529; --u4-s: #26301a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-weight: 600;
+    overscroll-behavior-y: none;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+/* Bouton en relief : bordure inférieure plus foncée qui s'écrase au toucher. Pas d'ombre colorée, pas de halo. */
+@utility btn3d {
+  --c: var(--teal);
+  --cd: var(--teal-deep);
+  --fg: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--c);
+  color: var(--fg);
+  border-bottom: 4px solid var(--cd);
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 80ms ease-out, border-bottom-width 80ms ease-out, filter 120ms;
+  user-select: none;
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    margin-bottom: 3px;
+  }
+  &:disabled {
+    --c: var(--line);
+    --cd: var(--line-deep);
+    --fg: var(--muted-foreground);
+    cursor: default;
+  }
+  &:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+/* Tuile d'option : bord épais, relief léger. */
+@utility tile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--line);
+  border-bottom-width: 4px;
+  border-radius: 1rem;
+  background: var(--card);
+  text-align: left;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: transform 80ms ease-out, background-color 150ms, border-color 150ms;
+  &:hover:not(:disabled) {
+    background: var(--secondary);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(2px);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+.tile[data-state="sel"] {
+  border-color: var(--u2);
+  border-bottom-color: var(--u2-d);
+  background: var(--u2-s);
+  color: var(--u2-d);
+}
+.dark .tile[data-state="sel"] {
+  color: #cfe3f7;
+}
+.tile[data-state="good"] {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+  color: var(--teal-deep);
+}
+.dark .tile[data-state="good"] {
+  color: #8fe0d2;
+}
+.tile[data-state="bad"] {
+  border-color: var(--ko);
+  background: var(--ko-soft);
+  color: var(--ko-deep);
+}
+.dark .tile[data-state="bad"] {
+  color: #f7b5a6;
+}
+
+.kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--line);
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.safe-b {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
+.safe-t {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
