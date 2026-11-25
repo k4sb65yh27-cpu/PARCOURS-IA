@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
-import { ArrowLeft, Check, ExternalLink, Target, X } from "lucide-react"
+import { ArrowLeft, Check, ExternalLink, GraduationCap, Target, X } from "lucide-react"
 import { toast } from "sonner"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { SRC, type Step } from "@/lib/content"
 import { XP, exDone, markNotions, peek, setNote, toggleEx, useStore, validated } from "@/lib/store"
 import { sfx } from "@/lib/sound"
+import { copyText, tutorPrompt } from "@/lib/tutor"
+import { CadreNote } from "@/components/CadreNote"
 
 function Rich({ text }: { text: string }) {
   if (text.startsWith("<pre>"))
@@ -74,6 +76,11 @@ export function StepGuide({ step, tab = "objectifs", onBack }: { step: Step; tab
         </TabsList>
 
         <TabsContent value="objectifs" className="mt-5">
+          {step.cadre > 1 && (
+            <div className="mb-4">
+              <CadreNote cadre={step.cadre} />
+            </div>
+          )}
           <ul className="grid gap-3">
             {step.obj.map((o) => (
               <li key={o} className="flex gap-3">
@@ -93,6 +100,17 @@ export function StepGuide({ step, tab = "objectifs", onBack }: { step: Step; tab
               </div>
             ))}
           </dl>
+          <section className="mt-6 rounded-2xl bg-teal-soft/50 p-4">
+            <h2 className="flex items-center gap-2 font-black">
+              <GraduationCap className="size-5 text-teal" aria-hidden="true" /> Travailler l'étape avec un tuteur
+            </h2>
+            <p className="mt-1 text-sm">
+              Copiez la consigne, collez-la dans votre assistant habituel : il vous interroge question par question jusqu'à ce que vous sachiez faire seul.
+            </p>
+            <button type="button" className="btn3d mt-3 w-full" onClick={() => { sfx.tap(); copyText(tutorPrompt(step), "Consigne du tuteur copiée.") }}>
+              Copier la consigne du tuteur
+            </button>
+          </section>
         </TabsContent>
 
         <TabsContent value="ressources" className="mt-5">

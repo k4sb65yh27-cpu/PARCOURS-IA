@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { BookOpen, Check, ClipboardCheck, Lock, Star, Trophy } from "lucide-react"
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
-import { UNITS, type Step, type Unit } from "@/lib/content"
-import { NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, type NodeKind } from "@/lib/store"
+import { UNITS, VOIES, type Step, type Unit } from "@/lib/content"
+import { CadreNote } from "@/components/CadreNote"
+import { NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, voieOpen, type NodeKind } from "@/lib/store"
 import { sfx } from "@/lib/sound"
 
 const ICON: Record<NodeKind, typeof Star> = { notions: BookOpen, lecon: Star, ex: ClipboardCheck, exam: Trophy }
@@ -27,8 +28,9 @@ export function PathView({ onGo }: { onGo: Go }) {
   let n = 0
   return (
     <div className="mx-auto w-full max-w-xl pb-10">
-      {UNITS.map((u) => (
+      {UNITS.map((u, ui) => (
         <section key={u.name} aria-label={`Bloc ${u.name}`} className="mb-4">
+          {u.steps[0].voie !== UNITS[ui - 1]?.steps[0].voie && <VoieIntro voie={u.steps[0].voie} />}
           <UnitBanner u={u} />
           {u.steps.map((s) => {
             const open_ = unlocked(s)
@@ -45,6 +47,7 @@ export function PathView({ onGo }: { onGo: Go }) {
                       Étape {s.cote}
                       {s.id === "bonus" ? " · facultative" : ""}
                     </span>
+                    {s.cadre > 1 && <span className="mt-0.5 block"><CadreNote cadre={s.cadre} compact /></span>}
                     <span className={`block font-extrabold ${open_ ? "" : "text-muted-foreground"}`}>{s.titre}</span>
                   </span>
                   <span className="h-0.5 flex-1 bg-line" />
@@ -87,8 +90,24 @@ export function PathView({ onGo }: { onGo: Go }) {
   )
 }
 
+function VoieIntro({ voie }: { voie: string }) {
+  const v = VOIES.find((x) => x.id === voie)
+  if (!v) return null
+  const open = voieOpen(voie)
+  return (
+    <div className="mx-4 mt-8 mb-2 first:mt-4">
+      <p className="text-xs font-black tracking-widest text-muted-foreground uppercase">Voie</p>
+      <h2 className="text-2xl font-black">{v.nom}</h2>
+      <p className="mt-1 text-[0.95rem] text-muted-foreground">
+        {v.desc} {!open && <span className="font-extrabold text-foreground">{v.open}</span>}
+      </p>
+    </div>
+  )
+}
+
 function UnitBanner({ u }: { u: Unit }) {
   const total = u.steps.length
+  const [voie, title] = u.name.includes(" : ") ? u.name.split(" : ") : ["", u.name]
   const done = u.steps.filter(validated).length
   return (
     <div className="sticky top-[60px] z-10 bg-background/95 px-4 pt-3 pb-1 backdrop-blur-sm">
@@ -98,9 +117,10 @@ function UnitBanner({ u }: { u: Unit }) {
       >
         <div className="min-w-0">
           <p className="text-xs font-black tracking-widest uppercase opacity-85">
+            {voie ? `${voie} · ` : ""}
             {total > 1 ? `Étapes ${u.steps[0].cote} à ${u.steps[total - 1].cote}` : `Étape ${u.steps[0].cote}`}
           </p>
-          <h2 className="truncate text-lg font-black">{u.name}</h2>
+          <h2 className="truncate text-lg font-black first-letter:uppercase">{title}</h2>
         </div>
         <span className="h-1.5 w-16 shrink-0 overflow-hidden rounded-full bg-white/25" aria-hidden="true">
           <span className="block h-full rounded-full bg-white" style={{ width: `${(100 * done) / total}%` }} />
@@ -198,9 +218,14 @@ function NodeSheet({ step, kind, onGo }: { step: Step; kind: NodeKind; onGo: Go 
         </p>
         <DrawerTitle className="text-2xl font-black">{NAME[kind]}</DrawerTitle>
         <DrawerDescription className="text-[0.95rem] font-semibold">
-          {open ? desc[kind] : "Validez l'étape précédente pour ouvrir celle-ci, ou activez le mode libre dans le profil."}
+          {open ? desc[kind] : locked(step)}
         </DrawerDescription>
       </DrawerHeader>
+      {step.cadre > 1 && kind !== "notions" && (
+        <div className="mb-4">
+          <CadreNote cadre={step.cadre} />
+        </div>
+      )}
       <div className="grid gap-3">
         <button type="button" disabled={!open} onClick={() => onGo({ kind, step })} className="btn3d w-full">
           {open ? cta[kind] : "Verrouillé"}
@@ -211,4 +236,9 @@ function NodeSheet({ step, kind, onGo }: { step: Step; kind: NodeKind; onGo: Go 
       </div>
     </div>
   )
+}
+
+function locked(s: Step) {
+  if (!voieOpen(s.voie)) return `${VOIES.find((v) => v.id === s.voie)?.open ?? ""} Le mode libre du profil ouvre tout.`
+  return "Validez l'étape précédente de cette voie pour ouvrir celle-ci, ou activez le mode libre dans le profil."
 }

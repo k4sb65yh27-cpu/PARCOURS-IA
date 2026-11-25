@@ -12,6 +12,9 @@ export type Step = {
   cote: string
   titre: string
   bloc: string
+  voie: "socle" | "metier" | "expert" | "bonus"
+  cadre: number
+  comp: string[]
   duree: string
   obj: string[]
   notions: [string, string][]
@@ -20,18 +23,31 @@ export type Step = {
   quiz: Quiz[]
   drills: Drill[]
 }
-export type Item = Drill & { id: string; step: string; kind: "quiz" | "drill" | "coach" }
+export type Item = Drill & { id: string; step: string; kind: "quiz" | "drill" | "coach" | "news" }
 
 const data = raw as unknown as {
   SRC: Record<string, { n: string; u: string }>
   STEPS: Step[]
   GLOSS: [string, string][]
+  COMPS: Comp[]
+  LEVELS: string[]
+  VOIES: { id: string; nom: string; desc: string; open: string }[]
+  CADRES: Record<string, { nom: string; desc: string }>
+  CADRE_NOTE: string
+  DEFIS: Defi[]
+  NEWS: News[]
 }
+export type Comp = { id: string; nom: string; desc: string }
+export type Defi = { id: string; comp: string; cadre: number; titre: string; consigne: string; critere: string }
+export type News = { week: string; date: string; titre: string; items: { titre: string; texte: string; u: string; statut: string }[]; drills: Drill[] }
 
 export const SRC = data.SRC
 export const STEPS = data.STEPS
 export const GLOSS = data.GLOSS
-export const MAIN = STEPS.filter((s) => s.id !== "bonus")
+export const { COMPS, LEVELS, VOIES, CADRES, CADRE_NOTE, DEFIS } = data
+/* Les semaines les plus récentes d'abord ; les anciennes restent jouables. */
+export const NEWS = [...data.NEWS].sort((a, b) => (a.week < b.week ? 1 : -1))
+export const MAIN = STEPS.filter((s) => s.voie !== "bonus")
 export const BYID: Record<string, Step> = Object.fromEntries(STEPS.map((s) => [s.id, s]))
 
 export type Unit = { name: string; steps: Step[]; color: UnitColor }
@@ -64,6 +80,12 @@ for (const s of STEPS) {
     ITEMS[id] = { ...d, id, step: s.id, kind: "drill" } as Item
   })
 }
+
+for (const w of NEWS)
+  w.drills.forEach((d, i) => {
+    const id = `n:${w.week}:${i}`
+    ITEMS[id] = { ...d, id, step: "", kind: "news" } as Item
+  })
 
 export function validDrill(d: unknown): d is Drill {
   const x = d as Record<string, unknown>

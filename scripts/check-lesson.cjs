@@ -28,10 +28,10 @@ const find = (q) => items.find(i => i.q === q);
     else if (it.type === 'order') { for (const t of it.items) { await p.locator('[aria-label="Éléments à placer"] button', { hasText: t }).first().click(); await p.waitForTimeout(120); } }
     else if (it.type === 'match') { for (const [l, r] of it.pairs) { await btn(l).click(); await btn(r).click(); } }
     if (k === 3) await p.screenshot({ path: `${out}/win_q.png` });
-    await p.getByRole('button', { name: 'Vérifier' }).click();
+    await p.getByRole('button', { name: 'Vérifier', exact: true }).click();
     await p.waitForTimeout(350);
     if (k === 4) await p.screenshot({ path: `${out}/win_combo.png` });
-    await p.getByRole('button', { name: 'Continuer' }).click();
+    await p.getByRole('button', { name: 'Continuer', exact: true }).click();
     await p.waitForTimeout(450);
     if (await p.getByText('Leçon terminée').count()) break;
   }

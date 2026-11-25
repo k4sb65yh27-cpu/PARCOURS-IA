@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react"
-import { BYID, ITEMS, MAIN, STEPS, validDrill, type Item, type Step } from "./content"
+import { BYID, DEFIS, ITEMS, MAIN, STEPS, validDrill, type Item, type Step } from "./content"
 
 export const KEY = "parcours-ia-juriste-v2"
 export const RANKS: [number, string][] = [
@@ -12,7 +12,7 @@ export const RANKS: [number, string][] = [
 ]
 export const INTERVALS = [1, 2, 4, 8, 16]
 export const GOALS = [10, 20, 30, 50]
-export const XP = { lesson: 10, review: 5, ex: 20, exam: 50, perfect: 20, step: 30, notions: 5 }
+export const XP = { lesson: 10, review: 5, ex: 20, exam: 50, perfect: 20, step: 30, notions: 5, defi: 15 }
 export const HEARTS = 5
 
 export type StepState = {
@@ -27,7 +27,8 @@ export type StepState = {
   notions: boolean
 }
 export type Srs = { box: number; due: string; seen: number; ok: number; ko: number }
-export type Settings = { sound: boolean; haptics: boolean }
+/** cadre : 1 navigateur, 2 connecteurs et applications, 3 API, code et agents. */
+export type Settings = { sound: boolean; haptics: boolean; cadre: number; outil: string }
 export type State = {
   updatedAt: number
   xp: number
@@ -37,6 +38,7 @@ export type State = {
   srs: Record<string, Srs>
   free: boolean
   settings: Settings
+  defis: Record<string, string>
 }
 export type Answer = { t: number; step: string; item: string; kind: string; ok: boolean }
 export type Plan = { week?: string; message?: string; focus?: string[]; drills?: unknown[] }
@@ -62,7 +64,8 @@ function blankState(): State {
     steps: {},
     srs: {},
     free: false,
-    settings: { sound: true, haptics: true },
+    settings: { sound: true, haptics: true, cadre: 1, outil: "" },
+    defis: {},
   }
 }
 export function normState(o: unknown): State {
@@ -100,7 +103,14 @@ export function normState(o: unknown): State {
       b.srs[k] = { box: Math.min(5, Math.max(1, +e.box || 1)), due: String(e.due || today()), seen: +e.seen || 0, ok: +e.ok || 0, ko: +e.ko || 0 }
     }
   b.free = !!o.free
-  if (isObj(o.settings)) b.settings = { sound: o.settings.sound !== false, haptics: o.settings.haptics !== false }
+  if (isObj(o.settings))
+    b.settings = {
+      sound: o.settings.sound !== false,
+      haptics: o.settings.haptics !== false,
+      cadre: [1, 2, 3].includes(+o.settings.cadre) ? +o.settings.cadre : 1,
+      outil: typeof o.settings.outil === "string" ? o.settings.outil.slice(0, 40) : "",
+    }
+  if (isObj(o.defis)) for (const k of Object.keys(o.defis)) b.defis[k] = String(o.defis[k])
   return b
 }
 
@@ -166,13 +176,58 @@ export const peek = (id: string): StepState =>
   S().steps[id] || { ex: {}, best: 0, passed: false, date: "", lessons: 0, xpEx: {}, perfect: false, val: false, notions: false }
 export const exDone = (s: Step) => s.ex.every((e, i) => e.opt || peek(s.id).ex[i])
 export const validated = (s: Step) => !!peek(s.id).passed && exDone(s)
+/* Seuils d'ouverture des voies. L'ancienne étape 05 validée ouvre aussi la voie Expert : les acquis de la V2 restent. */
+const GATE: Record<string, () => boolean> = {
+  socle: () => true,
+  metier: () => !!BYID.so4 && validated(BYID.so4),
+  expert: () => (!!BYID.so6 && validated(BYID.so6)) || !!S().steps.s5?.passed,
+  bonus: () => true,
+}
+export const voieOpen = (v: string) => S().free || (GATE[v] ?? GATE.socle)()
 export function unlocked(s: Step) {
-  if (S().free || s.id === "bonus") return true
-  const i = MAIN.indexOf(s)
-  return i <= 0 || validated(MAIN[i - 1])
+  if (S().free || s.voie === "bonus") return true
+  const same = MAIN.filter((x) => x.voie === s.voie)
+  const i = same.indexOf(s)
+  return i <= 0 ? voieOpen(s.voie) : validated(same[i - 1])
 }
 export function currentStep() {
-  return MAIN.find((s) => !validated(s)) || null
+  return MAIN.find((s) => unlocked(s) && !validated(s)) || null
+}
+/** Au-delà de la pratique autorisée au poste, selon le cadre réglé dans le profil. */
+export const beyondCadre = (s: { cadre?: number }) => (s.cadre || 1) > S().settings.cadre
+
+/* ---------- Compétences ---------- */
+/**
+ * Niveau 0 à 4 : 1 étape commencée ; 2 une étape validée ; 3 toutes les étapes Socle et Métier
+ * de la compétence validées ; 4 en plus, une étape Expert validée ou trois défis faits.
+ */
+export function compLevel(id: string) {
+  const steps = STEPS.filter((s) => s.comp?.includes(id))
+  const base = steps.filter((s) => s.voie === "socle" || s.voie === "metier")
+  const val = steps.filter(validated)
+  const started = steps.some((s) => peek(s.id).notions || peek(s.id).lessons > 0)
+  const defis = DEFIS.filter((d) => d.comp === id && S().defis[d.id]).length
+  if (!started && !val.length && !defis) return 0
+  if (!val.length) return 1
+  if (!base.every(validated)) return 2
+  return val.some((s) => s.voie === "expert") || defis >= 3 ? 4 : 3
+}
+
+/* ---------- Défis ---------- */
+/** Défi du jour : rotation quotidienne parmi les défis du cadre réglé, en commençant par ceux non faits. */
+export function defiDuJour() {
+  const pool = DEFIS.filter((d) => d.cadre <= S().settings.cadre)
+  const todo = pool.filter((d) => !S().defis[d.id])
+  const list = todo.length ? todo : pool
+  const n = Math.floor(new Date(today()).getTime() / 864e5)
+  return list[n % list.length]
+}
+export function doneDefi(id: string) {
+  if (S().defis[id]) return false
+  S().defis[id] = today()
+  commit()
+  award(XP.defi)
+  return true
 }
 export function rankIndex(xp = S().xp) {
   let r = 0
@@ -315,9 +370,11 @@ export function shuffle<T>(a: T[]) {
 }
 export function dueIds() {
   const t = today()
-  const out = Object.keys(ITEMS).filter((id) => id.startsWith("c:") && (!S().srs[id] || S().srs[id].due <= t))
+  /* Questions du coach et de l'actualité : dues dès leur arrivée. */
+  const fresh = (id: string) => id.startsWith("c:") || id.startsWith("n:")
+  const out = Object.keys(ITEMS).filter((id) => fresh(id) && (!S().srs[id] || S().srs[id].due <= t))
   const rest = Object.keys(S().srs)
-    .filter((id) => ITEMS[id] && !id.startsWith("c:") && S().srs[id].due <= t)
+    .filter((id) => ITEMS[id] && !fresh(id) && S().srs[id].due <= t)
     .sort((a, b) => (S().srs[a].due < S().srs[b].due ? -1 : S().srs[a].due > S().srs[b].due ? 1 : S().srs[a].box - S().srs[b].box))
   return out.concat(rest)
 }

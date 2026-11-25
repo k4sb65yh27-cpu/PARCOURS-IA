@@ -1,17 +1,22 @@
 import { useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import { Download, Dumbbell, Flame, RotateCcw, Upload } from "lucide-react"
+import { Check, Copy, Download, Dumbbell, ExternalLink, Flame, Newspaper, RotateCcw, Upload } from "lucide-react"
 import { toast } from "sonner"
 import { Switch } from "@/components/ui/switch"
 import { BlurFade } from "@/components/ui/blur-fade"
-import { GLOSS, ITEMS, STEPS, BYID } from "@/lib/content"
+import { BYID, CADRES, COMPS, DEFIS, GLOSS, ITEMS, LEVELS, NEWS, STEPS } from "@/lib/content"
+import { copyText } from "@/lib/tutor"
+import { CadreNote } from "@/components/CadreNote"
 import {
   GOALS,
   INTERVALS,
   RANKS,
   XP,
   addDays,
+  compLevel,
   dailyIds,
+  defiDuJour,
+  doneDefi,
   dailyXp,
   dueIds,
   exportJson,
@@ -69,6 +74,9 @@ export function ReviewView({ onStart }: { onStart: (ids: string[], label: string
         </button>
       </Panel>
 
+      <DefiPanel />
+      <NewsPanel onStart={onStart} />
+
       <Panel className="mt-4">
         <h2 className="mb-3 font-black">Boîtes de révision</h2>
         <ul className="grid gap-2.5">
@@ -89,6 +97,130 @@ export function ReviewView({ onStart }: { onStart: (ids: string[], label: string
         </p>
       </Panel>
     </div>
+  )
+}
+
+const OUTILS = ["Claude", "ChatGPT", "Copilot", "Le Chat", "Gemini", "Autre"]
+
+function DefiCard({ id }: { id: string }) {
+  const root = useStore()
+  const df = DEFIS.find((x) => x.id === id)!
+  const done = root.state.defis[id]
+  const comp = COMPS.find((c) => c.id === df.comp)?.nom
+  return (
+    <div>
+      <p className="flex flex-wrap items-center gap-2 text-xs font-black tracking-widest text-muted-foreground uppercase">
+        {comp} <CadreNote cadre={df.cadre} compact />
+      </p>
+      <h3 className="mt-0.5 text-lg font-black">{df.titre}</h3>
+      <p className="mt-2 rounded-xl bg-secondary p-3 font-serif text-[0.95rem] leading-relaxed">{df.consigne}</p>
+      <p className="mt-2 text-sm"><span className="font-extrabold">Réussi si :</span> {df.critere}</p>
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        <button type="button" className="tile justify-center" onClick={() => { sfx.tap(); copyText(df.consigne, "Consigne copiée : collez-la dans votre assistant.") }}>
+          <Copy className="size-5" /> Copier
+        </button>
+        <button
+          type="button"
+          className="tile justify-center"
+          data-state={done ? "good" : undefined}
+          disabled={!!done}
+          onClick={() => {
+            if (doneDefi(id)) {
+              sfx.ok()
+              toast(`+${XP.defi} XP · défi relevé`)
+            }
+          }}
+        >
+          <Check className="size-5" /> {done ? "Relevé" : "Fait"}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function DefiPanel() {
+  const root = useStore()
+  const today_ = defiDuJour()
+  const n = Object.keys(root.state.defis).length
+  return (
+    <Panel className="mt-4">
+      <div className="mb-3 flex items-baseline justify-between gap-3">
+        <h2 className="font-black">Défi du jour</h2>
+        <span className="text-sm font-bold text-muted-foreground">{n} / {DEFIS.length} relevés</span>
+      </div>
+      {today_ && <DefiCard id={today_.id} />}
+      <details className="mt-4 group">
+        <summary className="flex min-h-11 cursor-pointer items-center font-extrabold text-teal">Tous les défis, par compétence</summary>
+        <div className="mt-2 grid gap-5">
+          {COMPS.map((c) => {
+            const list = DEFIS.filter((x) => x.comp === c.id)
+            if (!list.length) return null
+            return (
+              <div key={c.id}>
+                <h3 className="mb-2 text-sm font-black tracking-widest text-muted-foreground uppercase">{c.nom}</h3>
+                <div className="grid gap-4">
+                  {list.map((x) => (
+                    <div key={x.id} className="rounded-2xl border-2 border-line p-3">
+                      <DefiCard id={x.id} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </details>
+    </Panel>
+  )
+}
+
+function NewsPanel({ onStart }: { onStart: (ids: string[], label: string) => void }) {
+  const [w, ...older] = NEWS
+  if (!w) return null
+  const ids = (x: typeof w) => x.drills.map((_, i) => `n:${x.week}:${i}`)
+  const date = (x: typeof w) => `${x.date.slice(8)}/${x.date.slice(5, 7)}/${x.date.slice(0, 4)}`
+  return (
+    <Panel className="mt-4">
+      <p className="flex items-center gap-2 text-xs font-black tracking-widest text-muted-foreground uppercase">
+        <Newspaper className="size-4" aria-hidden="true" /> Cette semaine · {date(w)}
+      </p>
+      <h2 className="mt-1 text-lg font-black">{w.titre}</h2>
+      <ul className="mt-3 grid gap-3">
+        {w.items.map((it) => (
+          <li key={it.titre}>
+            <p className="font-extrabold">{it.titre}</p>
+            <p className="mt-0.5 text-[0.95rem]">{it.texte}</p>
+            <p className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-muted-foreground">
+              <span className="rounded-md bg-secondary px-1.5 py-0.5">{it.statut}</span>
+              {it.u && (
+                <a href={it.u} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-teal underline-offset-4 hover:underline">
+                  Source <ExternalLink className="size-3.5" aria-hidden="true" />
+                </a>
+              )}
+            </p>
+          </li>
+        ))}
+      </ul>
+      {w.drills.length > 0 && (
+        <button type="button" className="btn3d mt-4 w-full" onClick={() => onStart(ids(w), "Actualité de la semaine")}>
+          {w.drills.length} questions sur l'actualité
+        </button>
+      )}
+      {older.length > 0 && (
+        <details className="mt-3">
+          <summary className="flex min-h-11 cursor-pointer items-center font-extrabold text-teal">Semaines précédentes ({older.length})</summary>
+          <ul className="grid gap-2">
+            {older.map((x) => (
+              <li key={x.week}>
+                <button type="button" className="tile" onClick={() => onStart(ids(x), x.titre)}>
+                  <span className="text-sm font-black text-muted-foreground">{date(x)}</span> {x.titre}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </Panel>
   )
 }
 
@@ -214,11 +346,35 @@ export function ProfileView() {
       </Panel>
 
       <Panel className="mt-4">
+        <h2 className="font-black">Compétences</h2>
+        <p className="text-sm text-muted-foreground">Niveaux : {LEVELS.slice(1).join(", ")}.</p>
+        <ul className="mt-3 grid gap-3">
+          {COMPS.map((c) => {
+            const lv = compLevel(c.id)
+            return (
+              <li key={c.id}>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-extrabold">{c.nom}</span>
+                  <span className={`text-sm font-black ${lv ? "" : "text-muted-foreground"}`}>{LEVELS[lv]}</span>
+                </div>
+                <div className="mt-1 grid grid-cols-4 gap-1" role="img" aria-label={`${c.nom} : niveau ${lv} sur 4`}>
+                  {[1, 2, 3, 4].map((k) => (
+                    <span key={k} className="h-2.5 rounded-full" style={{ background: k <= lv ? (lv === 4 ? "var(--sun)" : "var(--teal)") : "var(--line)" }} />
+                  ))}
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+              </li>
+            )
+          })}
+        </ul>
+      </Panel>
+
+      <Panel className="mt-4">
         <h2 className="font-black">Réponses par jour</h2>
         <p className="text-sm text-muted-foreground">14 derniers jours</p>
         {days.filter((x) => x.n).length < 3 ? (
           <p className="mt-3 rounded-xl bg-secondary p-3 text-sm">
-            Le graphique apparaît après trois jours de pratique. {days.filter((x) => x.n).length ? "Bon début : revenez demain." : "Commencez par une leçon de l'étape 00."}
+            Le graphique apparaît après trois jours de pratique. {days.filter((x) => x.n).length ? "Bon début : revenez demain." : "Commencez par une leçon de l'étape S1."}
           </p>
         ) : (
         <>
@@ -240,7 +396,8 @@ export function ProfileView() {
       <Panel className="mt-4">
         <h2 className="mb-3 font-black">Précision par étape</h2>
         <ul className="grid gap-2">
-          {STEPS.map((st) => {
+          {STEPS.filter((st) => per[st.id]).length === 0 && <li className="text-sm text-muted-foreground">Apparaît après vos premières réponses.</li>}
+          {STEPS.filter((st) => per[st.id]).map((st) => {
             const p = per[st.id]
             const v = p ? pct(p[0], p[1]) : 0
             return (
@@ -297,6 +454,41 @@ export function ProfileView() {
           <Toggle label="Vibrations" hint="Android uniquement" on={s.settings.haptics} set={(v) => setSetting("haptics", v)} />
           <Toggle label="Mode libre" hint="Ouvre toutes les étapes sans validation" on={s.free} set={setFree} />
         </div>
+        <p className="mt-5 mb-1 text-sm font-extrabold">Pratique autorisée au poste</p>
+        <p className="mb-2 text-sm text-muted-foreground">Selon la règle de votre entreprise. Au-delà, les étapes et défis sont signalés « projet perso ».</p>
+        <div className="grid gap-2" role="radiogroup" aria-label="Pratique autorisée au poste">
+          {[1, 2, 3].map((k) => (
+            <button
+              key={k}
+              type="button"
+              role="radio"
+              aria-checked={s.settings.cadre === k}
+              onClick={() => {
+                sfx.tap()
+                setSetting("cadre", k)
+              }}
+              className="tile items-start"
+              data-state={s.settings.cadre === k ? "sel" : undefined}
+            >
+              <span>
+                <span className="block">Jusqu'au cadre {k} · {CADRES[k].nom}</span>
+                <span className="mt-0.5 block text-sm font-semibold opacity-75">{CADRES[k].desc}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <label htmlFor="outil" className="mt-5 mb-2 block text-sm font-extrabold">Assistant utilisé au quotidien</label>
+        <select
+          id="outil"
+          value={s.settings.outil}
+          onChange={(e) => setSetting("outil", e.target.value)}
+          className="min-h-12 w-full rounded-xl border-2 border-line bg-card px-3 font-extrabold"
+        >
+          <option value="">Non précisé</option>
+          {OUTILS.map((o) => (
+            <option key={o}>{o}</option>
+          ))}
+        </select>
       </Panel>
 
       <Panel className="mt-4">
@@ -340,7 +532,7 @@ export function ProfileView() {
       </Panel>
 
       <p className="mt-6 text-center text-xs text-muted-foreground">
-        Exercices sur documents fictifs ou publics uniquement. Le tuteur IA et le coach hebdomadaire restent dans la version claude.ai.
+        Exercices sur documents fictifs ou publics uniquement. Contenu mis à jour chaque semaine ; vos acquis sont conservés.
       </p>
     </div>
   )
