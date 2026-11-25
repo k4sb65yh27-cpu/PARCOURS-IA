@@ -1,3 +1,4 @@
+import { Mascot } from "@/components/Mascot"
 import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { BookOpen, Check, ClipboardCheck, Lock, Star, Trophy } from "lucide-react"
@@ -160,6 +161,11 @@ function PathNode({ u, kind, off, done, locked, current, big, onClick, ref }: No
           Commencer
           <span className="absolute -bottom-[7px] left-1/2 size-3 -translate-x-1/2 rotate-45 border-r-2 border-b-2 border-line bg-card" />
         </motion.div>
+      )}
+      {current && (
+        <div className="pointer-events-none absolute -top-1" style={off > 0 ? { right: 110 } : { left: 110 }}>
+          <Mascot size={78} />
+        </div>
       )}
       {current && (
         <span

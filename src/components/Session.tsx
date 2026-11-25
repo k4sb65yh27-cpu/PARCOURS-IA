@@ -1,3 +1,4 @@
+import { Mascot } from "@/components/Mascot"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from "motion/react"
 import { Check, Heart, Volume2, VolumeX, X } from "lucide-react"
@@ -308,10 +309,11 @@ export function Session({
               initial={reduce ? { opacity: 0 } : { y: "100%" }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className={`safe-b ${ok ? "bg-teal-soft" : "bg-ko-soft"}`}
+              className={`relative safe-b ${ok ? "bg-teal-soft" : "bg-ko-soft"}`}
               role="status"
               aria-live="polite"
             >
+              <div className="pointer-events-none absolute -top-[68px] right-4"><Mascot size={64} mood={ok ? "happy" : "sad"} /></div>
               <div className="mx-auto w-full max-w-2xl px-4 pt-4 pb-5">
                 <div className={`flex items-center gap-2.5 text-xl font-black ${ok ? "text-teal-deep dark:text-[#8fe0d2]" : "text-ko-deep dark:text-[#f7b5a6]"}`}>
                   <span className={`grid size-8 place-items-center rounded-full text-white ${ok ? "bg-teal" : "bg-ko"}`}>

@@ -1,3 +1,4 @@
+import { Mascot } from "@/components/Mascot"
 import { useEffect, useRef } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Flame } from "lucide-react"
@@ -67,11 +68,11 @@ export function SessionEnd({ sm, onClose }: { sm: Summary; onClose: () => void }
       <Confetti ref={conf} manualstart className="pointer-events-none fixed inset-0 z-0 size-full" />
       <main className="relative z-10 mx-auto flex w-full max-w-md flex-1 flex-col items-center overflow-y-auto px-5 pt-12 text-center">
         <motion.div
-          initial={reduce ? false : { scale: 0.4, rotate: -12, opacity: 0 }}
-          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-          transition={{ type: "spring", bounce: 0.45, duration: 0.7 }}
+          initial={reduce ? false : { scale: 0.4, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.45, duration: 0.6 }}
         >
-          <Medal tone={tone} validated={!!sm.validated} />
+          <Mascot size={128} className="mb-4" mood={tone === "ko" ? "sad" : win || sm.validated ? "cheer" : "happy"} />
         </motion.div>
         <motion.h1
           initial={reduce ? false : { opacity: 0, y: 10 }}
@@ -141,27 +142,5 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
       <dt className="font-extrabold">{label}</dt>
       <dd className="text-lg font-black">{children}</dd>
     </div>
-  )
-}
-
-function Medal({ tone, validated }: { tone: "sun" | "ko"; validated: boolean }) {
-  const c = tone === "ko" ? ["var(--ko)", "var(--ko-soft)", "var(--ko-deep)"] : ["var(--sun)", "var(--sun-soft)", "var(--sun-deep)"]
-  return (
-    <svg width="132" height="132" viewBox="0 0 132 132" aria-hidden="true">
-      {validated && (
-        <>
-          <path d="M44 92 30 128l18-8 10 14 8-36z" fill="var(--teal)" />
-          <path d="M88 92l14 36-18-8-10 14-8-36z" fill="var(--teal-deep)" />
-        </>
-      )}
-      <circle cx="66" cy="62" r="56" fill={c[0]} />
-      <circle cx="66" cy="62" r="56" fill="none" stroke={c[2]} strokeWidth="5" strokeDasharray="0 0" opacity=".35" />
-      <circle cx="66" cy="62" r="41" fill={c[1]} />
-      {tone === "ko" ? (
-        <path d="M51 47l30 30M81 47 51 77" stroke={c[2]} strokeWidth="9" strokeLinecap="round" />
-      ) : (
-        <path d="M66 33l8.6 17.6 19.4 2.8-14 13.6 3.3 19.3L66 77.2l-17.3 9.1 3.3-19.3-14-13.6 19.4-2.8z" fill={c[2]} />
-      )}
-    </svg>
   )
 }
