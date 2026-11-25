@@ -3,7 +3,9 @@ sys.path.insert(0, '.')
 from socle import SOCLE
 from metier import METIER
 from extra import *
-P = '../parcours/src/data/content.json'
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+P = '../../src/data/content.json'
 old = json.load(open(sys.argv[1] if len(sys.argv) > 1 else P))
 B = {s['id']: s for s in old['STEPS']}
 SRC = old['SRC']
