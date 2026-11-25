@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import { BookA, Dumbbell, Flame, Map as MapIcon, Star, UserRound } from "lucide-react"
 import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
 import { PathView, type Go } from "@/components/PathView"
 import { Session, type Mode } from "@/components/Session"
 import { NotionsReader, StepGuide } from "@/components/StepGuide"
@@ -54,8 +55,11 @@ export default function App() {
     else setOv(null)
   }
 
-  const start = (mode: Mode, ids: string[], label: string, stepId?: string) =>
-    ids.length && setOv({ t: "session", mode, ids, label, stepId, key: Date.now() })
+  const start = (mode: Mode, ids: string[], label: string, stepId?: string) => {
+    if (!ids.length) return
+    toast.dismiss() // un toast restant masquerait la correction en bas d'écran
+    setOv({ t: "session", mode, ids, label, stepId, key: Date.now() })
+  }
 
   const go: Go = ({ kind, step, tab: t }) => {
     if (kind === "guide") return setOv({ t: "guide", step, tab: t })
@@ -84,7 +88,7 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
       </main>
-      <BottomNav tab={tab} setTab={setTab} />
+      <BottomNav tab={tab} setTab={(t) => { setTab(t); window.scrollTo(0, 0) }} />
 
       {ov?.t === "guide" && <StepGuide key={ov.step.id} step={ov.step} tab={ov.tab} onBack={close} />}
       {ov?.t === "notions" && <NotionsReader step={ov.step} onClose={close} />}
@@ -143,7 +147,6 @@ function TopBar({ onTab }: { onTab: (t: Tab) => void }) {
           <span className="text-sm tabular-nums">
             {dx}/{goal}
           </span>
-          {due > 0 && <span className="absolute -top-0.5 left-6 grid size-5 place-items-center rounded-full bg-ko text-[0.65rem] font-black text-white">{due > 9 ? "9+" : due}</span>}
         </button>
       </div>
     </header>
@@ -151,6 +154,8 @@ function TopBar({ onTab }: { onTab: (t: Tab) => void }) {
 }
 
 function BottomNav({ tab, setTab }: { tab: Tab; setTab: (t: Tab) => void }) {
+  useStore()
+  const due = dueIds().length
   return (
     <nav aria-label="Navigation principale" className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-line bg-background safe-b">
       <ul className="mx-auto grid max-w-xl grid-cols-4">
@@ -166,10 +171,15 @@ function BottomNav({ tab, setTab }: { tab: Tab; setTab: (t: Tab) => void }) {
                 style={{ color: on ? "var(--teal)" : "var(--muted-foreground)" }}
               >
                 <span
-                  className="grid h-8 w-12 place-items-center rounded-xl border-2 transition-colors"
+                  className="relative grid h-8 w-12 place-items-center rounded-xl border-2 transition-colors"
                   style={{ borderColor: on ? "var(--teal)" : "transparent", background: on ? "var(--teal-soft)" : "transparent" }}
                 >
                   <Icon className="size-5" strokeWidth={on ? 2.6 : 2.2} />
+                  {id === "review" && due > 0 && (
+                    <span className="absolute -top-1.5 -right-1.5 grid min-w-5 place-items-center rounded-full bg-ko px-1 text-[0.65rem] font-black text-white" aria-label={`${due} à revoir`}>
+                      {due > 9 ? "9+" : due}
+                    </span>
+                  )}
                 </span>
                 {label}
               </button>

@@ -13,10 +13,10 @@ export function CadreNote({ cadre, compact = false }: { cadre?: number; compact?
       </span>
     )
   return (
-    <p className="flex gap-2.5 rounded-xl border-2 border-dashed border-line-deep p-3 text-sm">
+    <p className="flex gap-2 text-sm text-muted-foreground">
       <Home className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
       <span>
-        <span className="font-extrabold">Cadre {cadre} · {c?.nom}.</span> {CADRE_NOTE}
+        <span className="font-extrabold text-foreground">Projet perso.</span> Cadre {cadre} : {c?.nom}. {CADRE_NOTE}
       </span>
     </p>
   )

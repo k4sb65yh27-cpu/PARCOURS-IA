@@ -48,7 +48,7 @@ export function SessionEnd({ sm, onClose }: { sm: Summary; onClose: () => void }
   let sub = step ? `Étape ${step.cote} · ${step.titre}` : sm.label
   if (sm.out) {
     title = "Plus de vies"
-    sub = "La leçon n'est pas comptée. Les XP gagnés restent acquis."
+    sub = "Les XP gagnés restent acquis et les questions ratées reviendront dans l'entraînement du jour. Relisez les notions, puis relancez la leçon."
   } else if (sm.mode === "exam") {
     title = failedExam ? "Examen à repasser" : "Examen réussi"
     sub = failedExam
@@ -94,11 +94,11 @@ export function SessionEnd({ sm, onClose }: { sm: Summary; onClose: () => void }
             <NumberTicker value={sm.xp} delay={0.45} className="text-teal tracking-normal dark:text-teal" />
           </Row>
           <Row label={sm.mode === "exam" ? "Score" : "Précision"}>
-            <span className="text-teal">{sm.mode === "exam" ? pct(sm.good, sm.total) : precision} %</span>
+            <span style={{ color: (sm.mode === "exam" ? pct(sm.good, sm.total) : precision) < 50 ? "var(--ko)" : (sm.mode === "exam" ? pct(sm.good, sm.total) : precision) < 80 ? "var(--sun-deep)" : "var(--teal)" }}>{sm.mode === "exam" ? pct(sm.good, sm.total) : precision} %</span>
           </Row>
           <Row label="Temps">
             <span className="text-teal tabular-nums">
-              {Math.floor(sec / 60)} min {String(sec % 60).padStart(2, "0")} s
+              {sec < 60 ? `${sec} s` : `${Math.floor(sec / 60)} min ${String(sec % 60).padStart(2, "0")} s`}
             </span>
           </Row>
         </motion.dl>

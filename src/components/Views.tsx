@@ -349,7 +349,7 @@ export function ProfileView() {
         <h2 className="font-black">Compétences</h2>
         <p className="text-sm text-muted-foreground">Niveaux : {LEVELS.slice(1).join(", ")}.</p>
         <ul className="mt-3 grid gap-3">
-          {COMPS.map((c) => {
+          {COMPS.filter((c) => compLevel(c.id) > 0).map((c) => {
             const lv = compLevel(c.id)
             return (
               <li key={c.id}>
@@ -359,7 +359,7 @@ export function ProfileView() {
                 </div>
                 <div className="mt-1 grid grid-cols-4 gap-1" role="img" aria-label={`${c.nom} : niveau ${lv} sur 4`}>
                   {[1, 2, 3, 4].map((k) => (
-                    <span key={k} className="h-2.5 rounded-full" style={{ background: k <= lv ? (lv === 4 ? "var(--sun)" : "var(--teal)") : "var(--line)" }} />
+                    <span key={k} className="h-2.5 rounded-full" style={{ background: k <= lv ? (lv === 4 ? "var(--sun)" : "var(--teal)") : "var(--line-deep)" }} />
                   ))}
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
@@ -367,6 +367,11 @@ export function ProfileView() {
             )
           })}
         </ul>
+        {COMPS.some((c) => !compLevel(c.id)) && (
+          <p className="mt-3 text-sm text-muted-foreground">
+            Pas encore abordées : {COMPS.filter((c) => !compLevel(c.id)).map((c) => c.nom).join(", ")}.
+          </p>
+        )}
       </Panel>
 
       <Panel className="mt-4">

@@ -43,7 +43,7 @@ export function PathView({ onGo }: { onGo: Go }) {
                 >
                   <span className="h-0.5 flex-1 bg-line" />
                   <span className="text-center">
-                    <span className="block text-xs font-black tracking-widest text-muted-foreground uppercase">
+                    <span className="block text-sm font-bold text-muted-foreground">
                       Étape {s.cote}
                       {s.id === "bonus" ? " · facultative" : ""}
                     </span>
@@ -96,8 +96,7 @@ function VoieIntro({ voie }: { voie: string }) {
   const open = voieOpen(voie)
   return (
     <div className="mx-4 mt-8 mb-2 first:mt-4">
-      <p className="text-xs font-black tracking-widest text-muted-foreground uppercase">Voie</p>
-      <h2 className="text-2xl font-black">{v.nom}</h2>
+      <h2 className="text-2xl font-black">Voie {v.nom}</h2>
       <p className="mt-1 text-[0.95rem] text-muted-foreground">
         {v.desc} {!open && <span className="font-extrabold text-foreground">{v.open}</span>}
       </p>
@@ -122,8 +121,8 @@ function UnitBanner({ u }: { u: Unit }) {
           </p>
           <h2 className="truncate text-lg font-black first-letter:uppercase">{title}</h2>
         </div>
-        <span className="h-1.5 w-16 shrink-0 overflow-hidden rounded-full bg-white/25" aria-hidden="true">
-          <span className="block h-full rounded-full bg-white" style={{ width: `${(100 * done) / total}%` }} />
+        <span className="shrink-0 rounded-full bg-black/15 px-2.5 py-1 text-sm font-black tabular-nums" aria-label={`${done} étape${done > 1 ? "s" : ""} validée${done > 1 ? "s" : ""} sur ${total}`}>
+          {done}/{total}
         </span>
       </div>
     </div>
@@ -145,8 +144,8 @@ function PathNode({ u, kind, off, done, locked, current, big, onClick, ref }: No
   const reduce = useReducedMotion()
   const Icon = done ? Check : locked ? Lock : ICON[kind]
   const size = big ? 80 : 70
-  const bg = locked ? "var(--line)" : done && kind === "exam" ? "var(--sun)" : u.color.base
-  const deep = locked ? "var(--line-deep)" : done && kind === "exam" ? "var(--sun-deep)" : u.color.deep
+  const bg = locked ? "var(--line)" : done ? "var(--sun)" : u.color.base
+  const deep = locked ? "var(--line-deep)" : done ? "var(--sun-deep)" : u.color.deep
   const label = `${NAME[kind]}${done ? ", terminé" : locked ? ", verrouillé" : current ? ", à faire maintenant" : ""}`
   return (
     <div className="relative" style={{ transform: `translateX(${off}px)` }}>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
-import { ArrowLeft, Check, ExternalLink, GraduationCap, Target, X } from "lucide-react"
+import { ArrowLeft, Check, ExternalLink, GraduationCap, X } from "lucide-react"
 import { toast } from "sonner"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
@@ -50,8 +50,8 @@ export function StepGuide({ step, tab = "objectifs", onBack }: { step: Step; tab
             <ArrowLeft className="size-6" strokeWidth={2.5} />
           </button>
           <div className="min-w-0">
-            <p className="text-xs font-black tracking-widest text-muted-foreground uppercase">
-              Étape {step.cote} · {step.bloc} · {step.duree}
+            <p className="text-sm font-bold text-muted-foreground">
+              {step.cote} · {step.duree}
             </p>
             <h1 className="truncate text-lg font-black">{step.titre}</h1>
           </div>
@@ -82,9 +82,9 @@ export function StepGuide({ step, tab = "objectifs", onBack }: { step: Step; tab
             </div>
           )}
           <ul className="grid gap-3">
-            {step.obj.map((o) => (
+            {step.obj.map((o, i) => (
               <li key={o} className="flex gap-3">
-                <Target className="mt-0.5 size-5 shrink-0 text-teal" aria-hidden="true" />
+                <span className="grid size-6 shrink-0 place-items-center rounded-full bg-teal-soft text-sm font-black text-teal-deep" aria-hidden="true">{i + 1}</span>
                 <span>{o}</span>
               </li>
             ))}

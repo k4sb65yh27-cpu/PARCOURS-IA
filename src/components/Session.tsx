@@ -287,7 +287,7 @@ export function Session({
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
             className="mx-auto w-full max-w-2xl px-4 pt-4 pb-6"
           >
-            <p className="text-sm font-extrabold tracking-wide text-muted-foreground uppercase">
+            <p className="text-[0.95rem] font-extrabold text-muted-foreground">
               {mode === "exam" ? "Examen" : KIND[cur.type]}
               {tries.current[cur.id] && !checked ? " · nouvel essai" : ""}
             </p>
@@ -371,7 +371,7 @@ function Question({ it, ui, checked }: { it: Item; ui: UI; checked: boolean }) {
       <h2 className="mt-3 font-serif text-[1.4rem] leading-[1.35] font-semibold text-balance">
         {parts[0]}
         <span
-          className={`mr-0.5 ml-1 inline-block min-w-24 font-sans font-black border-b-[3px] px-2 text-center align-baseline ${
+          className={`ml-1 inline-block font-sans ${filled ? "" : "min-w-24"} font-black border-b-[3px] px-2 text-center align-baseline ${
             filled ? (checked ? "border-transparent" : "border-u2") : "border-line-deep"
           }`}
           style={{ borderColor: filled && !checked ? "var(--u2)" : undefined, color: filled ? "var(--u2-d)" : undefined }}
