@@ -42,7 +42,7 @@ export type State = {
 }
 export type Answer = { t: number; step: string; item: string; kind: string; ok: boolean }
 export type Plan = { week?: string; message?: string; focus?: string[]; drills?: unknown[] }
-type Root = { state: State; notes: Record<string, string | number>; answers: Record<string, { items: Answer[] }>; plan: Plan | null; journal: unknown; tutor: unknown }
+export type Root = { state: State; notes: Record<string, string | number>; answers: Record<string, { items: Answer[] }>; plan: Plan | null; journal: unknown; tutor: unknown }
 
 /* ---------- Dates ---------- */
 const pad = (n: number) => (n < 10 ? "0" : "") + n
@@ -151,8 +151,30 @@ function emit() {
   version++
   listeners.forEach((l) => l())
 }
+const commitHooks = new Set<() => void>()
+/** Appelé après chaque enregistrement local (synchronisation par compte). */
+export const onCommit = (f: () => void) => (commitHooks.add(f), () => commitHooks.delete(f))
 export function commit() {
   save()
+  emit()
+  commitHooks.forEach((f) => f())
+}
+/** Remplace toute la sauvegarde (après fusion avec le serveur), sans relancer la synchronisation. */
+export function replaceRoot(o: any) {
+  R = {
+    state: normState(o?.state),
+    notes: isObj(o?.notes) ? o.notes : {},
+    answers: isObj(o?.answers) ? o.answers : {},
+    plan: isObj(o?.plan) ? o.plan : null,
+    journal: o?.journal ?? null,
+    tutor: o?.tutor ?? null,
+  }
+  registerCoach()
+  try {
+    localStorage.setItem(KEY, JSON.stringify(R))
+  } catch {
+    /* stockage indisponible */
+  }
   emit()
 }
 export function useStore() {

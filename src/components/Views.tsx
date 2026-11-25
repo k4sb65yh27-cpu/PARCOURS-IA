@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch"
 import { BlurFade } from "@/components/ui/blur-fade"
 import { BYID, CADRES, COMPS, DEFIS, GLOSS, ITEMS, LEVELS, NEWS, STEPS } from "@/lib/content"
 import { copyText } from "@/lib/tutor"
+import { login, logout, syncNow, useSync } from "@/lib/sync"
 import { CadreNote } from "@/components/CadreNote"
 import {
   GOALS,
@@ -315,6 +316,8 @@ export function ProfileView() {
     <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
       <H1 sub={next ? `${next[0] - s.xp} XP avant « ${next[1]} »` : "Grade le plus élevé atteint."}>{RANKS[r][1]}</H1>
 
+      <AccountPanel />
+
       <Panel>
         <div className="flex items-center justify-between font-extrabold">
           <span>{s.xp} XP</span>
@@ -499,7 +502,7 @@ export function ProfileView() {
       <Panel className="mt-4">
         <h2 className="font-black">Sauvegarde</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          La progression reste dans ce navigateur. Exportez-la pour changer d'appareil ; le fichier de la version claude.ai est accepté.
+          Sans compte, la progression reste dans ce navigateur. Exportez-la pour changer d'appareil ; le fichier de la version claude.ai est accepté.
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <button type="button" onClick={download} className="tile justify-center">
@@ -540,6 +543,73 @@ export function ProfileView() {
         Exercices sur documents fictifs ou publics uniquement. Contenu mis à jour chaque semaine ; vos acquis sont conservés.
       </p>
     </div>
+  )
+}
+
+function AccountPanel() {
+  const sy = useSync()
+  const [email, setEmail] = useState("")
+  const [pw, setPw] = useState("")
+  const [create, setCreate] = useState(false)
+  const [err, setErr] = useState("")
+  if (!sy.enabled) return null
+  const time = sy.last ? new Date(sy.last).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }) : ""
+  return (
+    <Panel className="mb-4">
+      <h2 className="font-black">Compte</h2>
+      {sy.email ? (
+        <>
+          <p className="mt-1 text-sm">
+            Connecté : <span className="font-extrabold">{sy.email}</span>. La progression suit le compte sur le PC et le téléphone.
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground" aria-live="polite">
+            {sy.busy ? "Synchronisation…" : sy.error || (time ? `Synchronisé à ${time}.` : "")}
+          </p>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <button type="button" className="tile justify-center" disabled={sy.busy} onClick={() => syncNow()}>
+              Synchroniser
+            </button>
+            {sy.mode === "local" && (
+              <button type="button" className="tile justify-center" onClick={() => logout()}>
+                Se déconnecter
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <form
+          className="mt-2 grid gap-2"
+          onSubmit={async (e) => {
+            e.preventDefault()
+            setErr("")
+            try {
+              await login(email, pw, create)
+              setPw("")
+              toast.success("Connecté. Progression synchronisée.")
+            } catch (x: any) {
+              setErr(x.message || "Connexion impossible.")
+            }
+          }}
+        >
+          <p className="text-sm text-muted-foreground">Connectez-vous pour retrouver votre progression sur tous vos appareils.</p>
+          <label className="grid gap-1 text-sm font-extrabold">
+            Courriel professionnel
+            <input type="email" required autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} className="min-h-12 rounded-xl border-2 border-line bg-card px-3 text-base font-semibold" />
+          </label>
+          <label className="grid gap-1 text-sm font-extrabold">
+            Mot de passe{create ? " (10 caractères minimum)" : ""}
+            <input type="password" required minLength={create ? 10 : 1} autoComplete={create ? "new-password" : "current-password"} value={pw} onChange={(e) => setPw(e.target.value)} className="min-h-12 rounded-xl border-2 border-line bg-card px-3 text-base font-semibold" />
+          </label>
+          {(err || sy.error) && <p className="text-sm font-bold text-ko" role="alert">{err || sy.error}</p>}
+          <button type="submit" className="btn3d mt-1 w-full" disabled={sy.busy}>
+            {create ? "Créer mon compte" : "Se connecter"}
+          </button>
+          <button type="button" className="min-h-11 text-sm font-extrabold text-teal" onClick={() => setCreate(!create)}>
+            {create ? "J'ai déjà un compte" : "Première fois : créer un compte"}
+          </button>
+        </form>
+      )}
+    </Panel>
   )
 }
 

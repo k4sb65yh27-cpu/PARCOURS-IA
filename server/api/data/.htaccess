@@ -1,0 +1,2 @@
+# Apache : aucun accès web aux données.
+Require all denied
