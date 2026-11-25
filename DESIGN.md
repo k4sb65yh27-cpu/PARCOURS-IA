@@ -98,5 +98,14 @@ Domaine retenu pour la recherche : applications d'apprentissage gamifié et de p
 - Couleur : texte d'un contraste AA au moins ; le rouge et le vert ne portent jamais seuls l'information (icône et libellé en plus).
 - Clair et sombre définis ensemble.
 
-## 5. Système retenu
-[à compléter après le choix de la maquette]
+## 5. Système retenu (piste B, Plateau, choisie le 25/11/2026)
+
+Référence : Duolingo pour la grammaire (chemin de nœuds, boutons en relief, bandeau de correction, vies, série), sans mascotte ni palette d'origine.
+
+- Couleurs : sarcelle #0F8F7E (action, foncé #0A6C5F), ambre #F2A516 (récompense, foncé #C98200), corail #C9442A (erreur), gris de ligne #E3E6EA. Blocs en rotation : sarcelle, bleu #2F6FB0, terre cuite #C2612B, olive #5F7F2A. Thème sombre défini avec les mêmes rôles.
+- Polices : Nunito 600 à 900 pour l'interface ; Source Serif 4 (600, sans italique) pour les énoncés des questions, qui se lisent comme un texte juridique.
+- Relief : bordure inférieure de 4 px (boutons, tuiles) ou 7 px (nœuds), écrasée au toucher. Aucune ombre colorée ni halo.
+- Rayons : 16 px pour boutons et tuiles, cercle pour les nœuds.
+- Mouvement : ressort sans rebond 0,3 s pour les écrans, secousse de 0,32 s sur erreur, confettis et médaille en fin de leçon réussie, tout coupé sous prefers-reduced-motion.
+- Sons : clic, bonne réponse, erreur, série d'affilée, fin de leçon, série journalière, déblocage ; interrupteur dans chaque séance et dans le profil.
+- Chiffres : jamais en cartes alignées ; listes à deux colonnes (libellé, valeur).
