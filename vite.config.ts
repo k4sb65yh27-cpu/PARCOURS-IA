@@ -13,7 +13,7 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "apple-touch-icon.png"],
       manifest: {
-        name: "Parcours IA du juriste",
+        name: "Parcours IA SATT",
         short_name: "Parcours IA",
         description: "Auto-formation à l'usage des assistants d'IA : leçons courtes, révision espacée, défis du jour.",
         lang: "fr",

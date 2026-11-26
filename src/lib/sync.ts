@@ -75,7 +75,7 @@ export function merge(a: Root, b: Root): Root {
     ...newer,
     notes,
     answers,
-    state: { ...newer.state, xp: Math.max(A.xp, B.xp), streak, daily: day, steps, srs, defis, updatedAt: Math.max(A.updatedAt, B.updatedAt) },
+    state: { ...newer.state, settings: { ...newer.state.settings, profil: newer.state.settings.profil || (newer === a ? B : A).settings.profil }, xp: Math.max(A.xp, B.xp), streak, daily: day, steps, srs, defis, updatedAt: Math.max(A.updatedAt, B.updatedAt) },
   }
 }
 

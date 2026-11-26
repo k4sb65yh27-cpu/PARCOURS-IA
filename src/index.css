@@ -278,3 +278,24 @@
     display: none;
   }
 }
+
+/* Bulle de la mascotte : la mascotte « parle » la consigne, comme dans les applications de langue. */
+.bubble {
+  position: relative;
+  padding: 0.7rem 0.95rem;
+  border: 2px solid var(--line);
+  border-radius: 1rem;
+  background: var(--card);
+}
+.bubble::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  bottom: 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--card);
+  border-left: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  transform: rotate(45deg);
+}

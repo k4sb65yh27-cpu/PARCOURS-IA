@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { BookOpen, Check, ClipboardCheck, Lock, Star, Trophy } from "lucide-react"
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
-import { UNITS, VOIES, type Step, type Unit } from "@/lib/content"
+import { PROFIL, UNITS, VOIES, profilOf, type Step, type Unit } from "@/lib/content"
 import { CadreNote } from "@/components/CadreNote"
 import { NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, voieOpen, type NodeKind } from "@/lib/store"
 import { sfx } from "@/lib/sound"
@@ -30,7 +30,7 @@ export function PathView({ onGo }: { onGo: Go }) {
   return (
     <div className="mx-auto w-full max-w-xl pb-10">
       {UNITS.map((u, ui) => (
-        <section key={u.name} aria-label={`Bloc ${u.name}`} className="mb-4">
+        <section key={u.name} aria-label={`Bloc ${u.name}`} className="mb-8">
           {u.steps[0].voie !== UNITS[ui - 1]?.steps[0].voie && <VoieIntro voie={u.steps[0].voie} />}
           <UnitBanner u={u} />
           {u.steps.map((s) => {
@@ -95,11 +95,13 @@ function VoieIntro({ voie }: { voie: string }) {
   const v = VOIES.find((x) => x.id === voie)
   if (!v) return null
   const open = voieOpen(voie)
+  /* Voie Métier : titre et description du profil choisi. */
+  const p = voie === "metier" ? profilOf(PROFIL || "support") : undefined
   return (
     <div className="mx-4 mt-8 mb-2 first:mt-4">
-      <h2 className="text-2xl font-black">Voie {v.nom}</h2>
+      <h2 className="text-2xl font-black">Voie {v.nom}{p ? ` · ${p.court}` : ""}</h2>
       <p className="mt-1 text-[0.95rem] text-muted-foreground">
-        {v.desc} {!open && <span className="font-extrabold text-foreground">{v.open}</span>}
+        {p ? p.voie : v.desc} {!open && <span className="font-extrabold text-foreground">{v.open}</span>}
       </p>
     </div>
   )

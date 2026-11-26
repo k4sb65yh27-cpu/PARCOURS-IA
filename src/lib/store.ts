@@ -1,14 +1,15 @@
 import { useSyncExternalStore } from "react"
-import { BYID, DEFIS, ITEMS, MAIN, STEPS, validDrill, type Item, type Step } from "./content"
+import { BYID, DEFIS, ITEMS, MAIN, PROFIL_IDS, STEPS, VIS, applyProfil, validDrill, type Item, type Step } from "./content"
 
+/* Clé d'origine conservée : les progressions déjà enregistrées restent lisibles. */
 export const KEY = "parcours-ia-juriste-v2"
 export const RANKS: [number, string][] = [
-  [0, "Stagiaire"],
-  [150, "Juriste junior"],
-  [400, "Juriste confirmé"],
+  [0, "Débutant"],
+  [150, "Utilisateur régulier"],
+  [400, "Utilisateur confirmé"],
   [700, "Référent prompts"],
   [1000, "Architecte d'agents"],
-  [1300, "Expert IA du pôle"],
+  [1300, "Expert IA de l'équipe"],
 ]
 export const INTERVALS = [1, 2, 4, 8, 16]
 export const GOALS = [10, 20, 30, 50]
@@ -27,8 +28,8 @@ export type StepState = {
   notions: boolean
 }
 export type Srs = { box: number; due: string; seen: number; ok: number; ko: number }
-/** cadre : 1 navigateur, 2 connecteurs et applications, 3 API, code et agents. */
-export type Settings = { sound: boolean; haptics: boolean; cadre: number; outil: string }
+/** cadre : 1 navigateur, 2 connecteurs et applications, 3 API, code et agents. profil : métier choisi à l'ouverture (vide tant qu'il n'est pas choisi). */
+export type Settings = { sound: boolean; haptics: boolean; cadre: number; outil: string; profil: string }
 export type State = {
   updatedAt: number
   xp: number
@@ -64,7 +65,7 @@ function blankState(): State {
     steps: {},
     srs: {},
     free: false,
-    settings: { sound: true, haptics: true, cadre: 1, outil: "" },
+    settings: { sound: true, haptics: true, cadre: 1, outil: "", profil: "" },
     defis: {},
   }
 }
@@ -109,6 +110,7 @@ export function normState(o: unknown): State {
       haptics: o.settings.haptics !== false,
       cadre: [1, 2, 3].includes(+o.settings.cadre) ? +o.settings.cadre : 1,
       outil: typeof o.settings.outil === "string" ? o.settings.outil.slice(0, 40) : "",
+      profil: PROFIL_IDS.includes(o.settings.profil) ? o.settings.profil : "",
     }
   if (isObj(o.defis)) for (const k of Object.keys(o.defis)) b.defis[k] = String(o.defis[k])
   return b
@@ -137,6 +139,7 @@ function load() {
   }
 }
 load()
+applyProfil(R.state.settings.profil)
 registerCoach()
 
 function save() {
@@ -169,6 +172,7 @@ export function replaceRoot(o: any) {
     journal: o?.journal ?? null,
     tutor: o?.tutor ?? null,
   }
+  applyProfil(R.state.settings.profil)
   registerCoach()
   try {
     localStorage.setItem(KEY, JSON.stringify(R))
@@ -224,7 +228,7 @@ export const beyondCadre = (s: { cadre?: number }) => (s.cadre || 1) > S().setti
  * de la compétence validées ; 4 en plus, une étape Expert validée ou trois défis faits.
  */
 export function compLevel(id: string) {
-  const steps = STEPS.filter((s) => s.comp?.includes(id))
+  const steps = VIS.filter((s) => s.comp?.includes(id))
   const base = steps.filter((s) => s.voie === "socle" || s.voie === "metier")
   const val = steps.filter(validated)
   const started = steps.some((s) => peek(s.id).notions || peek(s.id).lessons > 0)
@@ -366,6 +370,15 @@ export function setSetting<K extends keyof Settings>(k: K, v: Settings[K]) {
   S().settings[k] = v
   commit()
 }
+/** Change le profil métier : les étapes Métier et les exemples suivent ; les acquis restent enregistrés. */
+export function setProfil(p: string) {
+  S().settings.profil = p
+  applyProfil(p)
+  registerCoach()
+  commit()
+}
+/** Profil métier déjà suggéré par les acquis : une progression sur la voie Métier d'origine indique un juriste. */
+export const profilSuggere = () => (Object.keys(S().steps).some((k) => /^me\d$/.test(k)) ? "juriste" : "")
 export function setFree(v: boolean) {
   S().free = v
   commit()
@@ -461,6 +474,7 @@ export function importJson(text: string): string | null {
   }
   if (!isObj(o) || !isObj(o.state) || !isObj(o.state.steps)) return "Ce fichier ne contient pas de sauvegarde du parcours. Rien n'a été modifié."
   R.state = normState(o.state)
+  applyProfil(R.state.settings.profil)
   if (isObj(o.notes)) R.notes = o.notes
   if (isObj(o.answers)) R.answers = o.answers
   if (isObj(o.plan)) R.plan = o.plan
@@ -472,6 +486,7 @@ export function importJson(text: string): string | null {
 }
 export function resetAll() {
   R = { state: blankState(), notes: {}, answers: {}, plan: null, journal: null, tutor: null }
+  applyProfil("")
   registerCoach()
   commit()
 }

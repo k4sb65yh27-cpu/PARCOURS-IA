@@ -1,4 +1,5 @@
-import { Mascot } from "@/components/Mascot"
+import { Mascot, type Mood } from "@/components/Mascot"
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "@/components/ui/drawer"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from "motion/react"
 import { Check, Heart, Volume2, VolumeX, X } from "lucide-react"
@@ -66,6 +67,18 @@ const KIND: Record<Item["type"], string> = {
   match: "Associez les paires",
 }
 const PRAISE = ["Bien vu !", "Exact !", "Parfait !", "Très juste !", "C'est ça !"]
+const AGAIN = ["On la reverra un peu plus tard.", "Pas grave, elle reviendra.", "Notez la réponse, elle reviendra."]
+const LEAVE: Record<Mode, { titre: string; texte: string; rester: string }> = {
+  lesson: { titre: "Quitter la leçon ?", texte: "La leçon ne sera pas comptée et reprendra depuis le début. Les XP déjà gagnés restent acquis.", rester: "Continuer la leçon" },
+  exam: { titre: "Quitter l'examen ?", texte: "L'examen ne sera pas noté. Vous pourrez le repasser quand vous voulez.", rester: "Continuer l'examen" },
+  review: { titre: "Quitter la révision ?", texte: "Les réponses déjà données restent enregistrées ; les autres questions attendront.", rester: "Continuer la révision" },
+}
+
+/**
+ * Garde de sortie : la séance l'arme dès la première réponse. Le bouton retour du téléphone
+ * (géré par App) l'interroge avant de fermer ; elle ouvre alors la confirmation.
+ */
+export const exitGuard: { ask: null | (() => boolean) } = { ask: null }
 
 export function Session({
   mode,
@@ -93,6 +106,11 @@ export function Session({
   const [comboFlash, setComboFlash] = useState<number | null>(null)
   const [summary, setSummary] = useState<Summary | null>(null)
   const [nonce, setNonce] = useState(0)
+  const [confirm, setConfirm] = useState(false)
+  const confirmRef = useRef(false)
+  confirmRef.current = confirm
+  const summaryRef = useRef<Summary | null>(null)
+  summaryRef.current = summary
   const first = useRef<Record<string, boolean>>({})
   const tries = useRef<Record<string, number>>({})
   const xpGained = useRef(0)
@@ -198,16 +216,40 @@ export function Session({
     setNonce((n) => n + 1)
   }, [queue, hearts, useHearts, end])
 
-  /* Clavier : 1 à 9 pour choisir, Entrée pour vérifier ou continuer, Échap pour quitter. */
+  /* Sortie : pas de confirmation tant qu'aucune réponse n'a été donnée ni après la fin. */
+  const dirty = () => !summaryRef.current && Object.keys(first.current).length > 0
+  const requestClose = useCallback(() => {
+    if (dirty()) {
+      sfx.tap()
+      setConfirm(true)
+    } else onClose()
+  }, [onClose])
+  const leave = () => {
+    exitGuard.ask = null
+    setConfirm(false)
+    onClose()
+  }
+  useEffect(() => {
+    exitGuard.ask = () => {
+      if (!dirty()) return false
+      setConfirm(true)
+      return true
+    }
+    return () => {
+      exitGuard.ask = null
+    }
+  }, [])
+
+  /* Clavier : 1 à 9 pour choisir, Entrée pour vérifier ou continuer, Échap pour quitter (avec confirmation). */
   useEffect(() => {
     const on = (e: KeyboardEvent) => {
-      if (summary) return
+      if (summary || confirmRef.current) return
       if (e.key === "Enter") {
         e.preventDefault()
         checked ? next() : check()
         return
       }
-      if (e.key === "Escape") return onClose()
+      if (e.key === "Escape") return requestClose()
       const n = parseInt(e.key, 10)
       if (!n || checked) return
       const btn = document.querySelector<HTMLButtonElement>(`[data-key="${n}"]`)
@@ -215,20 +257,33 @@ export function Session({
     }
     window.addEventListener("keydown", on)
     return () => window.removeEventListener("keydown", on)
-  }, [checked, check, next, onClose, summary])
+  }, [checked, check, next, requestClose, summary])
 
   if (summary) return <SessionEnd sm={summary} onClose={onClose} />
 
   const progress = Math.round((100 * done) / total)
   const sound = root.state.settings.sound
   const canCheck = ready(cur, ui)
+  const lastLife = useHearts && hearts === 1 && !checked
+  const mood: Mood = checked ? (ok ? (combo >= 3 ? "cheer" : "happy") : "sad") : lastLife ? "worried" : "idle"
+  const say = checked
+    ? ok
+      ? combo >= 3
+        ? `${combo} de suite, continuez !`
+        : praise
+      : mode === "exam"
+        ? "On passe à la suivante."
+        : AGAIN[nonce % AGAIN.length]
+    : [mode === "exam" ? "Examen." : "", /[?!.]$/.test(KIND[cur.type]) ? KIND[cur.type] : `${KIND[cur.type]}.`, tries.current[cur.id] ? "Nouvel essai." : "", lastLife ? "Dernière vie : prenez votre temps." : ""]
+        .filter(Boolean)
+        .join(" ")
 
   return (
     <div className="fixed inset-0 z-40 flex flex-col bg-background safe-t">
       <header className="mx-auto flex w-full max-w-2xl items-center gap-3 px-4 pt-4 pb-2">
         <button
           type="button"
-          onClick={onClose}
+          onClick={requestClose}
           aria-label="Quitter la séance"
           className="grid size-11 place-items-center rounded-full text-muted-foreground hover:bg-secondary"
         >
@@ -279,6 +334,13 @@ export function Session({
       </header>
 
       <main className="flex-1 overflow-y-auto">
+        {/* La mascotte reste en place d'une question à l'autre et « dit » la consigne. */}
+        <div className="mx-auto flex w-full max-w-2xl items-end gap-3 px-4 pt-3">
+          <Mascot size={60} mood={mood} />
+          <p className="bubble mb-2 flex-1 text-[0.95rem] font-extrabold leading-snug" aria-live="polite">
+            {say}
+          </p>
+        </div>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={nonce}
@@ -286,12 +348,8 @@ export function Session({
             animate={{ opacity: 1, x: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, x: -36 }}
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-            className="mx-auto w-full max-w-2xl px-4 pt-4 pb-6"
+            className="mx-auto w-full max-w-2xl px-4 pt-1 pb-6"
           >
-            <p className="text-[0.95rem] font-extrabold text-muted-foreground">
-              {mode === "exam" ? "Examen" : KIND[cur.type]}
-              {tries.current[cur.id] && !checked ? " · nouvel essai" : ""}
-            </p>
             <Question it={cur} ui={ui} checked={checked} />
             <motion.div animate={shake}>
               <Answers it={cur} ui={ui} setUi={setUi} checked={checked} />
@@ -313,7 +371,6 @@ export function Session({
               role="status"
               aria-live="polite"
             >
-              <div className="pointer-events-none absolute -top-[68px] right-4"><Mascot size={64} mood={ok ? "happy" : "sad"} /></div>
               <div className="mx-auto w-full max-w-2xl px-4 pt-4 pb-5">
                 <div className={`flex items-center gap-2.5 text-xl font-black ${ok ? "text-teal-deep dark:text-[#8fe0d2]" : "text-ko-deep dark:text-[#f7b5a6]"}`}>
                   <span className={`grid size-8 place-items-center rounded-full text-white ${ok ? "bg-teal" : "bg-ko"}`}>
@@ -361,6 +418,24 @@ export function Session({
           )}
         </AnimatePresence>
       </footer>
+
+      <Drawer open={confirm} onOpenChange={(o) => !o && setConfirm(false)}>
+        <DrawerContent className="safe-b">
+          <div className="mx-auto w-full max-w-md px-5 pt-2 pb-5 text-center">
+            <div className="flex justify-center">
+              <Mascot size={72} mood="sad" />
+            </div>
+            <DrawerTitle className="mt-3 text-xl font-black">{LEAVE[mode].titre}</DrawerTitle>
+            <DrawerDescription className="mt-2 text-[0.95rem] font-semibold text-muted-foreground">{LEAVE[mode].texte}</DrawerDescription>
+            <button type="button" autoFocus onClick={() => setConfirm(false)} className="btn3d mt-5 w-full">
+              {LEAVE[mode].rester}
+            </button>
+            <button type="button" onClick={leave} className="mt-2 min-h-12 w-full rounded-2xl text-[0.95rem] font-black tracking-wide text-ko uppercase hover:bg-ko-soft">
+              Quitter
+            </button>
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   )
 }

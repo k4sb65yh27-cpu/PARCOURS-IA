@@ -1,11 +1,29 @@
 // shortcut: utilise le Playwright installé sur la machine (pas de dépendance du projet) ; à passer en @playwright/test si une CI doit le lancer.
-// Usage : npx vite preview, puis node scripts/check-lesson.cjs <dossier_captures> http://localhost:4173/ src/data/content.json
+// Usage : npx vite preview, puis node scripts/check-lesson.cjs <dossier_captures> http://localhost:4173/ src/data/content.json [profil]
 // Leçon réussie sans faute : vérifie le parcours heureux (confettis, série, fin de leçon).
 const { chromium } = require('playwright');
 const fs = require('fs');
 const out = process.argv[2], url = process.argv[3], content = JSON.parse(fs.readFileSync(process.argv[4], 'utf8'));
 const items = [];
-for (const s of content.STEPS) { s.quiz.forEach(q => items.push({ ...q, type: 'mcq' })); s.drills.forEach(d => items.push(d)); }
+for (const s of content.STEPS) {
+  s.quiz.forEach(q => items.push({ ...q, type: 'mcq' })); s.drills.forEach(d => items.push(d));
+  // Variantes par profil : mêmes questions, contexte adapté.
+  for (const m of Object.values(s.pv || {})) for (const [k, v] of Object.entries(m)) {
+    if (k.startsWith('quiz.')) items.push({ ...v, type: 'mcq' }); else if (k.startsWith('drills.')) items.push(v);
+  }
+}
+
+// Premier lancement : choix du métier puis de l'assistant (profil en dernier argument, « support » par défaut).
+async function onboarding(p, profil) {
+  const noms = { juriste: 'Juriste', cdt: 'Chargé de transfert', brevet: 'Ingénieur brevet', support: 'Fonctions support et direction' };
+  if (!(await p.getByRole('radiogroup', { name: 'Votre métier' }).count())) return;
+  await p.getByRole('radio', { name: new RegExp(noms[profil]) }).click();
+  await p.getByRole('button', { name: 'Continuer', exact: true }).click();
+  await p.waitForTimeout(400);
+  await p.getByRole('radio', { name: 'Claude', exact: true }).click();
+  await p.getByRole('button', { name: /^(Commencer|Reprendre le parcours)$/ }).click();
+  await p.waitForTimeout(500);
+}
 const find = (q) => items.find(i => i.q === q);
 (async () => {
   const b = await chromium.launch();
@@ -13,6 +31,7 @@ const find = (q) => items.find(i => i.q === q);
   const errs = [];
   p.on('pageerror', e => errs.push(String(e)));
   await p.goto(url); await p.waitForTimeout(1000);
+  await onboarding(p, process.argv[5] || 'support');
   await p.getByRole('button', { name: /^Leçon/ }).first().click();
   await p.waitForTimeout(400);
   await p.getByRole('button', { name: /^Commencer$/ }).click();

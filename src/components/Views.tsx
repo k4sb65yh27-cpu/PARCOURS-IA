@@ -4,7 +4,8 @@ import { Check, Copy, Download, Dumbbell, ExternalLink, Flame, Newspaper, Rotate
 import { toast } from "sonner"
 import { Switch } from "@/components/ui/switch"
 import { BlurFade } from "@/components/ui/blur-fade"
-import { BYID, CADRES, COMPS, DEFIS, GLOSS, ITEMS, LEVELS, NEWS, STEPS } from "@/lib/content"
+import { BYID, CADRES, COMPS, DEFIS, GLOSS, ITEMS, LEVELS, NEWS, PROFIL, STEPS, VIS, profilOf } from "@/lib/content"
+import { OUTILS, ProfilPicker } from "@/components/Onboarding"
 import { copyText } from "@/lib/tutor"
 import { login, logout, syncNow, useSync } from "@/lib/sync"
 import { CadreNote } from "@/components/CadreNote"
@@ -26,6 +27,7 @@ import {
   resetAll,
   setFree,
   setGoal,
+  setProfil,
   setSetting,
   streakNow,
   today,
@@ -101,7 +103,6 @@ export function ReviewView({ onStart }: { onStart: (ids: string[], label: string
   )
 }
 
-const OUTILS = ["Claude", "ChatGPT", "Copilot", "Le Chat", "Gemini", "Autre"]
 
 function DefiCard({ id }: { id: string }) {
   const root = useStore()
@@ -300,7 +301,7 @@ export function ProfileView() {
     .filter((k) => ITEMS[k] && s.srs[k].ko > 0)
     .sort((a, b) => s.srs[b].ko - s.srs[a].ko)
     .slice(0, 5)
-  const validatedN = STEPS.filter(validated).length
+  const validatedN = VIS.filter(validated).length
 
   const download = () => {
     const blob = new Blob([exportJson()], { type: "application/json" })
@@ -336,7 +337,7 @@ export function ProfileView() {
           <li className="flex items-center justify-between">
             <span className="font-extrabold">Étapes validées</span>
             <span className="font-black">
-              {validatedN} / {STEPS.length}
+              {validatedN} / {VIS.length}
             </span>
           </li>
           <li className="flex items-center justify-between">
@@ -434,6 +435,19 @@ export function ProfileView() {
             </ul>
           </>
         )}
+      </Panel>
+
+      <Panel className="mt-4">
+        <h2 className="mb-1 font-black">Votre métier</h2>
+        <p className="mb-3 text-sm text-muted-foreground">Il choisit la voie Métier et les exemples des exercices. Les étapes déjà validées restent acquises.</p>
+        <ProfilPicker
+          value={PROFIL}
+          onPick={(id) => {
+            if (id === PROFIL) return
+            setProfil(id)
+            toast(`Voie Métier : ${profilOf(id)?.court}.`)
+          }}
+        />
       </Panel>
 
       <Panel className="mt-4">

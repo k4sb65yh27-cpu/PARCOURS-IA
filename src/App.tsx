@@ -4,7 +4,8 @@ import { BookA, Dumbbell, Flame, Map as MapIcon, Star, UserRound } from "lucide-
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { PathView, type Go } from "@/components/PathView"
-import { Session, type Mode } from "@/components/Session"
+import { Session, exitGuard, type Mode } from "@/components/Session"
+import { Onboarding } from "@/components/Onboarding"
 import { NotionsReader, StepGuide } from "@/components/StepGuide"
 import { GlossView, ProfileView, ReviewView } from "@/components/Views"
 import { type Step } from "@/lib/content"
@@ -41,12 +42,20 @@ export default function App() {
   useTheme()
   const [tab, setTab] = useState<Tab>("path")
   const [ov, setOv] = useState<Overlay>(null)
+  const root = useStore()
 
   /* Le bouton retour d'Android ferme l'écran ouvert au lieu de quitter l'application. */
   useEffect(() => {
     if (!ov) return
     history.pushState({ ov: true }, "")
-    const on = () => setOv(null)
+    const on = () => {
+      /* Séance commencée : le retour du téléphone demande confirmation au lieu de fermer. */
+      if (exitGuard.ask?.()) {
+        history.pushState({ ov: true }, "")
+        return
+      }
+      setOv(null)
+    }
     window.addEventListener("popstate", on)
     return () => window.removeEventListener("popstate", on)
   }, [ov?.t])
@@ -93,6 +102,7 @@ export default function App() {
       {ov?.t === "guide" && <StepGuide key={ov.step.id} step={ov.step} tab={ov.tab} onBack={close} />}
       {ov?.t === "notions" && <NotionsReader step={ov.step} onClose={close} />}
       {ov?.t === "session" && <Session key={ov.key} mode={ov.mode} stepId={ov.stepId} ids={ov.ids} label={ov.label} onClose={close} />}
+      {!root.state.settings.profil && <Onboarding />}
       <Toaster position="bottom-center" offset={96} mobileOffset={{ bottom: 96 }} duration={2200} toastOptions={{ className: "!rounded-2xl !border-2 !font-extrabold" }} />
     </div>
   )
