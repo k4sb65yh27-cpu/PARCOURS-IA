@@ -3408,7 +3408,7 @@
   {
    "id": "mt1",
    "cote": "M1",
-   "titre": "Courriels aux chercheurs et aux industriels",
+   "titre": "Courriels de prospection avec l'IA",
    "duree": "40 min",
    "comp": [
     "produire",
@@ -3416,73 +3416,84 @@
    ],
    "cadre": 1,
    "obj": [
-    "Écrire à un chercheur ou à un industriel avec le bon registre",
-    "Relancer sans froisser",
-    "Ne rien promettre au nom de la SATT"
+    "Faire rédiger un premier courriel de prospection personnalisé",
+    "Adapter le message à chaque cible sans tout réécrire",
+    "Garder la main sur ce qui est dit et promis"
    ],
    "notions": [
     [
-     "Deux publics, deux registres",
-     "Un chercheur attend de la précision sur le calendrier et sur ce que la SATT fera de son invention. Un industriel attend une proposition de valeur en trois lignes. Indiquez le destinataire et son attente dans la consigne : l'assistant ajuste le vocabulaire et la longueur."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : la technologie en trois lignes publiques, l'entreprise visée, ce que vous attendez d'elle (un échange, une démonstration) et ce qui ne doit pas être dit. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
-     "Le premier contact industriel",
-     "Demandez un courriel court : problème résolu, résultat obtenu, ce que vous proposez (un échange, une démonstration), sans détail technique confidentiel. Ce qui n'est pas publié ou protégé ne figure pas dans un premier courriel."
+     "Personnaliser sans recopier",
+     "Donnez une base commune, puis pour chaque cible deux ou trois faits publics (son activité, un produit, une actualité trouvée en recherche web). Demandez une variante par cible : le message change d'accroche, pas de fond."
     ],
     [
-     "Relancer",
-     "Donnez l'historique en termes neutres (date du premier envoi, réponse ou silence) et le ton voulu. Une relance réussie rappelle l'intérêt pour le destinataire, pas l'impatience de l'expéditeur."
+     "Le ton se règle",
+     "Précisez le registre et la longueur : « cent mots, courtois et direct, sans superlatif ». Un ancien courriel fictif qui a bien marché vaut souvent mieux qu'une description du ton voulu."
     ],
     [
-     "Engagements",
-     "L'assistant ajoute volontiers « nous pouvons financer », « exclusivité possible » ou un délai. Aucune de ces formules ne part sans décision. Relisez chaque phrase qui engage la SATT."
+     "Relire comme l'auteur",
+     "Le document part sous votre nom. Relisez les chiffres, les dates, les noms et chaque engagement : l'assistant ajoute volontiers une promesse, un délai ou un chiffre que personne n'a décidé."
     ],
     [
-     "Matière d'entraînement",
-     "Projet fictif, laboratoire imaginaire, société inventée. Une déclaration d'invention réelle ou le nom d'un industriel en discussion ne vont pas dans un outil non validé."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Une déclaration d'invention, un résultat non publié ou le nom d'un industriel en discussion ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
     [
      "skfluency",
-     "Module Description du cours AI Fluency : décrire la tâche, le ton et le format."
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
      "msgenfr",
-     "Microsoft, cours d'IA générative en français : leçon sur la rédaction."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ]
    ],
    "ex": [
     {
-     "t": "Pour un projet fictif (un capteur imaginaire de qualité de l'eau), faites rédiger un premier courriel à un industriel inventé, en moins de 120 mots, sans détail technique non publié.",
-     "c": "Le courriel tient en 120 mots ; aucune information confidentielle ni promesse n'y figure."
+     "t": "Pour une technologie fictive (un capteur imaginaire de qualité de l'eau), faites rédiger un courriel de prospection de cent mots à partir de trois lignes de description publique.",
+     "c": "Le courriel tient en cent mots ; aucune information non publique ni promesse n'y figure."
     },
     {
-     "t": "Faites rédiger la relance d'un chercheur fictif qui n'a pas renvoyé les compléments de sa déclaration d'invention, en deux tons : cordial et pressant.",
-     "c": "Vous savez quelle consigne a changé le ton."
+     "t": "Donnez deux entreprises fictives avec deux faits chacune et demandez une variante du courriel par entreprise.",
+     "c": "Seule l'accroche change ; vous savez quelle consigne l'a permis."
     },
     {
-     "t": "Facultatif : demandez la version anglaise du premier courriel et vérifiez les termes techniques.",
-     "c": "Les termes techniques ont été relus par vous.",
+     "t": "Facultatif : faites rédiger une relance à quinze jours, en deux tons.",
+     "c": "Vous savez quel ton vous enverriez et pourquoi.",
      "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Que met-on dans un premier courriel à un industriel ?",
+     "q": "Que donner à l'assistant avant de demander un courriel de prospection ?",
      "o": [
-      "Le détail du procédé et les résultats non publiés",
-      "Problème résolu, résultat et proposition d'échange",
-      "Le calendrier interne de la SATT, le budget et l'équipe projet",
-      "La copie de la déclaration d'invention reçue"
+      "Uniquement le nom de l'entreprise visée",
+      "Technologie publique, cible, attente et limites",
+      "La déclaration d'invention complète, pour qu'il ait tout le contexte",
+      "Une liste de formules de politesse à utiliser"
      ],
      "a": 1,
-     "e": "Le premier contact donne envie d'en savoir plus, sans rien divulguer."
+     "e": "Avec ces éléments, le premier jet est presque toujours utilisable."
     },
     {
-     "q": "L'assistant écrit « une licence exclusive est envisageable ». Que faire ?",
+     "q": "Comment obtenir une version par cible sans tout réécrire ?",
      "o": [
-      "La garder, elle rend l'offre attractive",
+      "Recommencer une nouvelle conversation, de zéro, pour chaque cible",
+      "Donner une base commune et des faits propres à chaque cible",
+      "Demander dix variantes au hasard et choisir",
+      "Changer d'assistant pour chaque entreprise"
+     ],
+     "a": 1,
+     "e": "Le fond reste commun ; l'accroche s'appuie sur des faits de la cible."
+    },
+    {
+     "q": "L'assistant écrit « nous pouvons vous accorder une exclusivité ». Que faire ?",
+     "o": [
+      "Garder la phrase, elle rend l'offre attractive",
       "La retirer, sauf si c'est décidé",
       "La remplacer par « tout est négociable »",
       "Demander à l'assistant de la justifier"
@@ -3491,92 +3502,81 @@
      "e": "Aucun engagement ne part sans décision."
     },
     {
-     "q": "Quelle information donner pour une bonne relance ?",
+     "q": "Quelle information ne doit jamais aller dans l'assistant non validé ?",
      "o": [
-      "Le nom du laboratoire et de l'inventeur",
-      "Date du premier envoi, réponse et ton voulu",
-      "Le texte complet de tous les échanges, pièces jointes comprises",
-      "Votre avis personnel sur le destinataire"
+      "Le nom public de l'entreprise visée",
+      "Un résultat technique non publié",
+      "La longueur souhaitée du courriel",
+      "Le ton attendu pour la relance"
      ],
      "a": 1,
-     "e": "L'historique neutre suffit à l'assistant."
+     "e": "Ce qui n'est ni publié ni protégé reste hors de l'outil."
     },
     {
-     "q": "Sur quoi s'entraîner à rédiger ces courriels ?",
+     "q": "Comment régler le ton le plus sûrement ?",
      "o": [
-      "Un projet fictif et une société inventée",
-      "Le dernier projet du portefeuille, sans les noms",
-      "Une déclaration d'invention reçue cette semaine",
-      "Le courriel d'un collègue sur un dossier en cours"
+      "Fournir un ancien courriel fictif comme modèle",
+      "Écrire la consigne en majuscules",
+      "Demander un ton « professionnel et adapté au destinataire »",
+      "Laisser l'assistant choisir seul"
      ],
      "a": 0,
-     "e": "Le contexte d'un vrai projet reste identifiant, même sans les noms."
-    },
-    {
-     "q": "Avant l'envoi, la relecture prioritaire porte sur :",
-     "o": [
-      "La longueur des paragraphes",
-      "Les formules de politesse et la signature en bas du courriel",
-      "Les engagements, dates et informations techniques",
-      "Le nombre de points d'exclamation"
-     ],
-     "a": 2,
-     "e": "Ce sont les éléments qui engagent la SATT ou divulguent l'invention."
+     "e": "Un exemple guide mieux qu'un adjectif."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un premier courriel à un industriel peut détailler des résultats non publiés si le ton est prudent.",
+     "q": "Un courriel de prospection rédigé par l'assistant peut partir sans relecture s'il est bien écrit.",
      "a": false,
-     "e": "Ce qui n'est ni publié ni protégé ne part pas dans un premier contact."
+     "e": "Il part sous votre nom : faits, chiffres et promesses se relisent."
     },
     {
      "type": "cloze",
-     "q": "Un premier contact industriel met en avant le ___ résolu par la technologie.",
+     "q": "Pour personnaliser un courriel, donnez à l'assistant des faits ___ sur chaque cible.",
      "o": [
-      "problème",
-      "budget",
-      "laboratoire"
+      "publics",
+      "supposés",
+      "confidentiels"
      ],
      "a": 0,
-     "e": "L'industriel cherche une solution à son problème."
-    },
-    {
-     "type": "match",
-     "q": "Associez chaque destinataire à son attente.",
-     "pairs": [
-      [
-       "Chercheur",
-       "Calendrier et suite donnée"
-      ],
-      [
-       "Industriel",
-       "Valeur en trois lignes"
-      ],
-      [
-       "Direction",
-       "Décision à prendre"
-      ]
-     ],
-     "e": "Le registre se règle dans la consigne."
+     "e": "Des faits vérifiables, trouvés en recherche web par exemple."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre la préparation d'une relance.",
+     "q": "Remettez dans l'ordre la préparation d'une campagne de prospection.",
      "items": [
-      "Résumer l'historique en termes neutres",
-      "Choisir le ton",
-      "Faire rédiger",
+      "Écrire la base commune",
+      "Ajouter les faits de chaque cible",
+      "Faire rédiger les variantes",
       "Relire chaque engagement"
      ],
      "e": "La relecture ferme la boucle."
     },
     {
+     "type": "match",
+     "q": "Associez chaque consigne à son effet.",
+     "pairs": [
+      [
+       "Cent mots",
+       "Longueur maîtrisée"
+      ],
+      [
+       "Ancien courriel fictif",
+       "Ton reproduit"
+      ],
+      [
+       "Ce qui ne doit pas être dit",
+       "Pas de fuite ni de promesse"
+      ]
+     ],
+     "e": "Chaque consigne règle un défaut précis."
+    },
+    {
      "type": "tf",
-     "q": "Une formule comme « nous pouvons financer la maturation » demande une décision préalable.",
+     "q": "Préciser ce qui ne doit pas être dit fait partie d'une bonne consigne.",
      "a": true,
-     "e": "Tout engagement au nom de la SATT doit avoir été décidé."
+     "e": "Les limites évitent les promesses implicites et les fuites."
     }
    ],
    "bloc": "Métier : chargé de transfert",
@@ -3586,7 +3586,7 @@
   {
    "id": "mt2",
    "cote": "M2",
-   "titre": "Analyser une déclaration d'invention",
+   "titre": "Proposition commerciale cohérente avec le business plan",
    "duree": "50 min",
    "comp": [
     "produire",
@@ -3594,166 +3594,166 @@
    ],
    "cadre": 1,
    "obj": [
-    "Faire structurer une déclaration d'invention fictive",
-    "Repérer ce qui manque pour décider",
-    "Garder l'appréciation de valorisation"
+    "Faire structurer une proposition à partir d'un business plan fictif",
+    "Faire vérifier la cohérence des chiffres entre les deux documents",
+    "Garder la décision sur les conditions proposées"
    ],
    "notions": [
     [
-     "Structurer, pas juger",
-     "L'assistant met en forme : problème technique, solution, résultats, état d'avancement, inventeurs et établissements, publications prévues. L'appréciation du potentiel et la décision d'investir restent celles du chargé de transfert et du comité."
+     "Le plan avant le texte",
+     "Demandez d'abord un plan, corrigez-le, puis faites rédiger partie par partie. Corriger un plan de dix lignes prend une minute ; corriger un texte de deux pages construit sur un mauvais plan prend une heure."
     ],
     [
-     "Grille d'analyse",
-     "Donnez votre grille : rubriques attendues, format (tableau rubrique, contenu, source dans le document, question à poser) et la consigne de citer le passage exact. Sans grille, la synthèse est générale et inégale."
+     "Cohérence avec le business plan",
+     "Donnez les deux documents et demandez un tableau : chaque chiffre de la proposition, la ligne du business plan qui le justifie, et « non trouvé » s'il n'y en a pas. Les écarts sautent aux yeux, et les chiffres orphelins aussi."
     ],
     [
-     "Ce qui manque",
-     "Demandez explicitement les informations absentes : date de publication prévue, résultats reproduits ou non, financement d'origine, autres établissements. Une absence ne se voit pas à la lecture rapide et conditionne souvent la suite."
+     "Les chiffres se recalculent",
+     "L'assistant met en forme et compare ; il calcule mal de tête. Demandez-lui la formule plutôt que le résultat, et recalculez chaque total dans le tableur."
     ],
     [
-     "Niveau de maturité",
-     "L'échelle TRL (de 1, principe observé, à 9, système éprouvé en conditions réelles) aide à situer un projet. Faites justifier le niveau proposé par une phrase du document ; un TRL sans justification est une supposition."
+     "Demander ce qui manque",
+     "Demandez aussi ce qui n'y est pas : l'information absente, la rubrique oubliée, la question laissée sans réponse. Une absence ne se voit pas à la lecture rapide."
     ],
     [
-     "Confidentialité",
-     "Une déclaration d'invention décrit une invention non protégée. Elle ne va jamais dans un outil non validé, même sans les noms. On s'entraîne sur une déclaration fictive rédigée pour l'exercice."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Un business plan réel, des conditions financières en négociation ou le nom d'un partenaire ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
     [
      "skfluency",
-     "Module Discernment : évaluer la production de l'assistant."
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
      "msgenfr",
-     "Microsoft, IA générative en français : leçons sur la synthèse."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ]
    ],
    "ex": [
     {
-     "t": "Rédigez une déclaration d'invention fictive d'une demi-page (une colle biosourcée imaginaire). Faites-en produire une fiche structurée avec citation du passage pour chaque rubrique.",
-     "c": "Chaque rubrique de la fiche renvoie à un passage du texte ; les écarts sont notés."
+     "t": "Rédigez un business plan fictif d'une demi-page (cinq lignes de chiffres). Faites produire le plan d'une proposition commerciale, corrigez-le, puis faites rédiger.",
+     "c": "Le plan a été corrigé avant la rédaction ; vous savez ce que vous avez changé."
     },
     {
-     "t": "Demandez la liste des informations manquantes pour présenter ce projet en comité.",
-     "c": "Au moins trois absences pertinentes sont confirmées par votre lecture."
+     "t": "Demandez le tableau de correspondance entre chaque chiffre de la proposition et le business plan.",
+     "c": "Chaque ligne a été vérifiée ; au moins un chiffre orphelin ou un écart a été trouvé, ou vous avez constaté qu'il n'y en avait pas."
     },
     {
-     "t": "Demandez un niveau TRL justifié par une phrase du document, puis contestez-le.",
-     "c": "Vous savez dire si la justification tient."
+     "t": "Demandez ce qui manque à la proposition pour qu'un industriel puisse décider.",
+     "c": "Au moins une absence pertinente est confirmée par votre lecture."
     }
    ],
    "quiz": [
     {
-     "q": "Dans l'analyse d'une déclaration d'invention, l'assistant sert à :",
+     "q": "Par quoi commencer une proposition commerciale avec l'assistant ?",
      "o": [
-      "Décider si le projet mérite un investissement",
-      "Structurer le contenu et signaler les manques",
-      "Évaluer seul la brevetabilité de l'invention",
-      "Remplacer l'entretien avec les inventeurs"
+      "Demander directement le texte complet",
+      "Faire produire puis corriger un plan",
+      "Lui demander de fixer les prix",
+      "Lui donner le dossier du partenaire"
      ],
      "a": 1,
-     "e": "La décision reste au chargé de transfert et au comité."
+     "e": "Un plan se corrige en une minute ; un texte construit sur un mauvais plan, en une heure."
     },
     {
-     "q": "Pourquoi exiger le passage cité pour chaque rubrique ?",
+     "q": "Comment faire vérifier la cohérence avec le business plan ?",
      "o": [
-      "Pour rendre la fiche plus longue",
-      "Pour contrôler vite contre le texte",
-      "Parce que l'assistant ne sait pas résumer",
-      "Pour respecter le droit d'auteur"
+      "Demander simplement si les deux documents sont cohérents entre eux",
+      "Un tableau chiffre par chiffre, avec la ligne qui le justifie",
+      "Relire les deux documents l'un après l'autre",
+      "Résumer les deux documents en cinq lignes"
      ],
      "a": 1,
-     "e": "La citation permet la vérification ligne par ligne."
+     "e": "Le tableau rend chaque écart visible et vérifiable."
     },
     {
-     "q": "L'assistant propose un TRL 6. Que lui demander ?",
+     "q": "L'assistant calcule un total de 412 000 €. Que faire ?",
      "o": [
-      "De confirmer qu'il est certain",
-      "La phrase du document qui le justifie",
-      "De proposer plutôt un TRL 8, plus favorable au projet",
-      "De retirer le TRL de la fiche"
+      "Le reprendre, l'ordre de grandeur est plausible",
+      "Recalculer dans le tableur",
+      "Demander à l'assistant s'il est sûr",
+      "Arrondir à 400 000 €"
      ],
      "a": 1,
-     "e": "Un niveau sans justification est une supposition."
+     "e": "Il calcule mal de tête : la formule et le tableur font foi."
     },
     {
-     "q": "Quelle question fait apparaître ce que la lecture rapide manque ?",
+     "q": "Que signifie « non trouvé » dans le tableau de correspondance ?",
      "o": [
-      "Résume cette déclaration en cinq lignes",
-      "Quelles informations manquent pour décider ?",
-      "Cette invention est-elle prometteuse pour un industriel ?",
-      "Traduis cette déclaration en anglais"
+      "Un chiffre de la proposition sans appui dans le business plan",
+      "Une erreur de l'assistant à ignorer",
+      "Un chiffre confidentiel à retirer du document avant tout envoi",
+      "Une ligne du business plan à supprimer"
      ],
-     "a": 1,
-     "e": "Une absence ne se voit pas ; il faut la demander."
+     "a": 0,
+     "e": "Un chiffre orphelin doit être justifié ou retiré."
     },
     {
-     "q": "Sur quel document s'exercer ?",
+     "q": "Qui décide des conditions proposées à l'industriel ?",
      "o": [
-      "La dernière déclaration reçue, noms masqués",
-      "Une déclaration fictive écrite pour l'exercice",
-      "Une ancienne déclaration d'un projet abandonné",
-      "Une déclaration envoyée par un confrère"
+      "L'assistant, d'après le business plan",
+      "Vous et votre hiérarchie",
+      "Le premier relecteur venu",
+      "L'industriel, après lecture"
      ],
      "a": 1,
-     "e": "Une invention réelle reste non protégée, même ancienne ou masquée."
+     "e": "L'assistant structure et vérifie ; la décision reste humaine."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Une déclaration d'invention réelle peut aller dans un outil non validé si les noms des inventeurs sont retirés.",
+     "q": "Demander « ces deux documents sont-ils cohérents ? » suffit à vérifier une proposition.",
      "a": false,
-     "e": "L'invention elle-même est l'information confidentielle."
+     "e": "Exigez un tableau chiffre par chiffre, sinon la réponse reste générale."
     },
     {
      "type": "cloze",
-     "q": "Le niveau de maturité d'une technologie se situe sur l'échelle ___.",
+     "q": "Un chiffre de la proposition sans appui dans le business plan est un chiffre ___.",
      "o": [
-      "TRL",
-      "CIB",
-      "PCT"
+      "orphelin",
+      "arrondi",
+      "confidentiel"
      ],
      "a": 0,
-     "e": "Technology Readiness Level, de 1 à 9."
+     "e": "Il doit être justifié ou retiré."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre l'analyse d'une déclaration.",
+     "q": "Remettez dans l'ordre la préparation d'une proposition.",
      "items": [
-      "Donner la grille de rubriques",
-      "Faire structurer avec citations",
-      "Demander ce qui manque",
-      "Préparer les questions aux inventeurs"
+      "Faire produire le plan",
+      "Corriger le plan",
+      "Faire rédiger partie par partie",
+      "Vérifier les chiffres avec le tableau"
      ],
-     "e": "Les manques deviennent des questions."
+     "e": "La vérification chiffrée clôt le travail."
     },
     {
      "type": "match",
-     "q": "Associez chaque rubrique à sa question.",
+     "q": "Associez chaque demande à son intérêt.",
      "pairs": [
       [
-       "Résultats",
-       "Sont-ils reproduits ?"
+       "Tableau de correspondance",
+       "Écarts visibles"
       ],
       [
-       "Publications",
-       "Une parution est-elle prévue ?"
+       "Ce qui manque",
+       "Absences repérées"
       ],
       [
-       "Financement",
-       "Qui a financé les travaux ?"
+       "Formule plutôt que résultat",
+       "Calcul vérifiable"
       ]
      ],
-     "e": "Chaque rubrique appelle une vérification."
+     "e": "Chaque demande vise un risque précis."
     },
     {
      "type": "tf",
-     "q": "Un TRL proposé par l'assistant sans justification tirée du document reste une hypothèse.",
+     "q": "Un total calculé par l'assistant se recalcule dans le tableur.",
      "a": true,
-     "e": "Faites-le justifier par une phrase du texte."
+     "e": "Une erreur de calcul est fréquente et peu visible."
     }
    ],
    "bloc": "Métier : chargé de transfert",
@@ -3763,7 +3763,7 @@
   {
    "id": "mt3",
    "cote": "M3",
-   "titre": "Veille, marché et partenaires",
+   "titre": "Repérer des cibles et suivre un marché",
    "duree": "45 min",
    "comp": [
     "verifier",
@@ -3771,85 +3771,101 @@
    ],
    "cadre": 1,
    "obj": [
-    "Mener une recherche web contrôlée sur un marché",
-    "Repérer des partenaires industriels potentiels",
-    "Remonter à la source de chaque chiffre"
+    "Mener une recherche web contrôlée sur un secteur",
+    "Construire une liste de cibles vérifiée",
+    "Mettre en place une veille récurrente"
    ],
    "notions": [
     [
      "Recherche web activée",
-     "Pour un marché ou des entreprises, activez la recherche web et exigez les liens. Sans recherche, l'assistant répond de mémoire : chiffres datés, entreprises disparues, taille de marché inventée."
+     "Pour des entreprises, un marché ou une actualité, activez la recherche web et exigez un lien par information. Sans recherche, l'assistant répond de mémoire : données datées, entreprises disparues, chiffres inventés."
     ],
     [
-     "Chiffres de marché",
-     "Un chiffre de marché circule souvent d'article en article sans source. Demandez l'étude d'origine, son éditeur et son année. Un chiffre sans source primaire ne va pas dans une fiche de comité."
+     "Remonter à la source",
+     "Ouvrez chaque lien fourni : la page peut ne pas dire ce que l'assistant lui attribue. Un chiffre se cite depuis sa source d'origine, jamais depuis la réponse de l'assistant."
     ],
     [
-     "Cartographie des acteurs",
-     "Demandez un tableau des entreprises du secteur : activité, taille, implantation, lien vers le site. Vérifiez chaque ligne : une entreprise peut avoir été rachetée, avoir changé d'activité ou ne pas exister."
+     "Une liste à vérifier",
+     "Demandez un tableau des entreprises (activité, taille, implantation, lien). Vérifiez chaque ligne : une entreprise peut avoir été rachetée, avoir changé d'activité ou ne pas exister. La liste est un point de départ, jamais une cible validée."
     ],
     [
      "Veille récurrente",
      "Enregistrez une consigne de veille (sujet, sources préférées, période, format) et relancez-la chaque mois. La consigne enregistrée garde la méthode d'une fois sur l'autre."
     ],
     [
-     "Ce que la recherche ne dit pas",
-     "L'assistant ne voit ni les bases payantes ni les échanges confidentiels du secteur. Une liste de partenaires produite par l'assistant est un point de départ, jamais une cible validée."
+     "Dialoguer pour affiner",
+     "La première liste est large. Resserrez par relances ciblées : « seulement les PME », « seulement celles qui ont déjà acheté une licence », « classe par proximité avec notre technologie, en justifiant »."
     ]
    ],
    "res": [
     [
-     "insee",
-     "INSEE : statistiques publiques sur les entreprises et les secteurs."
+     "skfluency",
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
-     "espacenet",
-     "Espacenet : repérer les déposants actifs d'un domaine technique."
+     "sk101",
+     "Claude 101 : usages quotidiens, projets et instructions."
     ]
    ],
    "ex": [
     {
-     "t": "Avec la recherche web activée, faites établir la liste de dix entreprises françaises d'un secteur de votre choix (par exemple le traitement de l'eau), avec un lien par entreprise.",
+     "t": "Avec la recherche web activée, faites établir la liste de dix entreprises d'un secteur de votre choix, avec un lien par entreprise.",
      "c": "Vous avez ouvert au moins cinq liens ; les erreurs sont notées dans le carnet."
     },
     {
-     "t": "Demandez la taille du marché de ce secteur, puis l'étude d'origine du chiffre.",
-     "c": "Vous savez si le chiffre remonte à une source primaire identifiée."
+     "t": "Resserrez la liste par deux relances, puis demandez un classement justifié.",
+     "c": "Vous savez dire quelle relance a le plus amélioré la liste."
+    },
+    {
+     "t": "Facultatif : écrivez une consigne de veille mensuelle et enregistrez-la.",
+     "c": "La consigne est dans votre bibliothèque.",
+     "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Pourquoi activer la recherche web pour une cartographie d'entreprises ?",
+     "q": "Pourquoi activer la recherche web pour une liste d'entreprises ?",
      "o": [
-      "Pour que la réponse soit plus longue",
+      "Pour obtenir une réponse plus longue",
       "Sans elle, l'assistant répond de mémoire",
       "Parce que l'outil refuse sinon de répondre",
       "Pour masquer les entreprises disparues"
      ],
      "a": 1,
-     "e": "La mémoire de l'assistant s'arrête à sa date de coupure."
+     "e": "Sa mémoire s'arrête à une date de coupure."
     },
     {
-     "q": "Un article cite un marché de 2 milliards d'euros. Que faire ?",
+     "q": "Un article cité par l'assistant donne la taille d'un marché. Que faire ?",
      "o": [
-      "Le reprendre, il est publié",
+      "La reprendre telle quelle",
       "Remonter à l'étude d'origine et à son année",
-      "Le diviser par deux par prudence avant de le reprendre",
-      "Demander à l'assistant s'il est exact"
+      "La diviser par deux par prudence",
+      "Demander à l'assistant s'il est certain de l'exactitude du chiffre"
      ],
      "a": 1,
-     "e": "Seule la source primaire se cite en comité."
+     "e": "Seule la source d'origine se cite."
     },
     {
-     "q": "La liste de partenaires proposée par l'assistant est :",
+     "q": "La liste d'entreprises produite par l'assistant est :",
      "o": [
       "Une cible validée à contacter",
       "Un point de départ à vérifier",
-      "Une liste exhaustive du secteur",
+      "Une liste complète du secteur",
       "Une source citable en comité"
      ],
      "a": 1,
-     "e": "L'assistant ne voit ni les bases payantes ni le contexte du secteur."
+     "e": "Chaque ligne se vérifie avant usage."
+    },
+    {
+     "q": "Comment resserrer une liste trop large ?",
+     "o": [
+      "Recommencer la même demande",
+      "Relancer avec un critère précis à chaque fois",
+      "Demander une liste deux fois plus longue pour avoir plus de choix",
+      "Changer d'assistant"
+     ],
+     "a": 1,
+     "e": "Une relance ciblée vaut mieux qu'une nouvelle demande vague."
     },
     {
      "q": "Comment rendre une veille mensuelle régulière ?",
@@ -3861,66 +3877,55 @@
      ],
      "a": 1,
      "e": "La consigne enregistrée garde la méthode."
-    },
-    {
-     "q": "Quelle vérification prime sur une ligne de cartographie ?",
-     "o": [
-      "La longueur de la description",
-      "L'existence et l'activité actuelle de l'entreprise",
-      "La couleur du logo",
-      "Le nombre de salariés, arrondi à la dizaine la plus proche"
-     ],
-     "a": 1,
-     "e": "Rachats et changements d'activité sont fréquents."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un chiffre de marché repris par plusieurs articles est forcément fiable.",
+     "q": "Un chiffre repris par plusieurs articles est forcément fiable.",
      "a": false,
-     "e": "Il peut circuler sans source ; remontez à l'étude d'origine."
+     "e": "Il peut circuler sans source ; remontez à l'origine."
     },
     {
      "type": "cloze",
-     "q": "Avant de citer un chiffre, remontez à sa source ___.",
+     "q": "Avant de citer une information, ouvrez chaque ___ fourni par l'assistant.",
      "o": [
-      "primaire",
-      "secondaire",
-      "probable"
+      "lien",
+      "onglet",
+      "menu"
      ],
      "a": 0,
-     "e": "L'étude d'origine, avec son éditeur et son année."
+     "e": "La page peut ne pas dire ce qui lui est attribué."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre une cartographie fiable.",
+     "q": "Remettez dans l'ordre une recherche de cibles fiable.",
      "items": [
       "Activer la recherche web",
       "Demander un tableau avec liens",
       "Ouvrir chaque lien",
-      "Corriger les lignes erronées"
+      "Resserrer par relances"
      ],
-     "e": "La vérification clôt la recherche."
+     "e": "La vérification précède l'affinage."
     },
     {
      "type": "match",
-     "q": "Associez chaque besoin à la source à privilégier.",
+     "q": "Associez chaque relance à son effet.",
      "pairs": [
       [
-       "Déposants d'un domaine",
-       "Espacenet"
+       "Seulement les PME",
+       "Liste resserrée"
       ],
       [
-       "Statistiques d'un secteur",
-       "INSEE"
+       "Classe en justifiant",
+       "Priorités explicites"
       ],
       [
-       "Activité d'une entreprise",
-       "Son site et ses publications"
+       "Un lien par ligne",
+       "Vérification possible"
       ]
      ],
-     "e": "Chaque question a sa source."
+     "e": "Chaque relance précise la demande."
     },
     {
      "type": "tf",
@@ -3936,7 +3941,7 @@
   {
    "id": "mt4",
    "cote": "M4",
-   "titre": "Fiches de valorisation et dossiers de comité",
+   "titre": "Présentations pour comités et industriels",
    "duree": "45 min",
    "comp": [
     "produire",
@@ -3944,167 +3949,166 @@
    ],
    "cadre": 1,
    "obj": [
-    "Produire une fiche de présentation de technologie",
-    "Préparer la trame d'un passage en comité",
-    "Faire relire une recommandation"
+    "Faire produire une trame de présentation",
+    "Obtenir des titres qui portent le message",
+    "Préparer les objections avant la séance"
    ],
    "notions": [
     [
-     "Fiche technologie",
-     "Une fiche de présentation tient en une page : problème, solution, avantages, applications, état de la protection, contact. Demandez cette structure et une version non confidentielle, sans détail technique non publié."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : le public (comité d'investissement, industriel, laboratoire), la décision attendue, la durée et les chiffres validés. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
-     "Dossier de comité",
-     "Le comité décide : demandez le plan objet, projet, marché, protection, budget, risques, recommandation. Sans plan, l'assistant raconte l'histoire du projet au lieu de préparer une décision."
+     "Trame de présentation",
+     "Demandez un plan diapositive par diapositive : un titre qui affirme le message, trois idées au plus, le visuel suggéré, puis les notes de l'orateur. La mise en forme se fait ensuite dans l'outil de présentation de l'entreprise."
     ],
     [
-     "Budget de maturation",
-     "L'assistant met en forme un budget à partir de vos lignes ; il ne l'estime pas. Un montant proposé par l'assistant sans base est une invention. Vérifiez chaque total recopié."
+     "Titres affirmatifs",
+     "Un titre comme « Marché » ne dit rien ; « Le marché visé croît de façon régulière » porte le message. Demandez explicitement des titres en forme de phrase, puis vérifiez que chacun est vrai."
     ],
     [
      "Contradicteur",
-     "Avant le comité, demandez les trois objections les plus fortes contre votre recommandation. Préparer la réponse vaut mieux que la découvrir en séance."
+     "Avant de présenter, demandez à l'assistant les trois objections les plus solides contre votre message. Il est plus utile de les découvrir à votre bureau qu'en séance."
     ],
     [
-     "Supports",
-     "Demandez une trame de diapositives à titres affirmatifs (« Le marché de la détection rapide croît », plutôt que « Marché »). La mise en forme se fait ensuite dans l'outil de l'entreprise."
+     "Les chiffres se recalculent",
+     "L'assistant met en forme et compare ; il calcule mal de tête. Demandez-lui la formule plutôt que le résultat, et recalculez chaque total dans le tableur."
     ]
    ],
    "res": [
     [
      "msgenfr",
-     "Microsoft, IA générative en français : leçons sur la synthèse."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ],
     [
      "sk101",
-     "Claude 101 : usages quotidiens, en anglais."
+     "Claude 101 : usages quotidiens, projets et instructions."
     ]
    ],
    "ex": [
     {
-     "t": "À partir du projet fictif de l'étape M2, faites produire une fiche de présentation non confidentielle d'une page.",
-     "c": "La fiche ne contient rien qui ne figure dans une publication imaginaire de référence."
+     "t": "Pour un projet fictif, faites produire la trame d'une présentation de huit diapositives à un comité, avec titres affirmatifs et notes de l'orateur.",
+     "c": "Chaque titre est une phrase vraie ; aucun chiffre n'a été inventé."
     },
     {
-     "t": "Faites produire la trame d'un dossier de comité, puis les trois objections les plus fortes.",
+     "t": "Demandez la version de la même trame pour un industriel, en six diapositives.",
+     "c": "Vous savez ce qui a changé entre les deux publics."
+    },
+    {
+     "t": "Demandez les trois objections les plus solides contre votre recommandation.",
      "c": "Chaque objection a une réponse dans le carnet."
-    },
-    {
-     "t": "Facultatif : faites mettre en tableau un budget fictif de cinq lignes et contrôlez le total.",
-     "c": "Le total a été recalculé par vous.",
-     "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Quelle structure pour une fiche de présentation de technologie ?",
+     "q": "Que donner à l'assistant avant de demander une trame ?",
      "o": [
-      "Historique complet du laboratoire et liste de ses partenaires",
-      "Problème, solution, avantages, applications, protection",
-      "Liste des inventeurs et de leurs publications",
-      "Résumé chronologique des réunions"
+      "Le titre de la présentation seulement",
+      "Public, décision attendue, durée et chiffres validés",
+      "Le dossier complet du projet, pour que rien ne soit oublié",
+      "Une présentation d'un concurrent"
      ],
      "a": 1,
-     "e": "Une page, lisible par un industriel."
+     "e": "Le public et la décision attendue structurent tout le reste."
     },
     {
-     "q": "L'assistant propose un budget de 150 000 € pour la maturation. Que faire ?",
-     "o": [
-      "Le reprendre, l'ordre de grandeur est plausible",
-      "Le refuser : le budget vient de vos lignes",
-      "Le diviser en deux tranches égales",
-      "Lui demander d'arrondir"
-     ],
-     "a": 1,
-     "e": "Un montant sans base est une invention."
-    },
-    {
-     "q": "Quel titre de diapositive est le plus utile en comité ?",
+     "q": "Quel titre de diapositive est le plus utile ?",
      "o": [
       "Marché",
-      "Le marché de la détection rapide croît",
-      "Données et chiffres clés du dossier de maturation",
+      "Le marché visé croît de façon régulière",
+      "Données et chiffres clés du marché visé",
       "Annexe 2"
      ],
      "a": 1,
      "e": "Un titre affirmatif porte le message."
     },
     {
-     "q": "Pourquoi demander les objections avant le comité ?",
+     "q": "L'assistant propose un chiffre de marché pour illustrer une diapositive. Que faire ?",
      "o": [
-      "Pour allonger le dossier",
+      "Le garder s'il paraît plausible",
+      "Le remplacer par un chiffre sourcé que vous avez vérifié",
+      "L'arrondir pour qu'il paraisse moins précis et plus prudent",
+      "Le déplacer dans une annexe"
+     ],
+     "a": 1,
+     "e": "Un chiffre sans source est une invention."
+    },
+    {
+     "q": "Pourquoi demander les objections avant la séance ?",
+     "o": [
+      "Pour allonger la présentation",
       "Pour préparer les réponses",
       "Pour laisser l'assistant décider",
       "Pour remplacer l'avis du comité"
      ],
      "a": 1,
-     "e": "On découvre les objections avant la séance."
+     "e": "On les découvre à son bureau plutôt qu'en séance."
     },
     {
-     "q": "Que vérifier dans un tableau budgétaire mis en forme ?",
+     "q": "Où se fait la mise en forme finale ?",
      "o": [
-      "La police du tableau et l'alignement des colonnes",
-      "Chaque montant recopié et le total",
-      "La couleur des en-têtes",
-      "Le nombre de colonnes"
+      "Dans l'assistant, diapositive par diapositive",
+      "Dans l'outil de présentation de l'entreprise",
+      "Dans un logiciel de dessin",
+      "Dans le courriel d'envoi"
      ],
      "a": 1,
-     "e": "Une erreur de recopie est fréquente et peu visible."
+     "e": "L'assistant prépare le fond et la trame."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Une fiche de présentation destinée aux industriels peut reprendre les résultats non publiés.",
+     "q": "Un titre de diapositive doit nommer le thème plutôt qu'affirmer un message.",
      "a": false,
-     "e": "La version diffusée reste non confidentielle."
+     "e": "Le titre affirmatif dit ce que la diapositive démontre."
     },
     {
      "type": "cloze",
-     "q": "Le dossier de comité se termine par une ___.",
+     "q": "Avant une séance, faites jouer à l'assistant le rôle de ___.",
      "o": [
-      "recommandation",
-      "bibliographie",
-      "annexe"
+      "contradicteur",
+      "secrétaire",
+      "traducteur"
      ],
      "a": 0,
-     "e": "Le comité vient pour décider."
-    },
-    {
-     "type": "match",
-     "q": "Associez chaque document à sa consigne.",
-     "pairs": [
-      [
-       "Fiche technologie",
-       "Une page, non confidentielle"
-      ],
-      [
-       "Dossier de comité",
-       "Plan orienté décision"
-      ],
-      [
-       "Support",
-       "Titres affirmatifs"
-      ]
-     ],
-     "e": "Chaque format a sa consigne type."
+     "e": "Les objections se préparent à l'avance."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre la préparation d'un comité.",
+     "q": "Remettez dans l'ordre la préparation d'une présentation.",
      "items": [
-      "Rédiger la recommandation",
+      "Fixer le message et le public",
       "Faire produire la trame",
-      "Demander les objections",
-      "Préparer les réponses"
+      "Vérifier titres et chiffres",
+      "Préparer les objections"
      ],
-     "e": "La recommandation guide le reste."
+     "e": "Le message précède la forme."
+    },
+    {
+     "type": "match",
+     "q": "Associez chaque public à la consigne utile.",
+     "pairs": [
+      [
+       "Comité",
+       "Décision attendue en tête"
+      ],
+      [
+       "Industriel",
+       "Valeur pour lui en premier"
+      ],
+      [
+       "Laboratoire",
+       "Suite donnée à ses travaux"
+      ]
+     ],
+     "e": "Le public règle l'angle de la trame."
     },
     {
      "type": "tf",
-     "q": "Un total recalculé à la main protège d'une erreur de recopie de l'assistant.",
+     "q": "Les notes de l'orateur peuvent être préparées avec l'assistant.",
      "a": true,
-     "e": "La vérification des chiffres reste humaine."
+     "e": "Elles se relisent comme le reste."
     }
    ],
    "bloc": "Métier : chargé de transfert",
@@ -4122,36 +4126,36 @@
    ],
    "cadre": 1,
    "obj": [
-    "Configurer un projet pour une tâche récurrente de valorisation",
-    "Mesurer le temps gagné",
+    "Configurer un projet pour une tâche récurrente du métier",
+    "Mesurer le temps gagné et la qualité",
     "Partager la méthode avec l'équipe"
    ],
    "notions": [
     [
      "Projets et assistants personnalisés",
-     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot (agents), Le Chat (agents) et Gemini (Gems) enregistrent des instructions permanentes et des documents de référence. Les fiches technologie, les relances et les comptes rendus de comité s'y prêtent bien."
+     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot (agents), Le Chat (agents) et Gemini (Gems) enregistrent des instructions permanentes et des documents de référence. Une tâche que vous faites chaque semaine y gagne en régularité."
     ],
     [
      "Instructions permanentes",
-     "Rôle, public visé, format de sortie et règles : ne rien inventer, citer la source de chaque chiffre, signaler l'incertitude, ne rien promettre au nom de la SATT. Testez-les sur trois projets fictifs."
+     "Rôle, public visé, format de sortie et règles : ne rien inventer, citer la source de chaque chiffre, signaler l'incertitude, ne rien promettre en votre nom. Testez-les sur trois cas fictifs avant de les adopter."
     ],
     [
      "Documents de référence",
-     "Modèles publics ou internes validés pour cet usage, jamais un dossier de projet. Les connaissances d'un projet partagé sont visibles de ses membres."
+     "Modèles vierges, charte de rédaction, documents publics : seulement ce qui est validé pour cet usage, jamais un dossier en cours. Les connaissances d'un projet partagé sont visibles de ses membres."
     ],
     [
      "Mesurer",
-     "Pour une tâche (une fiche technologie fictive), notez le temps sans assistant, le temps avec et les corrections nécessaires. Sans mesure, l'impression de gain trompe dans les deux sens."
+     "Notez pour une tâche le temps sans assistant, le temps avec, et les corrections nécessaires. Sans mesure, l'impression de gain trompe dans les deux sens."
     ],
     [
      "Partager",
-     "Une consigne qui marche se partage avec les autres chargés de transfert : fiche d'une page (usage, consigne, limites, exemple fictif)."
+     "Une consigne qui marche se partage avec les collègues du même métier : fiche d'une page (usage, consigne, limites, exemple fictif). C'est ainsi qu'une équipe progresse au même rythme."
     ]
    ],
    "res": [
     [
      "sk101",
-     "Claude 101 : projets et instructions."
+     "Claude 101 : usages quotidiens, projets et instructions."
     ],
     [
      "oaiacad",
@@ -4160,70 +4164,70 @@
    ],
    "ex": [
     {
-     "t": "Créez un projet (ou équivalent) « Fiche technologie » : instructions permanentes et un modèle de fiche vierge.",
-     "c": "Trois essais sur des projets fictifs donnent une fiche de même qualité."
+     "t": "Créez un projet (ou équivalent) pour une tâche récurrente de votre poste, par exemple les courriels de prospection ou les trames de comité : instructions permanentes et un modèle vierge.",
+     "c": "Trois essais sur des cas fictifs donnent un résultat de même qualité."
     },
     {
-     "t": "Mesurez la rédaction d'une fiche fictive sans et avec l'assistant.",
+     "t": "Mesurez la préparation d'un courriel de prospection fictif sans puis avec l'assistant.",
      "c": "Les deux temps et le nombre de corrections sont notés dans le carnet."
     },
     {
-     "t": "Rédigez une fiche d'une page pour partager cette méthode.",
-     "c": "Un collègue peut l'appliquer sans explication orale."
+     "t": "Rédigez une fiche d'une page pour partager cette méthode avec les autres chargés de transfert.",
+     "c": "Un collègue du même métier peut l'appliquer sans explication orale."
     }
    ],
    "quiz": [
     {
-     "q": "Quelle règle mettre dans les instructions permanentes ?",
+     "q": "À quoi servent les instructions permanentes d'un projet ?",
      "o": [
-      "Toujours proposer une licence exclusive",
-      "Citer la source de chaque chiffre",
-      "Écrire en anglais par défaut",
-      "Répondre en une phrase"
+      "À stocker durablement les dossiers en cours du service",
+      "À appliquer les mêmes règles à chaque échange",
+      "À agrandir la fenêtre de contexte",
+      "À couper la recherche web"
      ],
      "a": 1,
-     "e": "La règle de source évite les chiffres inventés."
+     "e": "Elles évitent de répéter rôle, format et règles à chaque demande."
     },
     {
-     "q": "Quels documents placer dans les connaissances du projet ?",
+     "q": "Quels documents placer dans les connaissances d'un projet ?",
      "o": [
-      "Les déclarations d'invention en cours d'analyse au service",
-      "Modèles publics ou validés pour cet usage",
-      "Les courriels des industriels",
-      "Les budgets des projets en cours"
+      "Les dossiers en cours, pour gagner du temps",
+      "Des modèles publics ou validés pour cet usage",
+      "Les courriels reçus dans la semaine, triés par expéditeur",
+      "Tous les fichiers du service sans tri"
      ],
      "a": 1,
      "e": "Les connaissances sont lues à chaque échange et parfois partagées."
     },
     {
-     "q": "Avant d'adopter l'assistant, il faut :",
+     "q": "Avant d'adopter un assistant personnalisé, il faut :",
      "o": [
-      "Le partager à toute l'équipe pour recueillir des avis",
-      "Le tester sur trois projets fictifs",
-      "Lui donner un nom accrocheur",
-      "Activer toutes ses options"
+      "Le partager tout de suite à toute l'équipe",
+      "Le tester sur trois cas fictifs différents",
+      "Lui donner un nom facile à retenir",
+      "Activer toutes les options disponibles"
      ],
      "a": 1,
      "e": "Plusieurs cas révèlent les consignes ambiguës."
     },
     {
-     "q": "Pourquoi mesurer le temps passé ?",
+     "q": "Pourquoi mesurer le temps passé avec et sans assistant ?",
      "o": [
       "Pour remplir un tableau de bord",
       "Parce que l'impression de gain peut tromper",
-      "Parce que l'outil l'exige",
-      "Pour choisir le modèle le moins cher de l'offre de l'entreprise"
+      "Parce que l'outil le demande",
+      "Pour choisir l'offre d'abonnement la moins chère du marché"
      ],
      "a": 1,
      "e": "La mesure tranche entre impression et réalité."
     },
     {
-     "q": "Quel format pour partager la méthode ?",
+     "q": "Quel format pour partager une méthode avec un collègue ?",
      "o": [
-      "Une capture d'écran de la conversation, envoyée par messagerie",
+      "Une capture d'écran de la conversation qui a bien marché",
       "Une fiche : usage, consigne, limites, exemple",
-      "Un lien vers votre historique",
-      "Un message oral en réunion"
+      "Un lien vers votre historique personnel",
+      "Une explication orale en réunion"
      ],
      "a": 1,
      "e": "La fiche se réutilise sans son auteur."
@@ -4238,7 +4242,7 @@
     },
     {
      "type": "cloze",
-     "q": "Les consignes appliquées à chaque échange s'appellent des instructions ___.",
+     "q": "Des consignes qui servent à chaque échange s'appellent des instructions ___.",
      "o": [
       "permanentes",
       "cachées",
@@ -4246,17 +4250,6 @@
      ],
      "a": 0,
      "e": "Le terme varie selon l'outil ; le principe est le même."
-    },
-    {
-     "type": "order",
-     "q": "Remettez dans l'ordre la mise en place d'un assistant de poste.",
-     "items": [
-      "Choisir une tâche récurrente",
-      "Écrire les instructions",
-      "Tester sur trois cas fictifs",
-      "Mesurer puis partager"
-     ],
-     "e": "Le partage vient après la preuve."
     },
     {
      "type": "match",
@@ -4278,6 +4271,17 @@
      "e": "Les noms changent, la fonction est voisine."
     },
     {
+     "type": "order",
+     "q": "Remettez dans l'ordre la mise en place d'un assistant de poste.",
+     "items": [
+      "Choisir une tâche récurrente",
+      "Écrire les instructions",
+      "Tester sur trois cas fictifs",
+      "Mesurer puis partager"
+     ],
+     "e": "Le partage vient après la preuve."
+    },
+    {
      "type": "tf",
      "q": "Un gain de temps ressenti suffit pour généraliser une méthode.",
      "a": false,
@@ -4291,7 +4295,7 @@
   {
    "id": "mb1",
    "cote": "M1",
-   "titre": "Résumer et expliquer un document brevet",
+   "titre": "Expliquer un document publié avec l'IA",
    "duree": "40 min",
    "comp": [
     "produire",
@@ -4299,50 +4303,50 @@
    ],
    "cadre": 1,
    "obj": [
-    "Faire résumer un brevet publié pour un non-spécialiste",
-    "Expliquer une revendication en termes simples",
-    "Écrire aux inventeurs avec le bon niveau technique"
+    "Faire résumer un document publié pour un lecteur précis",
+    "Faire reformuler un passage technique sans en changer le sens",
+    "Garder pour soi toute appréciation de fond"
    ],
    "notions": [
     [
-     "Le brevet publié, matière idéale",
-     "Un brevet publié est public : c'est la meilleure matière d'entraînement. Copiez le texte depuis Espacenet ou la base de l'INPI et indiquez le lecteur visé : chargé de transfert, chercheur, direction."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : le lecteur (chargé de transfert, chercheur, direction), ce qu'il doit comprendre, la longueur et ce qui doit absolument figurer. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
-     "Résumé utile",
-     "Demandez : problème technique, solution, revendication 1 en termes simples, domaine d'application. Ajoutez « sans avis sur la validité ni sur la portée » : ces appréciations restent les vôtres."
+     "Résumer pour quelqu'un",
+     "Un même document donne des résumés très différents selon le lecteur. Demandez-en deux, pour deux lecteurs, et comparez : vous verrez ce que la consigne change."
     ],
     [
-     "Expliquer une revendication",
-     "Faites découper la revendication en caractéristiques numérotées, chacune expliquée en une phrase. Comparez avec votre propre lecture : l'assistant peut fusionner deux caractéristiques ou en oublier une."
+     "Ce que l'assistant ne tranche pas",
+     "Ajoutez à la consigne « sans avis sur la portée ni sur la validité » : l'assistant ajoute volontiers une appréciation. Ces appréciations restent celles de l'ingénieur brevet."
     ],
     [
-     "Écrire aux inventeurs",
-     "Pour demander des compléments (modes de réalisation, résultats d'essais), donnez la liste des points et le niveau technique de l'inventeur. L'assistant structure ; vous vérifiez que chaque question est précise."
+     "Exiger les citations",
+     "Pour toute extraction ou comparaison, demandez un tableau avec le passage exact pour chaque ligne. Vous vérifiez alors en quelques secondes, ligne par ligne, au lieu de relire tout le document."
     ],
     [
-     "Limite",
-     "Un document brevet non publié, un projet de demande ou une description reçue d'un inventeur ne vont jamais dans un outil non validé."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Un projet de demande, une description reçue d'un inventeur ou un document non publié ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
     [
-     "espacenet",
-     "Espacenet : textes intégraux des brevets publiés."
+     "skfluency",
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
-     "inpi",
-     "INPI : base des brevets français."
+     "espacenet",
+     "Espacenet : documents publiés pour s'exercer."
     ]
    ],
    "ex": [
     {
-     "t": "Choisissez un brevet publié dans un domaine que vous connaissez. Faites-en produire un résumé de dix lignes pour un chargé de transfert, sans avis sur la validité.",
-     "c": "Le résumé a été comparé au texte ; les écarts sont notés."
+     "t": "Choisissez un brevet publié dans un domaine que vous connaissez. Faites-en produire deux résumés de dix lignes : pour un chargé de transfert, puis pour la direction.",
+     "c": "Vous savez ce que la consigne de lecteur a changé ; les deux résumés ont été comparés au texte."
     },
     {
-     "t": "Faites découper la revendication 1 en caractéristiques numérotées.",
-     "c": "Le découpage correspond à votre propre lecture, ou vous savez où il diverge."
+     "t": "Faites reformuler un passage technique en langage courant, avec la citation de chaque phrase d'origine.",
+     "c": "Chaque reformulation a été vérifiée contre sa citation."
     },
     {
      "t": "Facultatif : faites rédiger un courriel fictif de demande de compléments à un inventeur imaginaire.",
@@ -4352,59 +4356,59 @@
    ],
    "quiz": [
     {
-     "q": "Sur quel document s'entraîner à résumer un brevet ?",
+     "q": "Sur quel document s'exercer à résumer avec l'assistant ?",
      "o": [
       "Un projet de demande avant dépôt",
-      "Un brevet publié, copié depuis une base officielle",
+      "Un document publié, copié depuis une base officielle",
       "La description reçue d'un inventeur, sans le nom des inventeurs",
-      "Un rapport de recherche non publié"
+      "Un rapport interne non publié"
      ],
      "a": 1,
-     "e": "Un brevet publié est public."
+     "e": "Un document publié est public."
     },
     {
-     "q": "Que demander dans le résumé d'un brevet pour un non-spécialiste ?",
+     "q": "Qu'est-ce qui change le plus un résumé produit par l'assistant ?",
      "o": [
-      "Un avis sur la validité du brevet",
-      "Problème, solution, revendication 1 en termes simples",
-      "La liste complète des revendications dépendantes, une par une",
-      "La traduction intégrale du texte"
+      "La police du document source",
+      "Le lecteur indiqué dans la consigne",
+      "La longueur et la langue du document source",
+      "L'heure de la demande"
      ],
      "a": 1,
-     "e": "L'avis sur la validité reste celui de l'ingénieur brevet."
+     "e": "Le lecteur décide de ce qui est retenu."
     },
     {
-     "q": "Pourquoi découper une revendication en caractéristiques ?",
+     "q": "L'assistant ajoute « ce brevet semble solide ». Que faire ?",
      "o": [
-      "Pour la rendre plus longue",
-      "Pour vérifier qu'aucune caractéristique n'est oubliée",
-      "Pour la traduire plus vite",
-      "Pour changer sa portée avant de la soumettre à l'examinateur"
+      "Le garder, c'est rassurant pour le lecteur non spécialiste",
+      "Le retirer et préciser la limite dans la consigne",
+      "Le remplacer par « très solide »",
+      "Lui demander un pourcentage"
      ],
      "a": 1,
-     "e": "Le découpage numéroté se contrôle point par point."
+     "e": "L'appréciation de fond reste la vôtre."
     },
     {
-     "q": "L'assistant ajoute « ce brevet est probablement valide ». Que faire ?",
+     "q": "Pourquoi demander la citation de chaque phrase reformulée ?",
      "o": [
-      "Le garder, c'est rassurant pour le lecteur",
-      "Le retirer : l'appréciation vous revient",
-      "Le remplacer par « très probablement valide »",
-      "Lui demander un pourcentage de validité"
+      "Pour allonger le texte",
+      "Pour vérifier que le sens n'a pas changé",
+      "Pour respecter la mise en page du document d'origine",
+      "Pour traduire plus vite"
      ],
      "a": 1,
-     "e": "Validité et portée relèvent de votre analyse."
+     "e": "La citation rend la vérification rapide."
     },
     {
-     "q": "Avant d'envoyer un courriel de demande de compléments, vérifiez :",
+     "q": "Avant d'envoyer un résumé à la direction, la vérification prioritaire porte sur :",
      "o": [
-      "La présence d'une formule de politesse",
-      "Que chaque question est précise",
+      "La présence d'une formule de politesse adaptée à la direction",
+      "La fidélité au document et l'absence d'avis ajouté",
       "La longueur des phrases",
       "Le nombre de paragraphes"
      ],
      "a": 1,
-     "e": "Une question vague appelle une réponse vague."
+     "e": "C'est là que l'assistant peut dériver."
     }
    ],
    "drills": [
@@ -4412,22 +4416,22 @@
      "type": "tf",
      "q": "Une description d'invention reçue d'un inventeur peut aller dans un outil grand public si elle est courte.",
      "a": false,
-     "e": "L'invention non déposée ne va jamais dans un outil non validé."
+     "e": "Ce qui n'est pas publié reste hors de l'outil."
     },
     {
      "type": "cloze",
-     "q": "Pour vérifier un résumé, découpez la revendication en ___ numérotées.",
+     "q": "Pour vérifier une reformulation, exigez la ___ de chaque phrase d'origine.",
      "o": [
-      "caractéristiques",
-      "pages",
-      "figures"
+      "citation",
+      "traduction",
+      "date"
      ],
      "a": 0,
-     "e": "Chaque caractéristique se contrôle."
+     "e": "La comparaison se fait alors en quelques secondes."
     },
     {
      "type": "match",
-     "q": "Associez chaque lecteur au résumé adapté.",
+     "q": "Associez chaque lecteur à la consigne adaptée.",
      "pairs": [
       [
        "Chargé de transfert",
@@ -4446,20 +4450,20 @@
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre l'explication d'une revendication.",
+     "q": "Remettez dans l'ordre la préparation d'un résumé fiable.",
      "items": [
-      "Copier la revendication publiée",
-      "Faire découper en caractéristiques",
-      "Comparer à votre lecture",
-      "Corriger les écarts"
+      "Copier le document publié",
+      "Indiquer lecteur et limites",
+      "Faire résumer avec citations",
+      "Vérifier contre le texte"
      ],
-     "e": "La comparaison clôt l'exercice."
+     "e": "La vérification clôt l'exercice."
     },
     {
      "type": "tf",
-     "q": "L'assistant peut fusionner deux caractéristiques d'une revendication sans le signaler.",
+     "q": "Préciser « sans avis sur la validité » évite que l'assistant n'ajoute une appréciation.",
      "a": true,
-     "e": "D'où la comparaison avec votre propre lecture."
+     "e": "Il en ajoute volontiers sans consigne contraire."
     }
    ],
    "bloc": "Métier : ingénieur brevet",
@@ -4469,7 +4473,7 @@
   {
    "id": "mb2",
    "cote": "M2",
-   "titre": "Lire et comparer des revendications",
+   "titre": "Extraire et comparer avec citations",
    "duree": "50 min",
    "comp": [
     "produire",
@@ -4477,70 +4481,59 @@
    ],
    "cadre": 1,
    "obj": [
-    "Comparer les revendications de deux brevets publiés",
-    "Faire produire un tableau de caractéristiques",
-    "Garder l'analyse de portée et de contrefaçon"
+    "Faire extraire des informations d'un document publié dans un tableau",
+    "Faire comparer deux documents publiés",
+    "Contrôler vite ce que l'assistant a produit"
    ],
    "notions": [
     [
-     "Repérer, pas trancher",
-     "L'assistant aligne rapidement les caractéristiques de deux revendications. L'appréciation de la portée, de la nouveauté ou d'un risque de contrefaçon reste celle de l'ingénieur brevet."
+     "Exiger les citations",
+     "Pour toute extraction ou comparaison, demandez un tableau avec le passage exact pour chaque ligne. Vous vérifiez alors en quelques secondes, ligne par ligne, au lieu de relire tout le document."
     ],
     [
-     "Tableau de caractéristiques",
-     "Demandez un tableau : caractéristique, présente dans le document A (citation), présente dans le document B (citation), remarque. La citation exacte rend chaque ligne vérifiable."
+     "La valeur « non mentionné »",
+     "Demandez des champs précis et la valeur « non mentionné » quand l'information manque. Sans cette consigne, l'assistant risque de combler le vide avec une valeur plausible."
     ],
     [
-     "Revendications indépendantes",
-     "Demandez d'abord la liste des revendications indépendantes, puis le rattachement de chaque dépendante. Une erreur de rattachement fausse toute la lecture."
+     "Demander ce qui manque",
+     "Demandez aussi ce qui n'y est pas : l'information absente, la rubrique oubliée, la question laissée sans réponse. Une absence ne se voit pas à la lecture rapide."
     ],
     [
-     "Ce qui n'est pas dit",
-     "Demandez aussi les caractéristiques absentes du document comparé. Une absence ne se voit pas à la lecture rapide et c'est souvent elle qui compte."
+     "Recouper au hasard",
+     "Contrôlez au moins trois lignes du tableau sur le texte, choisies au hasard. Un mot remplacé par un synonyme peut changer le sens d'une phrase technique."
     ],
     [
-     "Recouper",
-     "Contrôlez au moins trois lignes du tableau sur le texte publié. Un mot remplacé par un synonyme (« fixé » pour « solidaire ») peut changer l'analyse."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Un document non publié ou un projet en cours ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
     [
-     "espacenet",
-     "Espacenet : textes intégraux et revendications."
+     "skfluency",
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
-     "skfluency",
-     "Module Discernment : évaluer la production de l'assistant."
+     "espacenet",
+     "Espacenet : documents publiés pour s'exercer."
     ]
    ],
    "ex": [
     {
-     "t": "Choisissez deux brevets publiés du même domaine. Faites produire un tableau des caractéristiques de leurs revendications 1, avec citations.",
-     "c": "Trois lignes ont été vérifiées sur le texte publié ; les écarts sont notés."
+     "t": "Sur un document publié, faites extraire dans un tableau des champs de votre choix, avec citation et « non mentionné » si absent.",
+     "c": "Trois lignes ont été vérifiées sur le texte ; les écarts sont notés."
     },
     {
-     "t": "Demandez la liste des revendications indépendantes et le rattachement des dépendantes pour un des deux brevets.",
-     "c": "Le rattachement est confirmé par votre lecture."
+     "t": "Faites comparer deux documents publiés du même domaine, ligne par ligne, avec citations.",
+     "c": "Au moins une différence relevée a été confirmée par votre lecture."
     },
     {
-     "t": "Demandez les caractéristiques de A absentes de B.",
+     "t": "Demandez ce qui figure dans l'un et pas dans l'autre.",
      "c": "Au moins une absence est confirmée par votre lecture."
     }
    ],
    "quiz": [
     {
-     "q": "Dans une comparaison de revendications, le rôle de l'assistant est de :",
-     "o": [
-      "Conclure sur un risque de contrefaçon à partir du tableau",
-      "Aligner les caractéristiques avec citations",
-      "Décider de la nouveauté de l'invention",
-      "Rédiger l'avis remis à la direction"
-     ],
-     "a": 1,
-     "e": "L'appréciation reste celle de l'ingénieur brevet."
-    },
-    {
-     "q": "Pourquoi exiger la citation exacte dans le tableau ?",
+     "q": "Pourquoi exiger la citation exacte dans un tableau d'extraction ?",
      "o": [
       "Pour allonger le tableau",
       "Pour vérifier chaque ligne sur le texte",
@@ -4551,92 +4544,103 @@
      "e": "La citation rend le contrôle rapide."
     },
     {
-     "q": "Quelle étape vient en premier ?",
+     "q": "Le document ne contient pas un des champs demandés. Que prévoir dans la consigne ?",
      "o": [
-      "Comparer toutes les revendications à la fois",
-      "Lister les revendications indépendantes",
-      "Résumer la description",
-      "Traduire les revendications"
+      "Rien, l'assistant le verra",
+      "La valeur « non mentionné » si absent",
+      "De le déduire du reste du texte, sans le signaler",
+      "De retirer ce champ du tableau"
      ],
      "a": 1,
-     "e": "Le rattachement des dépendantes en découle."
+     "e": "Sinon l'assistant risque de deviner."
     },
     {
-     "q": "« Fixé » devient « solidaire » dans le tableau. Pourquoi est-ce un problème ?",
+     "q": "Quelle question fait apparaître ce que la lecture rapide manque ?",
      "o": [
-      "Ce n'en est pas un, ce sont des synonymes",
-      "Un mot changé peut modifier l'analyse",
-      "Parce que le tableau devient trop long",
-      "Parce que la police change"
-     ],
-     "a": 1,
-     "e": "En brevets, le mot exact compte."
-    },
-    {
-     "q": "Quelle question fait apparaître ce qui manque ?",
-     "o": [
-      "Résume ces deux brevets",
-      "Quelles caractéristiques de A sont absentes de B ?",
-      "Ces deux brevets se ressemblent-ils sur l'essentiel ?",
-      "Traduis la revendication 1"
+      "Résume ces deux documents",
+      "Qu'est-ce qui figure dans l'un et pas dans l'autre ?",
+      "Ces deux documents se ressemblent-ils sur l'essentiel ?",
+      "Traduis le premier document"
      ],
      "a": 1,
      "e": "Une absence ne se voit pas ; il faut la demander."
+    },
+    {
+     "q": "Comment contrôler un tableau de vingt lignes produit par l'assistant ?",
+     "o": [
+      "Lui demander s'il est sûr de chaque ligne, une par une",
+      "Vérifier au moins trois lignes au hasard sur le texte",
+      "Le relire sans ouvrir le document",
+      "Le faire refaire par un second assistant"
+     ],
+     "a": 1,
+     "e": "Le sondage révèle les erreurs systématiques."
+    },
+    {
+     "q": "Qui tire les conclusions d'une comparaison ?",
+     "o": [
+      "L'assistant, qui a lu les deux documents en entier",
+      "Vous, à partir du tableau vérifié",
+      "Un second modèle chargé de juger",
+      "Le destinataire du tableau"
+     ],
+     "a": 1,
+     "e": "L'assistant aligne ; vous concluez."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un tableau de caractéristiques produit par l'assistant peut fonder seul un avis de contrefaçon.",
+     "q": "Un tableau produit par l'assistant peut fonder seul une conclusion technique.",
      "a": false,
-     "e": "L'avis repose sur l'analyse de l'ingénieur brevet."
+     "e": "Il se vérifie, puis vous concluez."
     },
     {
      "type": "cloze",
-     "q": "Une revendication ___ ne renvoie à aucune autre revendication.",
+     "q": "Quand une information manque, exigez la valeur « non ___ ».",
      "o": [
-      "indépendante",
-      "dépendante",
-      "accessoire"
+      "mentionné",
+      "confidentiel",
+      "traduit"
      ],
      "a": 0,
-     "e": "Les dépendantes s'y rattachent."
+     "e": "Sinon l'assistant comble le vide."
     },
     {
      "type": "order",
      "q": "Remettez dans l'ordre une comparaison fiable.",
      "items": [
-      "Lister les revendications indépendantes",
+      "Choisir les champs",
       "Faire le tableau avec citations",
       "Demander les absences",
-      "Vérifier trois lignes"
+      "Vérifier trois lignes au hasard"
      ],
      "e": "La vérification par sondage clôt la comparaison."
     },
     {
      "type": "match",
-     "q": "Associez chaque demande à son intérêt.",
+     "q": "Associez chaque consigne à son intérêt.",
      "pairs": [
       [
        "Citation exacte",
        "Contrôle ligne par ligne"
       ],
       [
-       "Liste des absences",
-       "Ce que la lecture rapide manque"
+       "Non mentionné",
+       "Pas de valeur devinée"
       ],
       [
-       "Rattachement",
-       "Structure des revendications"
+       "Ce qui manque",
+       "Absences visibles"
       ]
      ],
-     "e": "Chaque consigne a sa fonction."
+     "e": "Chaque consigne vise un risque précis."
     },
     {
      "type": "tf",
-     "q": "Remplacer un mot par un synonyme peut changer l'analyse d'une revendication.",
+     "q": "Remplacer un mot par un synonyme peut changer le sens d'une phrase technique.",
      "a": true,
-     "e": "Le mot exact compte."
+     "e": "D'où la vérification sur le texte."
     }
    ],
    "bloc": "Métier : ingénieur brevet",
@@ -4646,7 +4650,7 @@
   {
    "id": "mb3",
    "cote": "M3",
-   "titre": "Recherche d'antériorités",
+   "titre": "Préparer une recherche avec l'IA",
    "duree": "45 min",
    "comp": [
     "verifier",
@@ -4654,30 +4658,30 @@
    ],
    "cadre": 1,
    "obj": [
-    "Préparer une stratégie de recherche avec l'assistant",
-    "Interroger les bases officielles",
-    "Vérifier chaque document cité"
+    "Faire proposer mots-clés, synonymes et traductions",
+    "Garder la base officielle comme seule source",
+    "Repérer les références inventées"
    ],
    "notions": [
     [
-     "L'assistant ne remplace pas la base",
-     "Les assistants inventent volontiers des numéros de brevet plausibles. Toute antériorité se retrouve dans Espacenet, Google Patents, Lens ou la base de l'INPI. Un numéro introuvable est une hallucination."
+     "L'assistant prépare, la base répond",
+     "L'assistant est utile en amont : mots-clés, synonymes, traductions, formulations de requête. La recherche elle-même se fait dans la base officielle (Espacenet, base de l'INPI, Lens, Google Patents)."
     ],
     [
-     "Préparer la requête",
-     "L'assistant est utile en amont : mots-clés et synonymes, traductions anglaises et allemandes, codes de classification CIB ou CPC à explorer. Vous lancez ensuite la recherche dans la base."
+     "Numéros à vérifier",
+     "Sans recherche web, les assistants inventent volontiers des références plausibles : numéros, titres, auteurs. Toute référence se retrouve dans la base ; un numéro introuvable est une hallucination."
     ],
     [
-     "Littérature non brevet",
-     "Publications scientifiques, thèses, normes : demandez des pistes et des mots-clés, puis cherchez dans HAL ou chez l'éditeur. Une référence d'article fournie de mémoire se vérifie comme un numéro de brevet."
+     "Remonter à la source",
+     "Ouvrez chaque lien fourni : la page peut ne pas dire ce que l'assistant lui attribue. Un chiffre se cite depuis sa source d'origine, jamais depuis la réponse de l'assistant."
     ],
     [
-     "Lire un résultat",
-     "Collez l'abrégé d'un document trouvé et demandez s'il contient chaque caractéristique de la revendication visée, avec citation. Vous concluez ; l'assistant pointe."
+     "Dialoguer pour affiner",
+     "Les premiers mots-clés sont larges. Relancez : « plus technique », « termes utilisés dans les années 2000 », « équivalents allemands ». Chaque relance ajoute des pistes que vous testez dans la base."
     ],
     [
-     "Confidentialité",
-     "Décrire une invention non déposée dans un outil non validé expose l'invention. On s'exerce sur un objet technique banal ou sur un brevet déjà publié."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Une invention non déposée ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
@@ -4692,20 +4696,20 @@
    ],
    "ex": [
     {
-     "t": "Pour un objet technique banal (un ouvre-bouteille à levier), faites proposer des mots-clés, synonymes, traductions et codes CPC. Lancez la recherche dans Espacenet.",
-     "c": "Au moins un code proposé a été confirmé dans la classification ; les autres sont notés."
+     "t": "Pour un objet technique banal (un ouvre-bouteille à levier), faites proposer des mots-clés, synonymes et traductions, puis lancez la recherche dans Espacenet.",
+     "c": "Vous savez quels mots-clés ont donné des résultats pertinents."
     },
     {
-     "t": "Sans recherche web, demandez trois brevets antérieurs sur cet objet avec leur numéro. Cherchez chaque numéro dans Espacenet.",
-     "c": "Vous savez combien de numéros existent et correspondent au sujet."
+     "t": "Sans recherche web, demandez trois références sur cet objet avec leur numéro. Cherchez chaque numéro dans la base.",
+     "c": "Vous savez combien de références existent et correspondent au sujet."
     }
    ],
    "quiz": [
     {
-     "q": "L'assistant cite trois brevets antérieurs avec leur numéro. Que faire ?",
+     "q": "L'assistant donne trois références avec leur numéro. Que faire ?",
      "o": [
       "Les citer, les numéros sont précis",
-      "Les retrouver dans Espacenet ou une autre base",
+      "Les retrouver une par une dans la base",
       "Lui demander s'il est certain des trois numéros donnés",
       "Les garder pour un usage interne"
      ],
@@ -4713,103 +4717,103 @@
      "e": "Un numéro plausible peut être inventé."
     },
     {
-     "q": "Où l'assistant est-il le plus utile dans une recherche d'antériorités ?",
+     "q": "Où l'assistant est-il le plus utile dans une recherche ?",
      "o": [
-      "Pour conclure sur la nouveauté",
-      "Pour préparer mots-clés, traductions et codes",
-      "Pour remplacer la base de données sur les petits sujets",
-      "Pour décider de déposer ou non"
+      "Pour conclure sur ce qui existe déjà dans le domaine",
+      "Pour préparer mots-clés, synonymes et traductions",
+      "Pour remplacer la base de données",
+      "Pour décider de la suite à donner"
      ],
      "a": 1,
      "e": "La recherche elle-même se fait dans la base."
     },
     {
-     "q": "Comment traiter un code CPC proposé par l'assistant ?",
+     "q": "Comment élargir une liste de mots-clés trop pauvre ?",
      "o": [
-      "L'utiliser tel quel",
-      "Le vérifier dans la classification officielle",
-      "Le remplacer par un code CIB, plus courant dans les bases",
-      "L'ignorer, les codes sont inutiles"
+      "Recommencer la même demande",
+      "Relancer avec un angle précis à chaque fois",
+      "Demander une liste dix fois plus longue d'un seul coup",
+      "Changer d'assistant"
      ],
      "a": 1,
-     "e": "Un code peut être mal attribué ou inexistant."
+     "e": "Chaque relance ciblée ajoute des pistes."
     },
     {
-     "q": "Sur quoi s'exercer à la recherche d'antériorités ?",
+     "q": "Sur quoi s'exercer à préparer une recherche ?",
      "o": [
       "L'invention qu'un laboratoire vient de déclarer",
-      "Un objet banal ou un brevet déjà publié",
-      "Un projet de demande à déposer le mois prochain",
-      "La description d'un concurrent obtenue en réunion"
+      "Un objet banal ou un document déjà publié",
+      "Un projet de demande à déposer bientôt",
+      "Une description obtenue en réunion"
      ],
      "a": 1,
-     "e": "Une invention non déposée ne va pas dans un outil non validé."
+     "e": "Une invention non déposée reste hors de l'outil."
     },
     {
-     "q": "Vous collez un abrégé trouvé. Que demander ?",
+     "q": "Un numéro donné par l'assistant est introuvable dans la base. C'est :",
      "o": [
-      "Si le brevet visé est valide au regard de ce document",
-      "Si chaque caractéristique y figure, avec citation",
-      "Un résumé en cinq lignes",
-      "Une traduction en allemand"
+      "Une erreur passagère de la base de données",
+      "Probablement une référence inventée",
+      "Un document confidentiel",
+      "Une traduction ratée"
      ],
      "a": 1,
-     "e": "L'assistant pointe, vous concluez."
+     "e": "Un numéro introuvable est à traiter comme une hallucination."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un numéro de brevet donné de mémoire par l'assistant est fiable s'il a le bon format.",
+     "q": "Un numéro donné de mémoire par l'assistant est fiable s'il a le bon format.",
      "a": false,
      "e": "Le format ne prouve rien ; seule la base fait foi."
     },
     {
      "type": "cloze",
-     "q": "Les codes de classification des brevets les plus utilisés sont la CIB et la ___.",
+     "q": "La recherche elle-même se fait dans la ___ officielle.",
      "o": [
-      "CPC",
-      "TRL",
-      "PCT"
+      "base",
+      "messagerie",
+      "conversation"
      ],
      "a": 0,
-     "e": "Classification coopérative des brevets."
+     "e": "L'assistant prépare, la base répond."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre une recherche d'antériorités.",
+     "q": "Remettez dans l'ordre une recherche préparée avec l'IA.",
      "items": [
-      "Faire proposer mots-clés et codes",
-      "Vérifier les codes",
+      "Faire proposer les mots-clés",
+      "Affiner par relances",
       "Lancer la recherche dans la base",
-      "Analyser les résultats avec citations"
+      "Vérifier chaque référence"
      ],
      "e": "La base reste la source."
     },
     {
      "type": "match",
-     "q": "Associez chaque besoin à sa source.",
+     "q": "Associez chaque tâche à qui la fait.",
      "pairs": [
       [
-       "Brevets publiés",
-       "Espacenet"
+       "Proposer des synonymes",
+       "L'assistant"
       ],
       [
-       "Publications scientifiques",
-       "HAL ou l'éditeur"
+       "Trouver les documents",
+       "La base officielle"
       ],
       [
-       "Classification",
-       "Schéma CPC officiel"
+       "Juger la pertinence",
+       "L'ingénieur brevet"
       ]
      ],
-     "e": "Chaque document se vérifie à sa source."
+     "e": "Chacun son rôle."
     },
     {
      "type": "tf",
      "q": "Décrire une invention non déposée dans un outil grand public expose l'invention.",
      "a": true,
-     "e": "On s'exerce sur un objet banal ou un brevet publié."
+     "e": "On s'exerce sur un objet banal ou un document publié."
     }
    ],
    "bloc": "Métier : ingénieur brevet",
@@ -4819,7 +4823,7 @@
   {
    "id": "mb4",
    "cote": "M4",
-   "titre": "Aide à la rédaction, sans exposer l'invention",
+   "titre": "Présentations et notes pour non-spécialistes",
    "duree": "45 min",
    "comp": [
     "produire",
@@ -4827,167 +4831,167 @@
    ],
    "cadre": 1,
    "obj": [
-    "Utiliser l'assistant sur la forme sans lui confier l'invention",
-    "Vérifier la cohérence d'un texte fictif",
-    "Préparer une réponse à une notification sur un cas d'école"
+    "Faire produire une trame de présentation sur un sujet technique",
+    "Rendre un sujet technique lisible pour la direction ou un comité",
+    "Vérifier que la simplification n'a rien faussé"
    ],
    "notions": [
     [
-     "Ce qui reste hors de l'outil",
-     "Un projet de demande décrit une invention non publiée. Tant qu'il n'est pas déposé, il ne va pas dans un outil non validé : une fuite peut nuire à la nouveauté et la confidentialité de l'outil n'est pas maîtrisée par l'entreprise."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : le public, ce qu'il doit retenir ou décider, la durée et les informations publiques ou validées à utiliser. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
-     "Ce que l'on peut faire",
-     "Travailler sur un texte fictif ou publié : vérifier la cohérence des références numériques, la base d'antécédence (« ledit », « le ») et l'emploi constant des termes. Ces contrôles de forme se transposent ensuite à la main."
+     "Trame de présentation",
+     "Demandez un plan diapositive par diapositive : un titre qui affirme le message, trois idées au plus, le visuel suggéré, puis les notes de l'orateur. La mise en forme se fait ensuite dans l'outil de présentation de l'entreprise."
     ],
     [
-     "Variantes de formulation",
-     "Sur un exemple fictif, demandez plusieurs formulations d'une même caractéristique, plus large ou plus étroite, et l'effet de chacune. Le choix et sa justification restent les vôtres."
+     "Titres affirmatifs",
+     "Un titre comme « Marché » ne dit rien ; « Le marché visé croît de façon régulière » porte le message. Demandez explicitement des titres en forme de phrase, puis vérifiez que chacun est vrai."
     ],
     [
-     "Notification d'examen",
-     "Sur une notification publiée (le registre européen en contient), faites structurer les objections et les passages cités. La stratégie de réponse reste la vôtre."
+     "Simplifier sans fausser",
+     "Demandez une analogie ou un exemple concret, puis vérifiez qu'il ne dit rien de faux. Une image parlante mais inexacte se retient mieux que la réalité."
     ],
     [
-     "Traduction",
-     "L'assistant traduit bien la langue technique courante ; vérifiez chaque terme de revendication. Un terme mal traduit peut changer la portée."
+     "Contradicteur",
+     "Avant de présenter, demandez à l'assistant les trois objections les plus solides contre votre message. Il est plus utile de les découvrir à votre bureau qu'en séance."
     ]
    ],
    "res": [
     [
-     "oeb",
-     "OEB : Registre européen des brevets et notifications publiées."
+     "msgenfr",
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ],
     [
-     "espacenet",
-     "Espacenet : textes publiés servant de modèles."
+     "sk101",
+     "Claude 101 : usages quotidiens, projets et instructions."
     ]
    ],
    "ex": [
     {
-     "t": "Rédigez une revendication fictive pour un objet banal, avec cinq références numériques. Demandez un contrôle de cohérence des références et de la base d'antécédence.",
-     "c": "Les incohérences signalées ont été vérifiées par vous."
+     "t": "Faites produire la trame d'une présentation de six diapositives expliquant un sujet technique public à la direction.",
+     "c": "Chaque titre est une phrase vraie ; chaque simplification a été vérifiée."
     },
     {
-     "t": "Demandez trois formulations d'une caractéristique, de la plus large à la plus étroite, avec l'effet de chacune.",
-     "c": "Vous savez laquelle vous retiendriez et pourquoi."
+     "t": "Demandez deux analogies pour une notion technique et choisissez celle qui ne fausse rien.",
+     "c": "Vous savez dire pourquoi l'autre analogie était trompeuse."
     },
     {
-     "t": "Facultatif : sur une notification publiée dans le registre européen, faites lister les objections et les passages cités.",
-     "c": "La liste a été comparée à la notification.",
+     "t": "Facultatif : demandez les trois questions qu'un administrateur poserait.",
+     "c": "Chaque question a une réponse dans le carnet.",
      "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Un projet de demande non déposée peut-il être collé dans un outil grand public ?",
+     "q": "Que donner à l'assistant avant de demander une trame ?",
      "o": [
-      "Oui, si les inventeurs ne sont pas nommés",
-      "Non, il reste hors de tout outil non validé",
-      "Oui, si l'outil promet la confidentialité dans ses conditions",
-      "Oui, pour un simple contrôle de forme"
+      "Le titre de la présentation seulement",
+      "Public, message à retenir, durée et informations validées",
+      "Le dossier technique complet, pour que rien ne manque au récit",
+      "Une présentation d'un autre service"
      ],
      "a": 1,
-     "e": "L'invention non publiée reste hors de l'outil."
+     "e": "Le public et le message structurent tout le reste."
     },
     {
-     "q": "Quel contrôle confier à l'assistant sur un texte fictif ?",
+     "q": "L'assistant propose une analogie parlante. Que vérifier ?",
      "o": [
-      "La décision de déposer",
-      "La cohérence des références et des termes",
-      "L'évaluation de l'activité inventive au regard de l'état de la technique",
-      "Le choix des pays de dépôt"
+      "Qu'elle est courte",
+      "Qu'elle ne dit rien de faux",
+      "Qu'elle fait sourire le public",
+      "Qu'elle est originale"
      ],
      "a": 1,
-     "e": "Les contrôles de forme se transposent ensuite."
+     "e": "Une image inexacte se retient mieux que la réalité."
     },
     {
-     "q": "Vous demandez trois formulations d'une caractéristique. Qui choisit ?",
+     "q": "Quel titre de diapositive est le plus utile ?",
      "o": [
-      "L'assistant, selon l'effet le plus favorable",
-      "Vous, en justifiant votre choix",
-      "Le déposant, sans justification",
-      "Personne, on garde les trois"
+      "Contexte technique et état de l'art du domaine",
+      "Le procédé réduit la consommation d'énergie",
+      "Résultats",
+      "Annexe 1"
      ],
      "a": 1,
-     "e": "La portée reste votre décision."
+     "e": "Un titre affirmatif porte le message."
     },
     {
-     "q": "Sur quoi s'entraîner à analyser une notification d'examen ?",
+     "q": "Pourquoi faire jouer le contradicteur à l'assistant ?",
      "o": [
-      "Une notification reçue cette semaine",
-      "Une notification publiée au registre",
-      "Un projet de réponse en cours",
-      "Un échange avec l'examinateur"
+      "Pour allonger la présentation",
+      "Pour préparer les réponses aux questions",
+      "Pour remplacer la relecture par un collègue",
+      "Pour choisir les couleurs"
      ],
      "a": 1,
-     "e": "Le registre européen publie des notifications."
+     "e": "Les objections se préparent à l'avance."
     },
     {
-     "q": "Dans une traduction de revendication, la vérification prioritaire porte sur :",
+     "q": "Où se fait la mise en forme finale ?",
      "o": [
-      "La ponctuation",
-      "Chaque terme technique",
-      "La longueur des phrases",
-      "La mise en page"
+      "Dans l'assistant, diapositive par diapositive",
+      "Dans l'outil de présentation de l'entreprise",
+      "Dans un logiciel de dessin",
+      "Dans le courriel d'envoi"
      ],
      "a": 1,
-     "e": "Un terme mal traduit peut changer la portée."
+     "e": "L'assistant prépare le fond et la trame."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Retirer le nom des inventeurs suffit pour soumettre un projet de demande à un outil non validé.",
+     "q": "Une analogie claire est forcément juste.",
      "a": false,
-     "e": "C'est l'invention elle-même qu'il faut protéger."
+     "e": "Clarté et exactitude se vérifient séparément."
     },
     {
      "type": "cloze",
-     "q": "« Ledit » renvoie à un élément déjà introduit : c'est la base d'___.",
+     "q": "Un titre de diapositive ___ dit ce que la diapositive démontre.",
      "o": [
-      "antécédence",
-      "priorité",
-      "classement"
+      "affirmatif",
+      "court",
+      "numéroté"
      ],
      "a": 0,
-     "e": "Chaque élément est introduit avant d'être repris."
-    },
-    {
-     "type": "match",
-     "q": "Associez chaque tâche au bon traitement.",
-     "pairs": [
-      [
-       "Projet de demande réel",
-       "Hors de l'outil"
-      ],
-      [
-       "Revendication fictive",
-       "Contrôle de forme possible"
-      ],
-      [
-       "Notification publiée",
-       "Structuration possible"
-      ]
-     ],
-     "e": "Le statut du document décide."
+     "e": "« Le procédé réduit la consommation » plutôt que « Résultats »."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre l'usage sûr de l'assistant en rédaction.",
+     "q": "Remettez dans l'ordre la préparation d'une présentation technique.",
      "items": [
-      "Rédiger un exemple fictif",
-      "Faire contrôler la forme",
-      "Vérifier les signalements",
-      "Appliquer la méthode à la main"
+      "Fixer le public et le message",
+      "Faire produire la trame",
+      "Vérifier chaque simplification",
+      "Préparer les questions"
      ],
-     "e": "L'invention réelle ne passe jamais par l'outil."
+     "e": "Le message précède la forme."
+    },
+    {
+     "type": "match",
+     "q": "Associez chaque demande à son intérêt.",
+     "pairs": [
+      [
+       "Titres affirmatifs",
+       "Message lisible"
+      ],
+      [
+       "Analogie vérifiée",
+       "Compréhension sans erreur"
+      ],
+      [
+       "Contradicteur",
+       "Questions anticipées"
+      ]
+     ],
+     "e": "Chaque demande vise un besoin précis."
     },
     {
      "type": "tf",
-     "q": "Une formulation plus large d'une caractéristique peut changer la portée de la revendication.",
+     "q": "Les notes de l'orateur peuvent être préparées avec l'assistant.",
      "a": true,
-     "e": "D'où le choix réservé à l'ingénieur brevet."
+     "e": "Elles se relisent comme le reste."
     }
    ],
    "bloc": "Métier : ingénieur brevet",
@@ -4997,7 +5001,7 @@
   {
    "id": "mb5",
    "cote": "M5",
-   "titre": "Suivi de portefeuille et assistant de poste",
+   "titre": "Votre assistant d'ingénieur brevet",
    "duree": "1 h",
    "comp": [
     "organiser",
@@ -5005,36 +5009,36 @@
    ],
    "cadre": 1,
    "obj": [
-    "Organiser un échéancier fictif",
-    "Configurer un projet pour une tâche récurrente",
-    "Mesurer et partager"
+    "Configurer un projet pour une tâche récurrente du métier",
+    "Mesurer le temps gagné et la qualité",
+    "Partager la méthode avec l'équipe"
    ],
    "notions": [
     [
-     "Échéances",
-     "Priorité (12 mois), entrée en phase nationale d'une demande internationale, annuités : l'assistant met en tableau les dates à partir de vos données fictives. Il ne remplace pas le logiciel de gestion du portefeuille ; chaque date calculée se vérifie."
-    ],
-    [
-     "Calcul de dates",
-     "Demandez la règle appliquée pour chaque date (« date de dépôt + 12 mois ») et vérifiez-la. Une erreur de calcul sur une échéance ne se rattrape pas toujours."
-    ],
-    [
      "Projets et assistants personnalisés",
-     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot, Le Chat et Gemini (Gems) enregistrent des instructions permanentes. Les résumés de brevets publiés et les courriels aux inventeurs s'y prêtent bien."
+     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot (agents), Le Chat (agents) et Gemini (Gems) enregistrent des instructions permanentes et des documents de référence. Une tâche que vous faites chaque semaine y gagne en régularité."
     ],
     [
      "Instructions permanentes",
-     "Rôle, lecteur, format et règles : citer le passage, ne donner aucun avis de validité, signaler l'incertitude, ne jamais inventer un numéro. Testez-les sur trois brevets publiés."
+     "Rôle, public visé, format de sortie et règles : ne rien inventer, citer la source de chaque chiffre, signaler l'incertitude, ne rien promettre en votre nom. Testez-les sur trois cas fictifs avant de les adopter."
     ],
     [
-     "Mesurer et partager",
-     "Notez le temps sans et avec l'assistant pour une tâche, puis partagez une fiche d'une page (usage, consigne, limites, exemple)."
+     "Documents de référence",
+     "Modèles vierges, charte de rédaction, documents publics : seulement ce qui est validé pour cet usage, jamais un dossier en cours. Les connaissances d'un projet partagé sont visibles de ses membres."
+    ],
+    [
+     "Mesurer",
+     "Notez pour une tâche le temps sans assistant, le temps avec, et les corrections nécessaires. Sans mesure, l'impression de gain trompe dans les deux sens."
+    ],
+    [
+     "Partager",
+     "Une consigne qui marche se partage avec les collègues du même métier : fiche d'une page (usage, consigne, limites, exemple fictif). C'est ainsi qu'une équipe progresse au même rythme."
     ]
    ],
    "res": [
     [
      "sk101",
-     "Claude 101 : projets et instructions."
+     "Claude 101 : usages quotidiens, projets et instructions."
     ],
     [
      "oaiacad",
@@ -5043,103 +5047,92 @@
    ],
    "ex": [
     {
-     "t": "À partir de trois dépôts fictifs (dates inventées), faites produire un échéancier avec la règle de calcul de chaque date.",
-     "c": "Chaque date a été recalculée par vous."
+     "t": "Créez un projet (ou équivalent) pour une tâche récurrente de votre poste, par exemple les résumés de documents publiés ou les préparations de recherche : instructions permanentes et un modèle vierge.",
+     "c": "Trois essais sur des cas fictifs donnent un résultat de même qualité."
     },
     {
-     "t": "Créez un projet (ou équivalent) « Résumé de brevet » avec instructions permanentes, testé sur trois brevets publiés.",
-     "c": "Les trois résumés sont de même qualité et sans avis de validité."
+     "t": "Mesurez le résumé d'un document publié sans puis avec l'assistant.",
+     "c": "Les deux temps et le nombre de corrections sont notés dans le carnet."
     },
     {
-     "t": "Mesurez un résumé fait sans puis avec l'assistant, et rédigez une fiche de partage.",
-     "c": "Les deux temps et la fiche sont dans le carnet."
+     "t": "Rédigez une fiche d'une page pour partager cette méthode avec les autres ingénieurs brevet.",
+     "c": "Un collègue du même métier peut l'appliquer sans explication orale."
     }
    ],
    "quiz": [
     {
-     "q": "Quel délai de priorité appliquer pour une demande de brevet ?",
+     "q": "À quoi servent les instructions permanentes d'un projet ?",
      "o": [
-      "6 mois",
-      "12 mois",
-      "18 mois",
-      "24 mois"
+      "À stocker durablement les dossiers en cours du service",
+      "À appliquer les mêmes règles à chaque échange",
+      "À agrandir la fenêtre de contexte",
+      "À couper la recherche web"
      ],
      "a": 1,
-     "e": "Le délai de priorité d'un brevet est de 12 mois."
+     "e": "Elles évitent de répéter rôle, format et règles à chaque demande."
     },
     {
-     "q": "Que demander à l'assistant avec chaque échéance calculée ?",
+     "q": "Quels documents placer dans les connaissances d'un projet ?",
      "o": [
-      "La couleur de la ligne",
-      "La règle de calcul appliquée",
-      "Le nom du logiciel utilisé pour le calcul",
-      "Une échéance de secours"
+      "Les dossiers en cours, pour gagner du temps",
+      "Des modèles publics ou validés pour cet usage",
+      "Les courriels reçus dans la semaine, triés par expéditeur",
+      "Tous les fichiers du service sans tri"
      ],
      "a": 1,
-     "e": "La règle rend le calcul vérifiable."
+     "e": "Les connaissances sont lues à chaque échange et parfois partagées."
     },
     {
-     "q": "L'échéancier produit par l'assistant :",
+     "q": "Avant d'adopter un assistant personnalisé, il faut :",
      "o": [
-      "Remplace le logiciel de gestion du portefeuille",
-      "Se vérifie date par date",
-      "Est fiable s'il est bien présenté",
-      "Peut contenir les dossiers réels"
+      "Le partager tout de suite à toute l'équipe",
+      "Le tester sur trois cas fictifs différents",
+      "Lui donner un nom facile à retenir",
+      "Activer toutes les options disponibles"
      ],
      "a": 1,
-     "e": "Une erreur d'échéance ne se rattrape pas toujours."
+     "e": "Plusieurs cas révèlent les consignes ambiguës."
     },
     {
-     "q": "Quelle règle mettre dans les instructions permanentes ?",
-     "o": [
-      "Donner un avis sur la validité",
-      "Ne jamais inventer un numéro de brevet",
-      "Toujours résumer en anglais, langue de la procédure",
-      "Répondre en une phrase"
-     ],
-     "a": 1,
-     "e": "La règle évite les références plausibles et fausses."
-    },
-    {
-     "q": "Pourquoi mesurer le temps passé ?",
+     "q": "Pourquoi mesurer le temps passé avec et sans assistant ?",
      "o": [
       "Pour remplir un tableau de bord",
       "Parce que l'impression de gain peut tromper",
-      "Parce que l'outil l'exige",
-      "Pour choisir le modèle le moins cher de l'offre de l'entreprise"
+      "Parce que l'outil le demande",
+      "Pour choisir l'offre d'abonnement la moins chère du marché"
      ],
      "a": 1,
      "e": "La mesure tranche entre impression et réalité."
+    },
+    {
+     "q": "Quel format pour partager une méthode avec un collègue ?",
+     "o": [
+      "Une capture d'écran de la conversation qui a bien marché",
+      "Une fiche : usage, consigne, limites, exemple",
+      "Un lien vers votre historique personnel",
+      "Une explication orale en réunion"
+     ],
+     "a": 1,
+     "e": "La fiche se réutilise sans son auteur."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un échéancier produit par l'assistant peut remplacer le logiciel de gestion du portefeuille.",
-     "a": false,
-     "e": "Il aide à présenter ; la source de vérité reste le logiciel."
+     "q": "Les documents placés dans un projet partagé peuvent être vus par ses membres.",
+     "a": true,
+     "e": "D'où la règle : documents publics ou validés seulement."
     },
     {
      "type": "cloze",
-     "q": "Le délai de priorité d'une demande de brevet est de ___ mois.",
+     "q": "Des consignes qui servent à chaque échange s'appellent des instructions ___.",
      "o": [
-      "12",
-      "6",
-      "30"
+      "permanentes",
+      "cachées",
+      "système"
      ],
      "a": 0,
-     "e": "Il court à compter du premier dépôt."
-    },
-    {
-     "type": "order",
-     "q": "Remettez dans l'ordre un échéancier fiable.",
-     "items": [
-      "Saisir les dates fictives",
-      "Demander chaque règle de calcul",
-      "Recalculer les dates",
-      "Corriger les écarts"
-     ],
-     "e": "Chaque date se vérifie."
+     "e": "Le terme varie selon l'outil ; le principe est le même."
     },
     {
      "type": "match",
@@ -5161,10 +5154,21 @@
      "e": "Les noms changent, la fonction est voisine."
     },
     {
+     "type": "order",
+     "q": "Remettez dans l'ordre la mise en place d'un assistant de poste.",
+     "items": [
+      "Choisir une tâche récurrente",
+      "Écrire les instructions",
+      "Tester sur trois cas fictifs",
+      "Mesurer puis partager"
+     ],
+     "e": "Le partage vient après la preuve."
+    },
+    {
      "type": "tf",
-     "q": "Une règle « ne jamais inventer de numéro » a sa place dans les instructions permanentes.",
-     "a": true,
-     "e": "Elle cible l'erreur la plus coûteuse."
+     "q": "Un gain de temps ressenti suffit pour généraliser une méthode.",
+     "a": false,
+     "e": "Sans mesure, l'impression trompe dans les deux sens."
     }
    ],
    "bloc": "Métier : ingénieur brevet",
@@ -5174,7 +5178,7 @@
   {
    "id": "ms1",
    "cote": "M1",
-   "titre": "Courriers, agendas et organisation",
+   "titre": "Courriers, comptes rendus et notes",
    "duree": "40 min",
    "comp": [
     "produire",
@@ -5182,68 +5186,68 @@
    ],
    "cadre": 1,
    "obj": [
-    "Rédiger courriers et courriels de direction",
-    "Préparer un ordre du jour et une invitation",
-    "Organiser une semaine chargée"
+    "Faire rédiger courriers et courriels au bon ton",
+    "Transformer des notes en compte rendu",
+    "Faire produire une note orientée décision"
    ],
    "notions": [
     [
-     "Le brouillon d'abord",
-     "Donnez à l'assistant les idées en vrac : destinataire, objectif, points à faire passer, ce qui ne doit pas être dit. Il structure ; vous gardez la main sur le fond et sur chaque engagement."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : le destinataire, l'objectif, les points à faire passer et ce qui ne doit pas être dit. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
      "Le ton se règle",
-     "Précisez le registre : administrateur à informer, partenaire institutionnel à remercier, prestataire à relancer. Donnez un ancien courrier fictif comme modèle de ton si besoin."
+     "Précisez le registre et la longueur : administrateur à informer, partenaire institutionnel à remercier, prestataire à relancer. Un ancien courrier fictif comme modèle de ton guide mieux qu'un adjectif."
     ],
     [
-     "Ordre du jour et invitation",
-     "Donnez l'objet de la réunion, la durée, les décisions attendues et les participants par fonction. Demandez un ordre du jour minuté et une invitation de cinq lignes."
+     "Compte rendu",
+     "À partir de notes brutes (jamais l'enregistrement d'une réunion confidentielle dans un outil non validé), demandez : décisions, actions avec responsable et échéance, points ouverts. Le reste est secondaire."
     ],
     [
-     "Organiser une semaine",
-     "Listez vos tâches avec leur durée estimée et leur échéance ; demandez un plan par jour avec les priorités. L'assistant ne voit pas votre agenda dans le navigateur : vous lui donnez les créneaux libres."
+     "Note de direction",
+     "Une note se construit autour de la décision attendue : objet, contexte, options, recommandation. Demandez ce plan explicitement ; sinon l'assistant raconte au lieu de conclure."
     ],
     [
      "Relire comme l'auteur",
-     "Le courrier part sous le nom de la direction. Relisez dates, noms, montants et chaque promesse : l'assistant ajoute volontiers une formule que personne n'a décidée."
+     "Le document part sous votre nom. Relisez les chiffres, les dates, les noms et chaque engagement : l'assistant ajoute volontiers une promesse, un délai ou un chiffre que personne n'a décidé."
     ]
    ],
    "res": [
     [
      "skfluency",
-     "Module Description du cours AI Fluency : décrire la tâche, le ton et le format."
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
      "msgenfr",
-     "Microsoft, cours d'IA générative en français : leçon sur la rédaction."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ]
    ],
    "ex": [
     {
-     "t": "À partir de cinq lignes de notes fictives, faites rédiger un courriel d'invitation à un comité, puis l'ordre du jour minuté.",
-     "c": "L'ordre du jour tient dans la durée prévue ; aucune décision n'a été inventée."
+     "t": "À partir de cinq lignes de notes fictives d'une réunion, faites produire un compte rendu : décisions, actions, points ouverts.",
+     "c": "Chaque action a un responsable et une échéance ; rien n'a été inventé."
     },
     {
-     "t": "Faites rédiger un courrier de remerciement à un partenaire institutionnel fictif, en deux tons : protocolaire et chaleureux.",
+     "t": "Faites rédiger un courrier de remerciement à un partenaire institutionnel fictif, en deux tons.",
      "c": "Vous savez quelle consigne a changé le ton."
     },
     {
-     "t": "Facultatif : listez dix tâches fictives avec durées et échéances, et demandez un plan de semaine.",
-     "c": "Le plan respecte les échéances et les créneaux que vous avez donnés.",
+     "t": "Facultatif : faites rédiger une note de direction fictive (choix entre deux prestataires) avec recommandation en tête.",
+     "c": "La recommandation tient en trois lignes.",
      "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Que doit contenir la demande pour un ordre du jour ?",
+     "q": "Que doit contenir la demande pour un compte rendu ?",
      "o": [
-      "Uniquement la date de la réunion",
-      "Objet, durée, décisions attendues et participants",
-      "Le compte rendu de la réunion précédente en entier",
-      "Une liste de formules de politesse"
+      "Les notes brutes et la structure attendue",
+      "L'enregistrement audio complet de la réunion, pour ne rien perdre",
+      "La liste des présents uniquement",
+      "Une formule de politesse"
      ],
-     "a": 1,
-     "e": "Avec ces éléments, l'ordre du jour est presque toujours utilisable."
+     "a": 0,
+     "e": "Notes et structure suffisent ; l'enregistrement d'une réunion confidentielle reste hors de l'outil."
     },
     {
      "q": "L'assistant ajoute « la direction vous recevra sous huit jours ». Que faire ?",
@@ -5257,26 +5261,26 @@
      "e": "Tout engagement envoyé au nom de la direction doit avoir été décidé."
     },
     {
-     "q": "Pour planifier votre semaine, l'assistant du navigateur :",
+     "q": "Quel plan demander pour une note de direction ?",
      "o": [
-      "Lit votre agenda automatiquement",
-      "Travaille sur les créneaux que vous lui donnez",
-      "Réserve les salles et envoie les invitations à votre place",
-      "Envoie les invitations seul"
+      "La chronologie complète des échanges, dans l'ordre",
+      "Objet, contexte, options, recommandation",
+      "Les questions puis les réponses",
+      "Un paragraphe unique, sans titres"
      ],
      "a": 1,
-     "e": "Dans le navigateur, il ne voit que ce que vous lui fournissez."
+     "e": "La note sert une décision : elle doit conclure."
     },
     {
      "q": "Comment obtenir le ton de la maison sans le décrire longuement ?",
      "o": [
       "Fournir un ancien courrier fictif comme modèle",
-      "Demander un ton professionnel et soutenu, sans autre précision",
+      "Demander un ton « professionnel et adapté au destinataire »",
       "Écrire la consigne en majuscules",
       "Changer d'assistant"
      ],
      "a": 0,
-     "e": "Un exemple de ton vaut souvent mieux qu'une description."
+     "e": "Un exemple guide mieux qu'un adjectif."
     },
     {
      "q": "Avant l'envoi, la vérification prioritaire porte sur :",
@@ -5295,29 +5299,29 @@
      "type": "tf",
      "q": "Un courrier rédigé par l'assistant peut partir sans relecture s'il est bien écrit.",
      "a": false,
-     "e": "Il part au nom de la direction : dates, noms, montants et promesses se relisent."
+     "e": "Il part en votre nom : dates, noms, montants et promesses se relisent."
     },
     {
      "type": "cloze",
-     "q": "Pour un ton précis, le plus efficace est souvent de fournir un ___.",
+     "q": "Dans un compte rendu, chaque action a un responsable et une ___.",
      "o": [
-      "exemple",
-      "glossaire",
-      "sommaire"
+      "échéance",
+      "couleur",
+      "signature"
      ],
      "a": 0,
-     "e": "Un modèle de ton guide mieux qu'un adjectif."
+     "e": "Sinon l'action ne sera pas suivie."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre la préparation d'une réunion.",
+     "q": "Remettez dans l'ordre la rédaction d'une note de direction.",
      "items": [
-      "Fixer les décisions attendues",
-      "Faire rédiger l'ordre du jour",
-      "Faire rédiger l'invitation",
-      "Relire et envoyer"
+      "Fixer la décision attendue",
+      "Faire produire le plan",
+      "Faire rédiger",
+      "Relire chaque engagement"
      ],
-     "e": "Les décisions attendues structurent le reste."
+     "e": "La décision attendue structure le reste."
     },
     {
      "type": "match",
@@ -5340,9 +5344,9 @@
     },
     {
      "type": "tf",
-     "q": "L'assistant utilisé dans le navigateur ne voit pas votre agenda.",
+     "q": "Préciser ce qui ne doit pas être dit fait partie d'une bonne consigne.",
      "a": true,
-     "e": "Vous lui donnez les créneaux et les contraintes."
+     "e": "Les limites évitent les formulations maladroites."
     }
    ],
    "bloc": "Métier : support et direction",
@@ -5352,7 +5356,7 @@
   {
    "id": "ms2",
    "cote": "M2",
-   "titre": "Tableaux et chiffres",
+   "titre": "Tableaux et chiffres avec l'IA",
    "duree": "50 min",
    "comp": [
     "produire",
@@ -5374,26 +5378,26 @@
      "Sur un tableau fictif ou public, demandez les écarts, les tendances et les anomalies, avec la ligne concernée. L'assistant peut mal lire une colonne : vérifiez chaque constat sur le tableau."
     ],
     [
-     "Les calculs de l'assistant",
-     "Un assistant qui calcule de tête peut se tromper sur une somme ou un pourcentage. Pour un résultat chiffré, demandez la formule à appliquer dans le tableur, ou l'usage de son outil de calcul s'il en dispose, et recalculez."
+     "Les chiffres se recalculent",
+     "L'assistant met en forme et compare ; il calcule mal de tête. Demandez-lui la formule plutôt que le résultat, et recalculez chaque total dans le tableur."
     ],
     [
-     "Données à ne pas saisir",
-     "Salaires, données personnelles, comptes bancaires, budgets nominatifs de projets en cours : jamais dans un outil non validé. On s'exerce sur des tableaux fictifs ou des comptes publics."
+     "Commenter des chiffres",
+     "Demandez un commentaire de trois phrases : le fait principal, l'écart notable, la question à poser. Le commentaire se vérifie chiffre par chiffre."
     ],
     [
-     "Présenter des chiffres",
-     "Demandez un commentaire de trois phrases sur un tableau : le fait principal, l'écart notable, la question à poser. Le commentaire se vérifie chiffre par chiffre."
+     "Données fictives ou publiques",
+     "Dans un outil non validé par l'entreprise, on travaille sur des documents publics ou sur des versions fictives de même structure. Une donnée de paie, un budget nominatif ou un relevé bancaire ne va pas dans l'assistant, même sans les noms."
     ]
    ],
    "res": [
     [
-     "insee",
-     "INSEE : tableaux publics pour s'exercer."
+     "skfluency",
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
-     "skfluency",
-     "Module Discernment : évaluer la production de l'assistant."
+     "insee",
+     "INSEE : tableaux publics pour s'exercer."
     ]
    ],
    "ex": [
@@ -5428,7 +5432,7 @@
       "La reprendre telle quelle",
       "Recalculer dans le tableur",
       "Arrondir à 10 %",
-      "Demander une deuxième estimation"
+      "Demander une seconde estimation"
      ],
      "a": 1,
      "e": "Un calcul de tête peut être faux."
@@ -5437,9 +5441,9 @@
      "q": "Quelles données utiliser pour s'exercer ?",
      "o": [
       "La paie du mois dernier",
-      "Un tableau fictif ou des comptes publics",
-      "Le budget nominatif d'un projet en cours",
-      "Les relevés bancaires de la société"
+      "Un tableau fictif ou des données publiques",
+      "Le budget nominatif d'un projet",
+      "Les relevés bancaires de la société, sans les noms des tiers"
      ],
      "a": 1,
      "e": "Les données personnelles et financières internes restent hors de l'outil."
@@ -5458,7 +5462,7 @@
     {
      "q": "L'assistant signale une anomalie en ligne 7. Que faire ?",
      "o": [
-      "La corriger directement, sans regarder le tableau d'origine",
+      "La corriger directement, sans regarder le tableau",
       "Vérifier la ligne 7 dans le tableau",
       "Supprimer la ligne",
       "Ignorer le signalement"
@@ -5501,7 +5505,7 @@
      "q": "Associez chaque donnée à la règle.",
      "pairs": [
       [
-       "Salaires",
+       "Paie",
        "Jamais dans l'outil"
       ],
       [
@@ -5509,7 +5513,7 @@
        "Utilisable"
       ],
       [
-       "Comptes publics",
+       "Données publiques",
        "Utilisables"
       ]
      ],
@@ -5529,7 +5533,7 @@
   {
    "id": "ms3",
    "cote": "M3",
-   "titre": "Procédures et documents qualité",
+   "titre": "Procédures et documents de référence",
    "duree": "45 min",
    "comp": [
     "verifier",
@@ -5538,39 +5542,39 @@
    "cadre": 1,
    "obj": [
     "Faire structurer une procédure à partir de notes",
-    "Comparer deux versions d'un document",
-    "Vérifier une exigence à sa source"
+    "Faire comparer deux versions d'un document",
+    "Faire repérer les manques avant une diffusion"
    ],
    "notions": [
     [
-     "Structurer une procédure",
-     "Donnez les étapes en vrac, les acteurs et les documents utilisés. Demandez une procédure avec objet, domaine d'application, responsabilités, étapes numérotées et enregistrements. Vous validez chaque étape avec les personnes qui la pratiquent."
+     "Le plan avant le texte",
+     "Demandez d'abord un plan, corrigez-le, puis faites rédiger partie par partie. Corriger un plan de dix lignes prend une minute ; corriger un texte de deux pages construit sur un mauvais plan prend une heure."
     ],
     [
-     "Logigramme",
-     "Demandez un logigramme en texte (étape, acteur, décision, suite) que vous reportez ensuite dans votre outil. Une flèche dans le mauvais sens est une erreur de fond."
+     "Structurer une procédure",
+     "Donnez les étapes en vrac, les acteurs et les documents utilisés. Demandez une procédure avec objet, responsabilités et étapes numérotées. Vous validez chaque étape avec les personnes qui la pratiquent."
     ],
     [
      "Comparer deux versions",
-     "Demandez un tableau des différences paragraphe par paragraphe, avec citation des deux rédactions. Recoupez avec la comparaison de votre traitement de texte."
+     "Demandez un tableau des différences paragraphe par paragraphe, avec citation des deux rédactions. Recoupez avec la comparaison de votre traitement de texte, qui voit chaque caractère modifié."
     ],
     [
-     "Exigences de norme",
-     "L'assistant cite volontiers une clause de norme de mémoire, parfois fausse. Une exigence se vérifie dans le texte de la norme dont vous disposez, jamais dans la réponse de l'assistant."
+     "Demander ce qui manque",
+     "Demandez aussi ce qui n'y est pas : l'information absente, la rubrique oubliée, la question laissée sans réponse. Une absence ne se voit pas à la lecture rapide."
     ],
     [
-     "Dialoguer pour clarifier",
-     "Demandez à l'assistant de vous poser les questions qu'un auditeur poserait sur la procédure. Les réponses que vous n'avez pas révèlent les manques."
+     "Questions d'un relecteur",
+     "Demandez à l'assistant les questions qu'un relecteur exigeant poserait sur le document. Celles auxquelles vous n'avez pas de réponse révèlent les manques."
     ]
    ],
    "res": [
     [
      "skfluency",
-     "Module Discernment : évaluer la production de l'assistant."
+     "Cours AI Fluency : décrire la tâche, le ton et le format, puis évaluer la réponse."
     ],
     [
      "msgenfr",
-     "Microsoft, IA générative en français : leçons sur la synthèse."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ]
    ],
    "ex": [
@@ -5579,7 +5583,7 @@
      "c": "Chaque étape a un acteur ; rien n'a été inventé."
     },
     {
-     "t": "Demandez les questions qu'un auditeur poserait sur cette procédure.",
+     "t": "Demandez les questions qu'un relecteur exigeant poserait sur cette procédure.",
      "c": "Au moins une question révèle un manque réel."
     },
     {
@@ -5589,45 +5593,34 @@
    ],
    "quiz": [
     {
-     "q": "Que fournir pour structurer une procédure ?",
+     "q": "Que fournir pour faire structurer une procédure ?",
      "o": [
       "Le titre seul",
       "Étapes, acteurs et documents utilisés",
-      "La norme complète, pour que toutes les exigences y figurent",
-      "L'organigramme de l'entreprise"
+      "L'organigramme complet de l'entreprise",
+      "Une procédure d'une autre entreprise"
      ],
      "a": 1,
      "e": "L'assistant structure ce que vous lui donnez."
     },
     {
-     "q": "L'assistant cite une clause de norme de mémoire. Que faire ?",
-     "o": [
-      "La reprendre, la numérotation semble exacte",
-      "La vérifier dans le texte de la norme",
-      "Lui demander s'il est sûr",
-      "La reformuler"
-     ],
-     "a": 1,
-     "e": "Seul le texte de la norme fait foi."
-    },
-    {
      "q": "Comment fiabiliser une comparaison de versions ?",
      "o": [
       "La refaire deux fois",
-      "La recouper avec l'outil de comparaison",
-      "Lui demander davantage de détails sur chaque différence",
-      "Comparer à la mémoire de l'assistant"
+      "La recouper avec l'outil de comparaison du traitement de texte",
+      "Demander plus de détails",
+      "La comparer à la version que l'assistant a gardée en mémoire hier"
      ],
      "a": 1,
-     "e": "L'outil déterministe voit chaque modification."
+     "e": "L'outil de comparaison voit chaque modification."
     },
     {
-     "q": "Quelle question fait apparaître les manques d'une procédure ?",
+     "q": "Quelle question fait apparaître les manques d'un document ?",
      "o": [
-      "Résume cette procédure",
-      "Quelles questions un auditeur poserait-il ?",
-      "Cette procédure est-elle bonne et conforme à la norme ?",
-      "Traduis cette procédure"
+      "Résume ce document",
+      "Quelles questions poserait un relecteur exigeant ?",
+      "Ce document est-il bon et prêt à être diffusé à tous ?",
+      "Traduis ce document"
      ],
      "a": 1,
      "e": "Les questions sans réponse révèlent les manques."
@@ -5637,30 +5630,41 @@
      "o": [
       "L'assistant lui-même",
       "Les personnes qui pratiquent la procédure",
-      "Le premier lecteur venu",
-      "Personne, puisque l'assistant l'a rendue cohérente"
+      "Le premier lecteur venu, du moment qu'il relit tout",
+      "Personne, elle est cohérente"
      ],
      "a": 1,
      "e": "La procédure décrit une pratique réelle."
+    },
+    {
+     "q": "Par quoi commencer un document de plusieurs pages ?",
+     "o": [
+      "Faire rédiger tout le document d'un coup",
+      "Faire produire puis corriger un plan",
+      "Choisir la police et les couleurs",
+      "Écrire la conclusion"
+     ],
+     "a": 1,
+     "e": "Un plan se corrige vite ; un long texte, non."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Une exigence de norme citée par l'assistant de mémoire peut être reprise dans un document qualité.",
+     "q": "Une procédure bien structurée par l'assistant peut être diffusée sans validation par ceux qui la pratiquent.",
      "a": false,
-     "e": "Elle se vérifie dans le texte de la norme."
+     "e": "Elle décrit une pratique réelle : ceux qui la font la valident."
     },
     {
      "type": "cloze",
-     "q": "Un schéma qui enchaîne étapes, acteurs et décisions s'appelle un ___.",
+     "q": "Avant un long document, faites produire puis corriger un ___.",
      "o": [
-      "logigramme",
-      "organigramme",
-      "calendrier"
+      "plan",
+      "résumé",
+      "titre"
      ],
      "a": 0,
-     "e": "Il se vérifie comme un texte."
+     "e": "Le plan se corrige en une minute."
     },
     {
      "type": "order",
@@ -5668,7 +5672,7 @@
      "items": [
       "Lister les étapes en vrac",
       "Faire structurer",
-      "Faire poser les questions d'auditeur",
+      "Faire poser les questions d'un relecteur",
       "Valider avec les acteurs"
      ],
      "e": "La validation humaine clôt la rédaction."
@@ -5686,17 +5690,17 @@
        "Tableau avec citations"
       ],
       [
-       "Audit à blanc",
-       "Questions d'auditeur"
+       "Relecture",
+       "Questions d'un relecteur"
       ]
      ],
      "e": "Chaque besoin a sa consigne type."
     },
     {
      "type": "tf",
-     "q": "Une flèche inversée dans un logigramme est une erreur de fond.",
+     "q": "L'outil de comparaison du traitement de texte complète utilement la comparaison faite par l'assistant.",
      "a": true,
-     "e": "Elle change l'ordre ou le responsable."
+     "e": "Il voit chaque caractère modifié."
     }
    ],
    "bloc": "Métier : support et direction",
@@ -5706,7 +5710,7 @@
   {
    "id": "ms4",
    "cote": "M4",
-   "titre": "Comptes rendus, notes de direction et supports de CA",
+   "titre": "Présentations et supports de conseil d'administration",
    "duree": "45 min",
    "comp": [
     "produire",
@@ -5714,82 +5718,71 @@
    ],
    "cadre": 1,
    "obj": [
-    "Produire un compte rendu à partir de notes",
-    "Rédiger une note de direction orientée décision",
-    "Préparer la trame d'un support de conseil d'administration"
+    "Faire produire une trame de présentation",
+    "Obtenir des titres qui portent le message",
+    "N'utiliser que des chiffres validés"
    ],
    "notions": [
     [
-     "Compte rendu",
-     "À partir de notes brutes (jamais l'enregistrement d'une réunion confidentielle dans un outil non validé), demandez : décisions, actions avec responsable et échéance, points ouverts. Le reste est secondaire."
+     "Le contexte d'abord",
+     "L'assistant ne connaît ni la SATT, ni votre interlocuteur, ni votre objectif. Donnez-les en tête de demande : le public (conseil d'administration, comité, équipe), la décision attendue, la durée et les chiffres validés. Une demande nue produit un texte générique qu'il faudra tout réécrire."
     ],
     [
-     "Note de direction",
-     "Une note se construit autour de la décision attendue : objet, contexte, options, recommandation. Demandez ce plan explicitement ; sinon l'assistant raconte au lieu de conclure."
+     "Trame de présentation",
+     "Demandez un plan diapositive par diapositive : un titre qui affirme le message, trois idées au plus, le visuel suggéré, puis les notes de l'orateur. La mise en forme se fait ensuite dans l'outil de présentation de l'entreprise."
     ],
     [
-     "Résumé fidèle",
-     "Fixez la longueur, le public et ce qui doit figurer. Demandez ce qui a été omis : un résumé élégant peut gommer une réserve ou une condition."
+     "Titres affirmatifs",
+     "Un titre comme « Marché » ne dit rien ; « Le marché visé croît de façon régulière » porte le message. Demandez explicitement des titres en forme de phrase, puis vérifiez que chacun est vrai."
     ],
     [
-     "Support de CA",
-     "Demandez une trame diapositive par diapositive : titre affirmatif, trois idées au plus, visuel suggéré. Les chiffres viennent de vos tableaux, jamais de l'assistant."
+     "Les chiffres se recalculent",
+     "L'assistant met en forme et compare ; il calcule mal de tête. Demandez-lui la formule plutôt que le résultat, et recalculez chaque total dans le tableur."
     ],
     [
-     "Délibérations",
-     "Un projet de délibération ou de procès-verbal se relit mot à mot : une décision mal formulée engage l'entreprise. L'assistant propose une forme ; la formulation retenue est validée par qui de droit."
+     "Contradicteur",
+     "Avant de présenter, demandez à l'assistant les trois objections les plus solides contre votre message. Il est plus utile de les découvrir à votre bureau qu'en séance."
     ]
    ],
    "res": [
     [
      "msgenfr",
-     "Microsoft, IA générative en français : leçons sur la synthèse."
+     "Microsoft, cours d'IA générative en français : rédaction et synthèse."
     ],
     [
      "sk101",
-     "Claude 101 : usages quotidiens, en anglais."
+     "Claude 101 : usages quotidiens, projets et instructions."
     ]
    ],
    "ex": [
     {
-     "t": "À partir de notes fictives d'un comité de direction, faites produire un compte rendu décisions, actions, points ouverts.",
-     "c": "Chaque action a un responsable et une échéance ; rien n'a été inventé."
+     "t": "Faites produire la trame d'un support de huit diapositives sur un sujet fictif, avec titres affirmatifs et notes de l'orateur.",
+     "c": "Chaque titre est une phrase vraie ; aucun chiffre n'a été inventé."
     },
     {
-     "t": "Faites rédiger une note de direction fictive (choix entre deux prestataires) avec recommandation en tête.",
-     "c": "La recommandation tient en trois lignes."
+     "t": "Demandez les trois questions les plus probables d'un administrateur.",
+     "c": "Chaque question a une réponse dans le carnet."
     },
     {
-     "t": "Facultatif : faites produire la trame d'un support de conseil d'administration de huit diapositives sur un sujet fictif.",
-     "c": "Chaque titre est une phrase affirmative ; aucun chiffre n'a été inventé.",
+     "t": "Facultatif : faites rédiger un projet de relevé de décisions à partir de notes fictives.",
+     "c": "Chaque décision correspond à une ligne des notes.",
      "opt": true
     }
    ],
    "quiz": [
     {
-     "q": "Quelles rubriques sont prioritaires dans un compte rendu ?",
+     "q": "Que donner à l'assistant avant de demander une trame ?",
      "o": [
-      "Liste des présents et horaires",
-      "Décisions, actions et points ouverts",
-      "Résumé chronologique des échanges",
-      "Citations exactes de chaque intervenant"
+      "Le titre seulement",
+      "Public, décision attendue, durée et chiffres validés",
+      "Les comptes complets de l'entreprise, pour que rien ne manque",
+      "Le support de l'an dernier en entier"
      ],
      "a": 1,
-     "e": "Ce sont les éléments sur lesquels on agit."
+     "e": "Le public et la décision attendue structurent tout le reste."
     },
     {
-     "q": "Quel plan demander pour une note de direction ?",
-     "o": [
-      "Chronologie complète des échanges",
-      "Objet, contexte, options, recommandation",
-      "Questions puis réponses dans l'ordre reçu",
-      "Un paragraphe unique, sans titres"
-     ],
-     "a": 1,
-     "e": "La note sert une décision : elle doit conclure."
-    },
-    {
-     "q": "D'où viennent les chiffres d'un support de CA ?",
+     "q": "D'où viennent les chiffres d'un support de conseil d'administration ?",
      "o": [
       "De l'assistant, qui les estime",
       "De vos tableaux validés",
@@ -5800,81 +5793,92 @@
      "e": "Un chiffre proposé par l'assistant sans base est une invention."
     },
     {
-     "q": "Peut-on transcrire une réunion confidentielle avec un outil grand public ?",
+     "q": "Quel titre de diapositive est le plus utile ?",
      "o": [
-      "Oui, si le fichier est supprimé après",
-      "Non, sauf outil validé par l'entreprise",
-      "Oui, si personne n'est nommé",
-      "Oui, si la réunion dure moins d'une heure"
+      "Budget",
+      "Le budget de l'année est tenu",
+      "Chiffres clés de l'année écoulée",
+      "Annexe 3"
      ],
      "a": 1,
-     "e": "Le contenu reste confidentiel quel que soit le format."
+     "e": "Un titre affirmatif porte le message."
     },
     {
-     "q": "Comment limiter le risque d'un résumé infidèle ?",
+     "q": "Pourquoi demander les questions probables d'un administrateur ?",
      "o": [
-      "Demander un résumé plus long",
-      "Demander ce qui a été omis",
-      "Demander un résumé en anglais",
-      "Demander un résumé en points"
+      "Pour allonger le support",
+      "Pour préparer les réponses",
+      "Pour laisser l'assistant répondre en séance",
+      "Pour remplacer la relecture"
      ],
      "a": 1,
-     "e": "La liste des omissions rend les choix visibles."
+     "e": "On les découvre à son bureau plutôt qu'en séance."
+    },
+    {
+     "q": "Où se fait la mise en forme finale ?",
+     "o": [
+      "Dans l'assistant, diapositive par diapositive",
+      "Dans l'outil de présentation de l'entreprise",
+      "Dans un logiciel de dessin",
+      "Dans le courriel d'envoi"
+     ],
+     "a": 1,
+     "e": "L'assistant prépare le fond et la trame."
     }
    ],
    "drills": [
     {
      "type": "tf",
-     "q": "Un résumé bien écrit est forcément fidèle.",
+     "q": "Un chiffre proposé par l'assistant peut aller dans un support s'il paraît plausible.",
      "a": false,
-     "e": "Il peut gommer une réserve ou une condition. Demandez les omissions."
+     "e": "Seuls les chiffres de vos tableaux validés y vont."
     },
     {
      "type": "cloze",
-     "q": "Dans un compte rendu, chaque action a un responsable et une ___.",
+     "q": "Un titre de diapositive ___ dit ce que la diapositive démontre.",
      "o": [
-      "échéance",
-      "couleur",
-      "signature"
+      "affirmatif",
+      "court",
+      "numéroté"
      ],
      "a": 0,
-     "e": "Sinon l'action ne sera pas suivie."
-    },
-    {
-     "type": "match",
-     "q": "Associez chaque document à la consigne utile.",
-     "pairs": [
-      [
-       "Compte rendu",
-       "Décisions, actions, points ouverts"
-      ],
-      [
-       "Note de direction",
-       "Recommandation en tête"
-      ],
-      [
-       "Support de CA",
-       "Titres affirmatifs"
-      ]
-     ],
-     "e": "Chaque format a sa consigne type."
+     "e": "« Le budget est tenu » plutôt que « Budget »."
     },
     {
      "type": "order",
-     "q": "Remettez dans l'ordre la préparation d'un support de CA.",
+     "q": "Remettez dans l'ordre la préparation d'un support.",
      "items": [
       "Fixer le message principal",
-      "Demander la trame",
+      "Faire produire la trame",
       "Insérer les chiffres validés",
-      "Mettre en forme dans l'outil interne"
+      "Préparer les questions"
      ],
      "e": "Le message précède la forme."
     },
     {
+     "type": "match",
+     "q": "Associez chaque demande à son intérêt.",
+     "pairs": [
+      [
+       "Titres affirmatifs",
+       "Message lisible"
+      ],
+      [
+       "Chiffres validés",
+       "Aucune invention"
+      ],
+      [
+       "Questions probables",
+       "Séance préparée"
+      ]
+     ],
+     "e": "Chaque demande vise un risque précis."
+    },
+    {
      "type": "tf",
-     "q": "Un projet de délibération rédigé avec l'assistant se relit mot à mot.",
+     "q": "Les notes de l'orateur peuvent être préparées avec l'assistant.",
      "a": true,
-     "e": "Une décision mal formulée engage l'entreprise."
+     "e": "Elles se relisent comme le reste."
     }
    ],
    "bloc": "Métier : support et direction",
@@ -5892,36 +5896,36 @@
    ],
    "cadre": 1,
    "obj": [
-    "Configurer un projet pour une tâche récurrente",
+    "Configurer un projet pour une tâche récurrente du métier",
     "Mesurer le temps gagné et la qualité",
-    "Partager une méthode avec l'équipe"
+    "Partager la méthode avec l'équipe"
    ],
    "notions": [
     [
      "Projets et assistants personnalisés",
-     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot (agents), Le Chat (agents) et Gemini (Gems) enregistrent des instructions permanentes et des documents de référence. Comptes rendus, courriers types et commentaires de tableaux s'y prêtent bien."
+     "Claude (Projets), ChatGPT (Projets et GPTs), Copilot (agents), Le Chat (agents) et Gemini (Gems) enregistrent des instructions permanentes et des documents de référence. Une tâche que vous faites chaque semaine y gagne en régularité."
     ],
     [
      "Instructions permanentes",
-     "Rôle, contexte du service, format de sortie, règles : ne rien inventer, signaler l'incertitude, ne jamais proposer un chiffre sans source. Testez-les sur trois cas fictifs avant de les adopter."
+     "Rôle, public visé, format de sortie et règles : ne rien inventer, citer la source de chaque chiffre, signaler l'incertitude, ne rien promettre en votre nom. Testez-les sur trois cas fictifs avant de les adopter."
     ],
     [
      "Documents de référence",
-     "Seuls des documents publics ou validés pour cet usage : charte de rédaction, modèles vierges. Les connaissances d'un projet partagé sont visibles de ses membres."
+     "Modèles vierges, charte de rédaction, documents publics : seulement ce qui est validé pour cet usage, jamais un dossier en cours. Les connaissances d'un projet partagé sont visibles de ses membres."
     ],
     [
      "Mesurer",
-     "Notez pour une tâche : temps sans assistant, temps avec, corrections nécessaires. Sans mesure, l'impression de gain trompe dans les deux sens."
+     "Notez pour une tâche le temps sans assistant, le temps avec, et les corrections nécessaires. Sans mesure, l'impression de gain trompe dans les deux sens."
     ],
     [
      "Partager",
-     "Une consigne qui marche se partage : fiche d'une page (usage, consigne, limites, exemple fictif)."
+     "Une consigne qui marche se partage avec les collègues du même métier : fiche d'une page (usage, consigne, limites, exemple fictif). C'est ainsi qu'une équipe progresse au même rythme."
     ]
    ],
    "res": [
     [
      "sk101",
-     "Claude 101 : projets et instructions."
+     "Claude 101 : usages quotidiens, projets et instructions."
     ],
     [
      "oaiacad",
@@ -5930,37 +5934,37 @@
    ],
    "ex": [
     {
-     "t": "Créez un projet (ou équivalent) pour une tâche récurrente de votre poste : instructions permanentes et un modèle vierge.",
+     "t": "Créez un projet (ou équivalent) pour une tâche récurrente de votre poste, par exemple les comptes rendus, les courriers types ou les commentaires de tableaux : instructions permanentes et un modèle vierge.",
      "c": "Trois essais sur des cas fictifs donnent un résultat de même qualité."
     },
     {
-     "t": "Mesurez une tâche faite sans données internes (un courrier type) : temps sans et avec assistant.",
+     "t": "Mesurez une tâche faite sans données internes (un courrier type) sans puis avec l'assistant.",
      "c": "Les deux temps et le nombre de corrections sont notés dans le carnet."
     },
     {
      "t": "Rédigez une fiche d'une page pour partager cette méthode avec un collègue.",
-     "c": "Un collègue peut l'appliquer sans explication orale."
+     "c": "Un collègue du même métier peut l'appliquer sans explication orale."
     }
    ],
    "quiz": [
     {
      "q": "À quoi servent les instructions permanentes d'un projet ?",
      "o": [
-      "À stocker les fichiers du service",
+      "À stocker durablement les dossiers en cours du service",
       "À appliquer les mêmes règles à chaque échange",
-      "À augmenter la fenêtre de contexte disponible pour chaque échange",
-      "À désactiver la recherche web"
+      "À agrandir la fenêtre de contexte",
+      "À couper la recherche web"
      ],
      "a": 1,
-     "e": "Elles évitent de répéter rôle, format et règles."
+     "e": "Elles évitent de répéter rôle, format et règles à chaque demande."
     },
     {
      "q": "Quels documents placer dans les connaissances d'un projet ?",
      "o": [
-      "Les tableaux de paie et les fichiers du personnel",
-      "Documents publics ou validés pour cet usage",
-      "Les courriels de la semaine",
-      "Tous les fichiers du service"
+      "Les dossiers en cours, pour gagner du temps",
+      "Des modèles publics ou validés pour cet usage",
+      "Les courriels reçus dans la semaine, triés par expéditeur",
+      "Tous les fichiers du service sans tri"
      ],
      "a": 1,
      "e": "Les connaissances sont lues à chaque échange et parfois partagées."
@@ -5968,32 +5972,32 @@
     {
      "q": "Avant d'adopter un assistant personnalisé, il faut :",
      "o": [
-      "Le partager à tout le service pour recueillir des avis",
-      "Le tester sur trois cas fictifs",
-      "Lui donner un nom précis",
-      "Activer toutes ses options"
+      "Le partager tout de suite à toute l'équipe",
+      "Le tester sur trois cas fictifs différents",
+      "Lui donner un nom facile à retenir",
+      "Activer toutes les options disponibles"
      ],
      "a": 1,
-     "e": "Un test sur plusieurs cas révèle les consignes ambiguës."
+     "e": "Plusieurs cas révèlent les consignes ambiguës."
     },
     {
      "q": "Pourquoi mesurer le temps passé avec et sans assistant ?",
      "o": [
       "Pour remplir un tableau de bord",
       "Parce que l'impression de gain peut tromper",
-      "Parce que l'outil l'exige",
-      "Pour choisir le modèle le moins cher de l'offre de l'entreprise"
+      "Parce que l'outil le demande",
+      "Pour choisir l'offre d'abonnement la moins chère du marché"
      ],
      "a": 1,
      "e": "La mesure tranche entre impression et réalité."
     },
     {
-     "q": "Quel format pour partager une méthode ?",
+     "q": "Quel format pour partager une méthode avec un collègue ?",
      "o": [
-      "Une capture d'écran de la conversation, envoyée par messagerie",
+      "Une capture d'écran de la conversation qui a bien marché",
       "Une fiche : usage, consigne, limites, exemple",
-      "Un lien vers votre historique",
-      "Un message oral en réunion"
+      "Un lien vers votre historique personnel",
+      "Une explication orale en réunion"
      ],
      "a": 1,
      "e": "La fiche se réutilise sans son auteur."
@@ -8454,7 +8458,7 @@
   {
    "id": "metier",
    "nom": "Métier",
-   "desc": "Cinq cas d'usage propres à votre métier, selon le profil choisi.",
+   "desc": "Cinq étapes pour utiliser l'IA dans les tâches courantes de votre métier, selon le profil choisi.",
    "open": "S'ouvre après l'étape S4."
   },
   {
@@ -8842,33 +8846,33 @@
    "id": "juriste",
    "nom": "Juriste",
    "court": "Juriste",
-   "desc": "Contrats, recherche juridique, notes et courriels.",
+   "desc": "L'IA pour les contrats, la recherche, les notes et les courriels.",
    "bloc": "Métier : juriste",
-   "voie": "Cinq cas d'usage du juriste : courriels et notes, contrats, recherche juridique, synthèses, assistant de poste."
+   "voie": "Utiliser l'IA dans les tâches du juriste : courriels et notes, lecture de contrats, recherche et veille, synthèses et supports, assistant de poste."
   },
   {
    "id": "cdt",
    "nom": "Chargé de transfert",
    "court": "Chargé de transfert",
-   "desc": "Déclarations d'invention, marché, partenaires, comités.",
+   "desc": "L'IA pour la prospection, les propositions, la veille et les présentations.",
    "bloc": "Métier : chargé de transfert",
-   "voie": "Cinq cas d'usage du chargé de transfert : courriels aux chercheurs et aux industriels, déclarations d'invention, veille et partenaires, dossiers de comité, assistant de poste."
+   "voie": "Utiliser l'IA dans les tâches du chargé de transfert : courriels de prospection, proposition cohérente avec le business plan, repérage de cibles et veille, présentations, assistant de poste."
   },
   {
    "id": "brevet",
    "nom": "Ingénieur brevet",
    "court": "Ingénieur brevet",
-   "desc": "Brevets publiés, revendications, antériorités, échéances.",
+   "desc": "L'IA pour expliquer, comparer, préparer une recherche et présenter.",
    "bloc": "Métier : ingénieur brevet",
-   "voie": "Cinq cas d'usage de l'ingénieur brevet : résumer un brevet, comparer des revendications, rechercher des antériorités, rédaction sans exposer l'invention, suivi de portefeuille."
+   "voie": "Utiliser l'IA dans les tâches de l'ingénieur brevet : expliquer un document publié, extraire et comparer avec citations, préparer une recherche, présenter à des non-spécialistes, assistant de poste."
   },
   {
    "id": "support",
    "nom": "Fonctions support et direction",
    "court": "Support et direction",
-   "desc": "Direction, assistanat, qualité, finances et autres fonctions.",
+   "desc": "L'IA pour les courriers, les tableaux, les procédures et les supports.",
    "bloc": "Métier : support et direction",
-   "voie": "Cinq cas d'usage des fonctions support et de direction : courriers et organisation, tableaux et chiffres, procédures qualité, comptes rendus et supports de CA, assistant de poste."
+   "voie": "Utiliser l'IA dans les tâches des fonctions support et de direction : courriers et comptes rendus, tableaux et chiffres, procédures, présentations et supports de CA, assistant de poste."
   }
  ]
 }

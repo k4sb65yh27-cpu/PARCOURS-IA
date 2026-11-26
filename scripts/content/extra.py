@@ -68,7 +68,7 @@ LEVELS = ["Non abordé", "Découverte", "Pratique", "Autonomie", "Référent"]
 
 VOIES = [
  {"id": "socle", "nom": "Socle", "desc": "Dix étapes pour maîtriser un assistant d'IA dans le navigateur, quel que soit l'outil. Pour tout salarié.", "open": "Ouverte dès le départ."},
- {"id": "metier", "nom": "Métier", "desc": "Cinq cas d'usage propres à votre métier, selon le profil choisi.", "open": "S'ouvre après l'étape S4."},
+ {"id": "metier", "nom": "Métier", "desc": "Cinq étapes pour utiliser l'IA dans les tâches courantes de votre métier, selon le profil choisi.", "open": "S'ouvre après l'étape S4."},
  {"id": "expert", "nom": "Expert", "desc": "Évaluation, API, agents, MCP, agents de code. Une partie dépasse la pratique autorisée au poste.", "open": "S'ouvre après l'étape S6."},
 ]
 

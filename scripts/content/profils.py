@@ -8,14 +8,14 @@
 from socle import mcq, tf, cloze, order, match
 
 PROFILS = [
- {"id": "juriste", "nom": "Juriste", "court": "Juriste", "desc": "Contrats, recherche juridique, notes et courriels.", "bloc": "Métier : juriste",
-  "voie": "Cinq cas d'usage du juriste : courriels et notes, contrats, recherche juridique, synthèses, assistant de poste."},
- {"id": "cdt", "nom": "Chargé de transfert", "court": "Chargé de transfert", "desc": "Déclarations d'invention, marché, partenaires, comités.", "bloc": "Métier : chargé de transfert",
-  "voie": "Cinq cas d'usage du chargé de transfert : courriels aux chercheurs et aux industriels, déclarations d'invention, veille et partenaires, dossiers de comité, assistant de poste."},
- {"id": "brevet", "nom": "Ingénieur brevet", "court": "Ingénieur brevet", "desc": "Brevets publiés, revendications, antériorités, échéances.", "bloc": "Métier : ingénieur brevet",
-  "voie": "Cinq cas d'usage de l'ingénieur brevet : résumer un brevet, comparer des revendications, rechercher des antériorités, rédaction sans exposer l'invention, suivi de portefeuille."},
- {"id": "support", "nom": "Fonctions support et direction", "court": "Support et direction", "desc": "Direction, assistanat, qualité, finances et autres fonctions.", "bloc": "Métier : support et direction",
-  "voie": "Cinq cas d'usage des fonctions support et de direction : courriers et organisation, tableaux et chiffres, procédures qualité, comptes rendus et supports de CA, assistant de poste."},
+ {"id": "juriste", "nom": "Juriste", "court": "Juriste", "desc": "L'IA pour les contrats, la recherche, les notes et les courriels.", "bloc": "Métier : juriste",
+  "voie": "Utiliser l'IA dans les tâches du juriste : courriels et notes, lecture de contrats, recherche et veille, synthèses et supports, assistant de poste."},
+ {"id": "cdt", "nom": "Chargé de transfert", "court": "Chargé de transfert", "desc": "L'IA pour la prospection, les propositions, la veille et les présentations.", "bloc": "Métier : chargé de transfert",
+  "voie": "Utiliser l'IA dans les tâches du chargé de transfert : courriels de prospection, proposition cohérente avec le business plan, repérage de cibles et veille, présentations, assistant de poste."},
+ {"id": "brevet", "nom": "Ingénieur brevet", "court": "Ingénieur brevet", "desc": "L'IA pour expliquer, comparer, préparer une recherche et présenter.", "bloc": "Métier : ingénieur brevet",
+  "voie": "Utiliser l'IA dans les tâches de l'ingénieur brevet : expliquer un document publié, extraire et comparer avec citations, préparer une recherche, présenter à des non-spécialistes, assistant de poste."},
+ {"id": "support", "nom": "Fonctions support et direction", "court": "Support et direction", "desc": "L'IA pour les courriers, les tableaux, les procédures et les supports.", "bloc": "Métier : support et direction",
+  "voie": "Utiliser l'IA dans les tâches des fonctions support et de direction : courriers et comptes rendus, tableaux et chiffres, procédures, présentations et supports de CA, assistant de poste."},
 ]
 
 def V(base, **kw):
