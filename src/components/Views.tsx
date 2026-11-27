@@ -1,13 +1,11 @@
-import { useRef, useState } from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { Check, Copy, Download, Dumbbell, ExternalLink, Flame, Newspaper, RotateCcw, Upload } from "lucide-react"
 import { toast } from "sonner"
 import { Switch } from "@/components/ui/switch"
-import { BlurFade } from "@/components/ui/blur-fade"
-import { BYID, CADRES, COMPS, DEFIS, GLOSS, ITEMS, LEVELS, NEWS, PROFIL, STEPS, VIS, profilOf } from "@/lib/content"
+import { BYID, CADRES, COMPS, DEFIS, GLOSS, GLOSS_THEMES, ITEMS, LEVELS, NEWS, PROFIL, PROFILS, STEPS, VIS, profilOf, type Step } from "@/lib/content"
 import { OUTILS, ProfilPicker } from "@/components/Onboarding"
 import { copyText } from "@/lib/tutor"
-import { login, logout, syncNow, useSync } from "@/lib/sync"
+import { fetchBoard, login, logout, setOptin, syncNow, useSync, type Board } from "@/lib/sync"
 import { CadreNote } from "@/components/CadreNote"
 import {
   GOALS,
@@ -227,48 +225,244 @@ function NewsPanel({ onStart }: { onStart: (ids: string[], label: string) => voi
 }
 
 /* ---------- Glossaire ---------- */
-export function GlossView() {
-  const reduce = useReducedMotion()
-  const [flip, setFlip] = useState<Record<number, boolean>>({})
+/** Étape à ouvrir depuis le glossaire : celle du profil si l'étape citée appartient à une autre voie Métier. */
+function glossStep(id: string): Step | undefined {
+  if (!id) return undefined
+  return VIS.find((s) => s.id === id) || VIS.find((s) => s.cote === BYID[id]?.cote)
+}
+export function GlossView({ onOpen }: { onOpen?: (s: Step) => void }) {
+  const [q, setQ] = useState("")
+  const [th, setTh] = useState("")
+  const [open, setOpen] = useState<Record<string, boolean>>({})
+  const norm = (x: string) => x.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "")
+  const nq = norm(q.trim())
+  const list = GLOSS.filter((g) => (!th || g.th === th) && (!nq || norm(`${g.t} ${g.d}`).includes(nq)))
   return (
     <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
-      <H1 sub={`${GLOSS.length} cartes. Touchez une carte pour la retourner.`}>Glossaire</H1>
-      <div className="grid grid-cols-2 gap-3">
-        {GLOSS.map(([t, d], i) => (
-          <BlurFade key={t} delay={Math.min(i, 10) * 0.03} inView>
+      <H1 sub={`${GLOSS.length} termes. Touchez un terme pour lire sa définition et un exemple.`}>Glossaire</H1>
+      <label className="grid gap-1 text-sm font-extrabold">
+        Rechercher
+        <input
+          type="search"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="token, projet, skill…"
+          className="min-h-12 rounded-xl border-2 border-line bg-card px-3 text-base font-semibold"
+        />
+      </label>
+      <div className="-mx-4 mt-3 overflow-x-auto px-4 pb-1" role="group" aria-label="Filtrer par thème">
+        <div className="flex w-max gap-2">
+          {["", ...GLOSS_THEMES].map((x) => (
             <button
+              key={x || "tous"}
               type="button"
-              aria-pressed={!!flip[i]}
+              aria-pressed={th === x}
               onClick={() => {
                 sfx.tap()
-                setFlip((f) => ({ ...f, [i]: !f[i] }))
+                setTh(x)
               }}
-              className="relative block h-36 w-full [perspective:800px]"
+              className={`min-h-11 rounded-xl border-2 border-b-4 px-3 text-sm font-extrabold whitespace-nowrap ${th === x ? "border-teal bg-teal text-white" : "border-line bg-card"}`}
             >
-              <motion.span
-                className="absolute inset-0 block [transform-style:preserve-3d]"
-                animate={{ rotateY: flip[i] ? 180 : 0 }}
-                transition={reduce ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.45 }}
-              >
-                <span
-                  className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-b-[5px] border-line bg-card p-3 text-center [backface-visibility:hidden]"
-                  aria-hidden={!!flip[i]}
-                >
-                  <span className="text-lg font-black">{t}</span>
-                  <span className="mt-1 text-xs font-bold text-muted-foreground">Voir la définition</span>
-                </span>
-                <span
-                  className="absolute inset-0 flex items-center justify-center rounded-2xl p-3 text-center text-sm leading-snug font-bold text-white [backface-visibility:hidden] [transform:rotateY(180deg)]"
-                  style={{ background: "var(--u2)", borderBottom: "5px solid var(--u2-d)" }}
-                  aria-hidden={!flip[i]}
-                >
-                  {d}
-                </span>
-              </motion.span>
+              {x || "Tous"}
             </button>
-          </BlurFade>
+          ))}
+        </div>
+      </div>
+      <p className="mt-3 text-sm text-muted-foreground" aria-live="polite">
+        {list.length === GLOSS.length ? "" : `${list.length} terme${list.length > 1 ? "s" : ""}`}
+      </p>
+      <ul className="mt-1 grid gap-2">
+        {list.map((g) => {
+          const o = !!open[g.t]
+          const st = glossStep(g.step)
+          return (
+            <li key={g.t} className="rounded-2xl border-2 border-b-[5px] border-line bg-card">
+              <button
+                type="button"
+                aria-expanded={o}
+                onClick={() => {
+                  sfx.tap()
+                  setOpen((f) => ({ ...f, [g.t]: !f[g.t] }))
+                }}
+                className="flex min-h-14 w-full items-center justify-between gap-3 px-4 py-3 text-left"
+              >
+                <span>
+                  <span className="block font-black">{g.t}</span>
+                  <span className="block text-xs font-bold text-muted-foreground">{g.th}</span>
+                </span>
+                <span aria-hidden className={`text-xl font-black text-muted-foreground transition-transform ${o ? "rotate-45" : ""}`}>+</span>
+              </button>
+              {o && (
+                <div className="border-t-2 border-line px-4 pt-3 pb-4">
+                  <p className="leading-relaxed">{g.d}</p>
+                  <p className="mt-2 text-sm leading-relaxed">
+                    <span className="font-extrabold">Exemple : </span>
+                    {g.ex}
+                  </p>
+                  {st && onOpen && (
+                    <button type="button" className="mt-3 min-h-11 text-sm font-extrabold text-teal" onClick={() => onOpen(st)}>
+                      Voir l'étape {st.cote} : {st.titre}
+                    </button>
+                  )}
+                </div>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+      {!list.length && <p className="mt-4 text-muted-foreground">Aucun terme ne correspond. Essayez un autre mot ou le filtre « Tous ».</p>}
+    </div>
+  )
+}
+
+/* ---------- Classement (version serveur, si le RSI l'a activé) ---------- */
+const PERIODS: { id: Board["period"]; label: string }[] = [
+  { id: "week", label: "Semaine" },
+  { id: "month", label: "Mois" },
+  { id: "all", label: "Depuis le début" },
+]
+export function BoardView() {
+  const sy = useSync()
+  const [p, setP] = useState<Board["period"]>("week")
+  const [data, setData] = useState<{ board: Board | null; stale: boolean } | null>(null)
+  const [name, setName] = useState(sy.display)
+  const [err, setErr] = useState("")
+  const [busy, setBusy] = useState(false)
+  useEffect(() => {
+    let live = true
+    fetchBoard(p).then((r) => live && setData(r))
+    return () => {
+      live = false
+    }
+  }, [p, sy.optin])
+  useEffect(() => setName(sy.display), [sy.display])
+  const b = data?.board
+  const nom = (id: string) => PROFILS.find((x) => x.id === id)?.court || id
+  const save = async (optin: boolean) => {
+    setErr("")
+    setBusy(true)
+    try {
+      await setOptin(optin, name)
+      toast.success(optin ? "Participation enregistrée." : "Vous ne participez plus au classement. Vos données de classement sont effacées.")
+    } catch (x: any) {
+      setErr(x.message || "Enregistrement impossible.")
+    } finally {
+      setBusy(false)
+    }
+  }
+  return (
+    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
+      <H1 sub="Les points d'XP des salariés qui ont choisi d'y figurer.">Classement</H1>
+      <Panel className="mb-4">
+        <h2 className="font-black">Ma participation</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Participation volontaire, sous le nom de votre choix. Vous pouvez vous retirer à tout moment : vos données de classement sont alors effacées.
+        </p>
+        <label className="mt-3 grid gap-1 text-sm font-extrabold">
+          Nom affiché (prénom ou pseudonyme)
+          <input
+            value={name}
+            maxLength={24}
+            onChange={(e) => setName(e.target.value)}
+            className="min-h-12 rounded-xl border-2 border-line bg-card px-3 text-base font-semibold"
+          />
+        </label>
+        {err && <p className="mt-2 text-sm font-bold text-ko" role="alert">{err}</p>}
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <button type="button" className="btn3d w-full" disabled={busy || name.trim().length < 2} onClick={() => save(true)}>
+            {sy.optin ? "Renommer" : "Participer"}
+          </button>
+          {sy.optin && (
+            <button type="button" className="tile justify-center" disabled={busy} onClick={() => save(false)}>
+              Me retirer
+            </button>
+          )}
+        </div>
+      </Panel>
+      <div className="mb-4 grid grid-cols-3 gap-2" role="group" aria-label="Période">
+        {PERIODS.map((x) => (
+          <button
+            key={x.id}
+            type="button"
+            aria-pressed={p === x.id}
+            onClick={() => {
+              sfx.tap()
+              setP(x.id)
+            }}
+            className={`min-h-11 rounded-xl border-2 border-b-4 px-2 text-sm font-extrabold ${p === x.id ? "border-teal bg-teal text-white" : "border-line bg-card"}`}
+          >
+            {x.label}
+          </button>
         ))}
       </div>
+      {!data && <p className="text-muted-foreground">Chargement…</p>}
+      {data && !b && <p className="text-muted-foreground">Classement indisponible hors connexion.</p>}
+      {b && (
+        <>
+          {data?.stale && (
+            <p className="mb-3 text-sm font-bold text-muted-foreground">
+              Hors connexion : classement du {new Date(b.at * 1000).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}.
+            </p>
+          )}
+          <Panel className="mb-4">
+            <h2 className="font-black">Ensemble des participants</h2>
+            <dl className="mt-2 grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
+              <dt>XP gagnés</dt>
+              <dd className="text-right font-black tabular-nums">{b.collectif.xp}</dd>
+              <dt>Participants</dt>
+              <dd className="text-right font-black tabular-nums">{b.participants}</dd>
+              {b.collectif.objectif !== null && (
+                <>
+                  <dt>Objectif de la semaine</dt>
+                  <dd className="text-right font-black tabular-nums">{b.collectif.objectif}</dd>
+                </>
+              )}
+            </dl>
+            {b.collectif.objectif !== null && (
+              <div className="mt-3 h-3 overflow-hidden rounded-full bg-secondary" role="progressbar" aria-label="Objectif collectif" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.min(100, pct(b.collectif.xp, b.collectif.objectif))}>
+                <div className="h-full rounded-full bg-sun" style={{ width: `${Math.min(100, pct(b.collectif.xp, b.collectif.objectif))}%` }} />
+              </div>
+            )}
+          </Panel>
+          {b.profils.length > 0 && (
+            <Panel className="mb-4">
+              <h2 className="font-black">Par métier</h2>
+              <dl className="mt-2 grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
+                {b.profils.map((x) => (
+                  <Fragment key={x.profil}>
+                    <dt>
+                      {nom(x.profil)} <span className="text-sm text-muted-foreground">({x.n})</span>
+                    </dt>
+                    <dd className="text-right font-black tabular-nums">{x.xp} XP</dd>
+                  </Fragment>
+                ))}
+              </dl>
+            </Panel>
+          )}
+          <Panel className="mb-4">
+            <h2 className="font-black">Les dix premiers</h2>
+            {b.top.length ? (
+              <ol className="mt-2 grid gap-1">
+                {b.top.map((x) => (
+                  <li key={x.display} className={`grid min-h-11 grid-cols-[2.5rem_1fr_auto] items-center gap-2 rounded-xl px-2 ${x.display === sy.display ? "bg-secondary font-extrabold" : ""}`}>
+                    <span className="font-black tabular-nums text-muted-foreground">{x.rang}</span>
+                    <span className="truncate">{x.display}</span>
+                    <span className="font-black tabular-nums">{x.xp} XP</span>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="mt-1 text-sm text-muted-foreground">Aucun participant pour l'instant.</p>
+            )}
+            {b.moi && !b.top.some((x) => x.display === sy.display) && (
+              <p className="mt-3 border-t-2 border-line pt-3 text-sm">
+                Votre position : <span className="font-black">{b.moi.rang}</span>, avec {b.moi.xp} XP.
+              </p>
+            )}
+          </Panel>
+        </>
+      )}
+      <p className="text-sm text-muted-foreground">Ce classement sert l'émulation. Il n'est utilisé pour aucune évaluation.</p>
     </div>
   )
 }

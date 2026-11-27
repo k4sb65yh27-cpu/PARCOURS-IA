@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { BookOpen, Check, ClipboardCheck, Lock, Star, Trophy } from "lucide-react"
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
-import { PROFIL, UNITS, VOIES, profilOf, type Step, type Unit } from "@/lib/content"
+import { BYID, PROFIL, UNITS, VOIES, profilOf, type Step, type Unit } from "@/lib/content"
 import { CadreNote } from "@/components/CadreNote"
 import { NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, voieOpen, type NodeKind } from "@/lib/store"
 import { sfx } from "@/lib/sound"
@@ -29,6 +29,7 @@ export function PathView({ onGo }: { onGo: Go }) {
   let n = 0
   return (
     <div className="mx-auto w-full max-w-xl pb-10">
+      <Nouveautes />
       {UNITS.map((u, ui) => (
         <section key={u.name} aria-label={`Bloc ${u.name}`} className="mb-8">
           {u.steps[0].voie !== UNITS[ui - 1]?.steps[0].voie && <VoieIntro voie={u.steps[0].voie} />}
@@ -248,4 +249,40 @@ function NodeSheet({ step, kind, onGo }: { step: Step; kind: NodeKind; onGo: Go 
 function locked(s: Step) {
   if (!voieOpen(s.voie)) return `${VOIES.find((v) => v.id === s.voie)?.open ?? ""} Le mode libre du profil ouvre tout.`
   return "Validez l'étape précédente de cette voie pour ouvrir celle-ci, ou activez le mode libre dans le profil."
+}
+
+/* Avis unique pour qui avait fini le Socle avant l'ajout de S11 et S12 (27/11/2026) : ses niveaux
+   Formuler, Dialoguer, Comprendre et Organiser comptent désormais ces étapes. Mémorisé sur l'appareil. */
+const NOUV = "parcours-ia-nouveautes-2026-11-27"
+function Nouveautes() {
+  const [vu, setVu] = useState(() => {
+    try {
+      return !!localStorage.getItem(NOUV)
+    } catch {
+      return true
+    }
+  })
+  if (vu || !BYID.so10 || !validated(BYID.so10) || (BYID.so11 && validated(BYID.so11))) return null
+  return (
+    <section aria-label="Nouveautés" className="mx-4 mt-4 rounded-2xl border-2 border-line p-4">
+      <h2 className="font-black">Nouveautés</h2>
+      <p className="mt-1 text-sm leading-relaxed">
+        Deux étapes s'ajoutent à la fin du Socle : S11, obtenir le bon résultat en un minimum d'échanges, et S12, gérer ses tokens et ses limites d'usage. Vos acquis sont conservés. Les compétences Formuler, Dialoguer, Comprendre et Organiser comptent désormais ces étapes pour le niveau Autonomie. Le glossaire passe aussi à 69 termes.
+      </p>
+      <button
+        type="button"
+        className="tile mt-3 w-full justify-center"
+        onClick={() => {
+          try {
+            localStorage.setItem(NOUV, "1")
+          } catch {
+            /* stockage indisponible */
+          }
+          setVu(true)
+        }}
+      >
+        Compris
+      </button>
+    </section>
+  )
 }

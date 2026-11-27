@@ -7,11 +7,15 @@ import { getRoot, onCommit, replaceRoot, type Root } from "./store"
  */
 const KEY = "parcours-ia-sync"
 type Sess = { token?: string; email?: string; last?: number }
-type Status = { enabled: boolean; mode: "local" | "remote_user"; email: string; last: number; busy: boolean; error: string }
+type Status = {
+  enabled: boolean; mode: "local" | "remote_user"; email: string; last: number; busy: boolean; error: string
+  /** Classement activé par le serveur (config.php) et participation de l'utilisateur. */
+  board: boolean; optin: boolean; display: string
+}
 
 let url = ""
 let sess: Sess = {}
-let status: Status = { enabled: false, mode: "local", email: "", last: 0, busy: false, error: "" }
+let status: Status = { enabled: false, mode: "local", email: "", last: 0, busy: false, error: "", board: false, optin: false, display: "" }
 const subs = new Set<() => void>()
 const set = (p: Partial<Status>) => {
   status = { ...status, ...p }
@@ -121,12 +125,63 @@ export async function login(email: string, password: string, create: boolean) {
   saveSess()
   set({ email: r.email, error: "" })
   await syncNow()
+  await refreshMe()
 }
 export async function logout() {
   await api("logout", "POST").catch(() => {})
   sess = {}
   saveSess()
-  set({ email: "", last: 0 })
+  set({ email: "", last: 0, board: false, optin: false, display: "" })
+}
+
+/* ---------- Classement (version serveur) ---------- */
+export type Board = {
+  period: "week" | "month" | "all"
+  at: number
+  participants: number
+  collectif: { xp: number; objectif: number | null }
+  profils: { profil: string; n: number; xp: number }[]
+  top: { rang: number; display: string; xp: number }[]
+  moi: { rang: number; xp: number } | null
+}
+const BKEY = "parcours-ia-classement"
+async function refreshMe() {
+  try {
+    const me = await api("me")
+    set({ board: !!me.leaderboard, optin: !!me.board?.optin, display: me.board?.display || "" })
+    return me
+  } catch {
+    return null
+  }
+}
+/** Classement d'une période ; hors connexion, le dernier reçu (daté) est renvoyé avec stale = true. */
+export async function fetchBoard(p: Board["period"]): Promise<{ board: Board | null; stale: boolean }> {
+  try {
+    const b = (await api(`board&p=${p}`)) as Board
+    try {
+      localStorage.setItem(`${BKEY}-${p}`, JSON.stringify(b))
+    } catch {
+      /* stockage indisponible */
+    }
+    return { board: b, stale: false }
+  } catch {
+    try {
+      return { board: JSON.parse(localStorage.getItem(`${BKEY}-${p}`) || "null"), stale: true }
+    } catch {
+      return { board: null, stale: true }
+    }
+  }
+}
+export async function setOptin(optin: boolean, display: string) {
+  await syncNow()
+  const r = await api("board-optin", "PUT", { optin, display })
+  if (!r.optin)
+    try {
+      for (const p of ["week", "month", "all"]) localStorage.removeItem(`${BKEY}-${p}`)
+    } catch {
+      /* stockage indisponible */
+    }
+  set({ optin: !!r.optin, display: r.display || "" })
 }
 
 export async function initSync() {
@@ -143,13 +198,9 @@ export async function initSync() {
     sess = {}
   }
   set({ enabled: true, email: sess.email || "", last: sess.last || 0 })
-  /* Mode SSO : l'identité vient du serveur, pas de mot de passe dans l'application. */
-  try {
-    const me = await api("me")
-    if (me.mode === "remote_user") set({ mode: "remote_user", email: me.email })
-  } catch {
-    /* pas connecté en mode local : normal */
-  }
+  /* Mode SSO : l'identité vient du serveur. En mode local sans connexion, l'appel échoue : normal. */
+  const me = await refreshMe()
+  if (me?.mode === "remote_user") set({ mode: "remote_user", email: me.email })
   onCommit(later)
   addEventListener("online", () => syncNow())
   document.addEventListener("visibilitychange", () => document.visibilityState === "visible" && syncNow())

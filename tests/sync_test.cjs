@@ -9,6 +9,15 @@ const url = process.argv[2], out = process.argv[3];
     const p = await ctx.newPage();
     p.on('pageerror', e => errs.push(String(e)));
     await p.goto(url); await p.waitForTimeout(1200);
+    // Premier lancement : choix du métier puis de l'assistant (écran ajouté avec les profils, c0ebf10).
+    if (await p.getByRole('radiogroup', { name: 'Votre métier' }).count()) {
+      await p.getByRole('radio', { name: /Juriste/ }).click();
+      await p.getByRole('button', { name: 'Continuer', exact: true }).click();
+      await p.waitForTimeout(400);
+      await p.getByRole('radio', { name: 'Claude', exact: true }).click();
+      await p.getByRole('button', { name: /^(Commencer|Reprendre le parcours)$/ }).click();
+      await p.waitForTimeout(500);
+    }
     return p;
   };
   const profile = async (p) => { await p.getByRole('navigation').getByRole('button', { name: 'Profil' }).click(); await p.waitForTimeout(400); };

@@ -48,7 +48,7 @@ SOCLE = [
    ["Anonymiser ne suffit pas", "Remplacer un nom ne rend pas un document anonyme : le montant, la technologie, les dates et la structure suffisent souvent à reconnaître le dossier. Pour s'entraîner, on travaille sur des documents fictifs ou publics."],
    ["Le cadre de l'entreprise", "Chaque entreprise fixe ce qui est permis : quels outils, par quel accès, pour quelles données. Aujourd'hui à la SATT : les assistants s'utilisent dans le navigateur, sans logiciel de bureau, sans extension et sans outil de code. Ce cadre évolue ; l'application vous laisse le régler dans le profil."],
    ["Divulgation et nouveauté", "Saisir la description d'une invention non déposée dans un outil grand public peut être analysé comme une communication à un tiers, hors de tout engagement de confidentialité. Prudence absolue avant le dépôt."],
-   ["Former les équipes", "L'AI Act (règlement (UE) 2024/1689) impose aux entreprises qui utilisent des systèmes d'IA de prendre des mesures de maîtrise de l'IA pour leur personnel (article 4). [Non vérifié] Depuis la modification de 2026 (Digital Omnibus), il s'agit d'une obligation de moyens adaptée aux rôles, et non plus d'un niveau suffisant à garantir."]
+   ["Former les équipes", "L'AI Act (règlement (UE) 2024/1689) impose aux entreprises qui utilisent des systèmes d'IA de prendre des mesures de maîtrise de l'IA pour leur personnel (article 4). Selon la Commission européenne, l'omnibus IA entré en vigueur le 27 juillet 2026 simplifie cette exigence, la Commission et les États membres jouant un rôle accru dans sa promotion."]
   ],
   "res": [["cnil", "CNIL : recommandations sur l'intelligence artificielle."], ["aiact", "Texte de l'AI Act sur EUR-Lex."]],
   "ex": [
@@ -262,10 +262,11 @@ SOCLE = [
   "obj": ["Connaître les grandes familles de fonctions", "Utiliser instructions personnalisées et espaces de projet", "Savoir ce que fait la mémoire de l'assistant"],
   "notions": [
    ["Instructions personnalisées", "Un texte que l'assistant lit avant chaque conversation : votre métier, votre style, vos interdits. Il évite de répéter le contexte. Le nom varie selon l'outil (instructions personnalisées, préférences, profil)."],
-   ["Espaces de projet", "Un espace regroupe des conversations, des documents de référence et des instructions propres à un sujet (par exemple « Projets » chez Claude ou ChatGPT, « GPT » personnalisé chez ChatGPT). Utile pour un gabarit maison réutilisé souvent. [Non vérifié] Les noms et limites évoluent ; la veille hebdomadaire les met à jour."],
+   ["Espaces de projet", "Un espace regroupe des conversations, des documents de référence et des instructions propres à un sujet (par exemple « Projets » chez Claude ou ChatGPT, « GPT » personnalisé chez ChatGPT). Utile pour un gabarit maison réutilisé souvent. Les noms et limites évoluent ; la veille hebdomadaire les met à jour."],
    ["Mémoire", "Certains assistants retiennent des éléments d'une conversation à l'autre. Vérifiez ce qui est mémorisé, effacez ce qui ne doit pas l'être, et n'y laissez jamais d'information confidentielle."],
    ["Recherche approfondie", "Un mode qui enchaîne de nombreuses recherches web et rend un rapport sourcé en quelques minutes. Efficace pour un état des lieux ; les sources se vérifient comme toujours."],
-   ["Création de documents", "Les assistants produisent aussi des tableaux, des pages, des schémas, des images ou des fichiers (Artifacts chez Claude, Canvas chez ChatGPT). Le résultat se relit comme tout livrable."]
+   ["Création de documents", "Les assistants produisent aussi des tableaux, des pages, des schémas, des images ou des fichiers (Artifacts chez Claude, Canvas chez ChatGPT). Le résultat se relit comme tout livrable."],
+   ["Les skills", "Certains assistants acceptent des skills : un dossier d'instructions, parfois accompagné de scripts, qui apprend une méthode à l'assistant (par exemple les skills officiels d'Anthropic pour Word, Excel ou PowerPoint). À ce stade, les skills relèvent de l'utilisation sur projets personnels, et l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA. La voie Expert y revient (E5)."]
   ],
   "res": [["sk101", "Claude 101 (Anthropic Academy), en anglais."], ["oaiacad", "OpenAI Academy (en anglais)."]],
   "ex": [

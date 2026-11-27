@@ -1,6 +1,9 @@
 import json, sys
 sys.path.insert(0, '.')
 from socle import SOCLE
+from socle_plus import SOCLE_PLUS
+from glossaire import GLOSS, THEMES
+import revisions
 from metier import METIER
 from metier_profils import METIER_PROFILS
 from profils import PROFILS, OV, DEFI_OV
@@ -29,7 +32,7 @@ SRC.update({
 BLOC_S = {1: "Socle : prise en main", 5: "Socle : au quotidien", 9: "Socle : autonomie"}
 steps = []
 bloc = None
-for i, s in enumerate(SOCLE, 1):
+for i, s in enumerate(SOCLE + SOCLE_PLUS, 1):
   bloc = BLOC_S.get(i, bloc)
   steps.append({**s, "bloc": bloc, "voie": "socle"})
 # Voie Métier : une série de cinq étapes par profil. Le juriste garde me1 à me5 (progressions conservées).
@@ -92,6 +95,9 @@ for did, var in DEFI_OV.items():
     diff = {k: full[k] for k in full if full[k] != base.get(k)}
     if diff: pv[p] = diff
   if pv: d["pv"] = pv
+# Révisions du 27/11/2026 : skills, étiquettes retirées, défis et exercices facultatifs.
+revisions.apply(steps, DEFIS, NEWS, SRC, PIDS)
+assert {x['step'] for x in GLOSS if x['step']} <= {s['id'] for s in steps}
 used = {k for s in steps for k, _ in s['res']}
 missing = used - SRC.keys()
 assert not missing, missing
@@ -106,7 +112,7 @@ bias = [(s['id'], q['q'][:50]) for s in steps if NEUF(s) for q in quizzes(s)
         if all(len(q['o'][q['a']]) > len(o) for j, o in enumerate(q['o']) if j != q['a'])]
 biasx = [(s['id'], q['q'][:50]) for s in steps if not NEUF(s) for q in quizzes(s)
         if all(len(q['o'][q['a']]) > len(o) for j, o in enumerate(q['o']) if j != q['a'])]
-out = {"SRC": SRC, "STEPS": steps, "GLOSS": old['GLOSS'], "COMPS": COMPS, "LEVELS": LEVELS, "VOIES": VOIES,
+out = {"SRC": SRC, "STEPS": steps, "GLOSS": GLOSS, "GLOSS_THEMES": THEMES, "COMPS": COMPS, "LEVELS": LEVELS, "VOIES": VOIES,
        "CADRES": CADRES, "CADRE_NOTE": CADRE_NOTE, "DEFIS": DEFIS, "NEWS": NEWS, "PROFILS": PROFILS}
 json.dump(out, open(P, 'w'), ensure_ascii=False, indent=1)
 print(len(steps), 'étapes ; biais longueur (contenu neuf, variantes comprises) :', len(bias), 'sur', sum(1 for s in steps if NEUF(s) for _ in quizzes(s)))

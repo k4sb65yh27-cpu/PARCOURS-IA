@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
-import { BookA, Dumbbell, Flame, Map as MapIcon, Star, UserRound } from "lucide-react"
+import { BookA, Dumbbell, Flame, Map as MapIcon, Medal, Star, UserRound } from "lucide-react"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { PathView, type Go } from "@/components/PathView"
 import { Session, exitGuard, type Mode } from "@/components/Session"
 import { Onboarding } from "@/components/Onboarding"
 import { NotionsReader, StepGuide } from "@/components/StepGuide"
-import { GlossView, ProfileView, ReviewView } from "@/components/Views"
+import { BoardView, GlossView, ProfileView, ReviewView } from "@/components/Views"
+import { useSync } from "@/lib/sync"
 import { type Step } from "@/lib/content"
 import { dailyXp, dueIds, examIds, lessonIds, streakNow, today, useStore } from "@/lib/store"
 
-type Tab = "path" | "review" | "gloss" | "profile"
+type Tab = "path" | "review" | "gloss" | "board" | "profile"
 type Overlay =
   | { t: "session"; mode: Mode; stepId?: string; ids: string[]; label: string; key: number }
   | { t: "guide"; step: Step; tab?: string }
@@ -22,6 +23,8 @@ const TABS: { id: Tab; label: string; Icon: typeof MapIcon }[] = [
   { id: "path", label: "Parcours", Icon: MapIcon },
   { id: "review", label: "Réviser", Icon: Dumbbell },
   { id: "gloss", label: "Glossaire", Icon: BookA },
+  /* Onglet présent seulement si le serveur SATT a activé le classement (config.php). */
+  { id: "board", label: "Classement", Icon: Medal },
   { id: "profile", label: "Profil", Icon: UserRound },
 ]
 
@@ -92,7 +95,8 @@ export default function App() {
           >
             {tab === "path" && <PathView onGo={go} />}
             {tab === "review" && <ReviewView onStart={(ids, label) => start("review", ids, label)} />}
-            {tab === "gloss" && <GlossView />}
+            {tab === "gloss" && <GlossView onOpen={(step) => setOv({ t: "guide", step })} />}
+            {tab === "board" && <BoardView />}
             {tab === "profile" && <ProfileView />}
           </motion.div>
         </AnimatePresence>
@@ -165,11 +169,13 @@ function TopBar({ onTab }: { onTab: (t: Tab) => void }) {
 
 function BottomNav({ tab, setTab }: { tab: Tab; setTab: (t: Tab) => void }) {
   useStore()
+  const sync = useSync()
+  const tabs = TABS.filter((x) => x.id !== "board" || sync.board)
   const due = dueIds().length
   return (
     <nav aria-label="Navigation principale" className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-line bg-background safe-b">
-      <ul className="mx-auto grid max-w-xl grid-cols-4">
-        {TABS.map(({ id, label, Icon }) => {
+      <ul className={`mx-auto grid max-w-xl ${tabs.length > 4 ? "grid-cols-5" : "grid-cols-4"}`}>
+        {tabs.map(({ id, label, Icon }) => {
           const on = tab === id
           return (
             <li key={id}>

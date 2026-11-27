@@ -34,7 +34,8 @@ export type Item = Drill & { id: string; step: string; kind: "quiz" | "drill" | 
 const data = raw as unknown as {
   SRC: Record<string, { n: string; u: string }>
   STEPS: Step[]
-  GLOSS: [string, string][]
+  GLOSS: Gloss[]
+  GLOSS_THEMES: string[]
   COMPS: Comp[]
   LEVELS: string[]
   VOIES: { id: string; nom: string; desc: string; open: string }[]
@@ -44,6 +45,7 @@ const data = raw as unknown as {
   NEWS: News[]
   PROFILS: Profil[]
 }
+export type Gloss = { t: string; th: string; d: string; ex: string; step: string }
 export type Comp = { id: string; nom: string; desc: string }
 export type Defi = { id: string; comp: string; cadre: number; titre: string; consigne: string; critere: string; pv?: Record<string, Partial<Defi>> }
 export type News = { week: string; date: string; titre: string; items: { titre: string; texte: string; u: string; statut: string }[]; drills: Drill[] }
@@ -53,6 +55,7 @@ export const PROFILS = data.PROFILS
 export const PROFIL_IDS = PROFILS.map((p) => p.id)
 export const STEPS = data.STEPS
 export const GLOSS = data.GLOSS
+export const GLOSS_THEMES = data.GLOSS_THEMES
 export const { COMPS, LEVELS, VOIES, CADRES, CADRE_NOTE, DEFIS } = data
 /* Les semaines les plus récentes d'abord ; les anciennes restent jouables. */
 export const NEWS = [...data.NEWS].sort((a, b) => (a.week < b.week ? 1 : -1))

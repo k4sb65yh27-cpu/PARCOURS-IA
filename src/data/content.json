@@ -140,33 +140,9 @@
    "n": "Dépôt officiel anthropics/skills",
    "u": "https://github.com/anthropics/skills"
   },
-  "socratic": {
-   "n": "Jane Street, socratic-tutor (dépôt agent_skills)",
-   "u": "https://github.com/janestreet/agent_skills/tree/master/socratic-tutor"
-  },
   "modelblog": {
    "n": "Which Claude model should you build with",
    "u": "https://claude.dev/blog/which-claude-model-should-you-build-with/"
-  },
-  "archdiag": {
-   "n": "architecture-diagram-generator (Cocoon-AI, licence MIT)",
-   "u": "https://github.com/Cocoon-AI/architecture-diagram-generator"
-  },
-  "huashu": {
-   "n": "huashu-design (alchaincyf, licence MIT)",
-   "u": "https://github.com/alchaincyf/huashu-design"
-  },
-  "guizang": {
-   "n": "guizang-ppt-skill (op7418, licence AGPL-3.0)",
-   "u": "https://github.com/op7418/guizang-ppt-skill"
-  },
-  "hallmark": {
-   "n": "hallmark (Nutlope, licence MIT)",
-   "u": "https://github.com/Nutlope/hallmark"
-  },
-  "impeccable": {
-   "n": "impeccable (pbakaus, licence Apache-2.0)",
-   "u": "https://github.com/pbakaus/impeccable"
   },
   "elements": {
    "n": "Elements of AI (en français)",
@@ -215,6 +191,26 @@
   "hal": {
    "n": "HAL, archive ouverte",
    "u": "https://hal.science/"
+  },
+  "promptbp": {
+   "n": "Anthropic, Prompting best practices",
+   "u": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/be-clear-and-direct"
+  },
+  "usagebp": {
+   "n": "Anthropic, Usage limit best practices",
+   "u": "https://support.claude.com/en/articles/9797557-usage-limit-best-practices"
+  },
+  "limits": {
+   "n": "Anthropic, How usage and length limits work",
+   "u": "https://support.claude.com/en/articles/11647753-how-usage-and-length-limits-work"
+  },
+  "skillsuse": {
+   "n": "Anthropic, Use skills in Claude",
+   "u": "https://support.claude.com/en/articles/12512180-use-skills"
+  },
+  "oaiskills": {
+   "n": "OpenAI, Skills in ChatGPT",
+   "u": "https://help.openai.com/articles/20001066-skills-in-chatgpt"
   }
  },
  "STEPS": [
@@ -483,7 +479,7 @@
     ],
     [
      "Former les équipes",
-     "L'AI Act (règlement (UE) 2024/1689) impose aux entreprises qui utilisent des systèmes d'IA de prendre des mesures de maîtrise de l'IA pour leur personnel (article 4). [Non vérifié] Depuis la modification de 2026 (Digital Omnibus), il s'agit d'une obligation de moyens adaptée aux rôles, et non plus d'un niveau suffisant à garantir."
+     "L'AI Act (règlement (UE) 2024/1689) impose aux entreprises qui utilisent des systèmes d'IA de prendre des mesures de maîtrise de l'IA pour leur personnel (article 4). Selon la Commission européenne, l'omnibus IA entré en vigueur le 27 juillet 2026 simplifie cette exigence, la Commission et les États membres jouant un rôle accru dans sa promotion."
     ]
    ],
    "res": [
@@ -2200,7 +2196,7 @@
     ],
     [
      "Espaces de projet",
-     "Un espace regroupe des conversations, des documents de référence et des instructions propres à un sujet (par exemple « Projets » chez Claude ou ChatGPT, « GPT » personnalisé chez ChatGPT). Utile pour un gabarit maison réutilisé souvent. [Non vérifié] Les noms et limites évoluent ; la veille hebdomadaire les met à jour."
+     "Un espace regroupe des conversations, des documents de référence et des instructions propres à un sujet (par exemple « Projets » chez Claude ou ChatGPT, « GPT » personnalisé chez ChatGPT). Utile pour un gabarit maison réutilisé souvent. Les noms et limites évoluent ; la veille hebdomadaire les met à jour."
     ],
     [
      "Mémoire",
@@ -2213,6 +2209,10 @@
     [
      "Création de documents",
      "Les assistants produisent aussi des tableaux, des pages, des schémas, des images ou des fichiers (Artifacts chez Claude, Canvas chez ChatGPT). Le résultat se relit comme tout livrable."
+    ],
+    [
+     "Les skills",
+     "Certains assistants acceptent des skills : un dossier d'instructions, parfois accompagné de scripts, qui apprend une méthode à l'assistant (par exemple les skills officiels d'Anthropic pour Word, Excel ou PowerPoint). À ce stade, les skills relèvent de l'utilisation sur projets personnels, et l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA. La voie Expert y revient (E5)."
     ]
    ],
    "res": [
@@ -2517,6 +2517,368 @@
      "q": "Mesurer le temps gagné aide à choisir les bons usages.",
      "a": true,
      "e": "La mesure distingue l'impression du gain réel."
+    }
+   ],
+   "bloc": "Socle : autonomie",
+   "voie": "socle"
+  },
+  {
+   "id": "so11",
+   "cote": "S11",
+   "titre": "Obtenir le bon résultat en un minimum d'échanges",
+   "duree": "45 min",
+   "comp": [
+    "formuler",
+    "dialoguer"
+   ],
+   "cadre": 1,
+   "obj": [
+    "Écrire un brief complet dès le premier message",
+    "Montrer le résultat attendu plutôt que le décrire",
+    "Faire écrire ou améliorer une consigne par l'assistant"
+   ],
+   "notions": [
+    [
+     "Le brief complet",
+     "Chaque aller-retour coûte du temps et des tokens. Donnez dès le premier message l'objectif, le lecteur, la matière, le format, les limites et ce qui fera dire que le résultat est réussi. Les questions liées se regroupent dans le même message."
+    ],
+    [
+     "Montrer le résultat attendu",
+     "Un exemple de sortie ou un gabarit (« un tableau à trois colonnes : point, risque, action ») guide mieux qu'une longue description. Quand le format est délicat, trois à cinq exemples variés valent mieux qu'un seul."
+    ],
+    [
+     "Dire quoi faire, et pourquoi",
+     "« Écris trois paragraphes suivis » fonctionne mieux que « pas de liste ». Donnez aussi la raison d'une contrainte (« le texte sera lu à voix haute en comité ») : l'assistant en tire des choix que vous n'aviez pas écrits."
+    ],
+    [
+     "Faire écrire la consigne",
+     "Pour une tâche qui revient, demandez : « Écris la consigne que je devrais te donner pour obtenir [résultat] ; pose-moi d'abord tes questions. » Testez la consigne obtenue sur deux cas fictifs, puis rangez-la dans votre bibliothèque."
+    ],
+    [
+     "Choisir le mode et le modèle",
+     "Un raisonnement long (comparer des options, analyser un document dense) gagne au mode de réflexion approfondie et à un effort élevé. Une reformulation ou un tri simple se contente d'un modèle léger et d'un effort bas, plus rapides et moins gourmands."
+    ],
+    [
+     "Enchaîner sans recommencer",
+     "Appuyez-vous sur ce qui est déjà produit : « à partir du tableau ci-dessus, rédige le courriel ». Une tâche longue se découpe en étapes contrôlées plutôt qu'en une demande unique refaite trois fois."
+    ]
+   ],
+   "res": [
+    [
+     "promptbp",
+     "Anthropic : bonnes pratiques de rédaction des consignes (en anglais)."
+    ],
+    [
+     "usagebp",
+     "Anthropic : brief complet et demandes groupées pour ménager ses limites (en anglais)."
+    ]
+   ],
+   "ex": [
+    {
+     "t": "Reprenez une demande qui vous a coûté plusieurs allers-retours. Réécrivez-la en un seul message complet (objectif, lecteur, matière, format, limites, critère de réussite) et relancez-la dans une nouvelle conversation.",
+     "c": "Le carnet indique le nombre d'échanges avant et après, et ce qui manquait au premier message."
+    },
+    {
+     "t": "Demandez à l'assistant d'écrire la consigne d'une tâche récurrente de votre poste, après vous avoir posé ses questions. Testez-la sur deux cas fictifs.",
+     "c": "La consigne est rangée dans votre bibliothèque avec les deux résultats de test."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quel premier message réduit le plus les allers-retours ?",
+     "o": [
+      "« Fais-moi une note sur ce sujet, je préciserai après »",
+      "Objectif, lecteur, matière, format, limites et critère de réussite",
+      "Une question courte, puis une correction à chaque réponse reçue",
+      "Trois messages séparés : d'abord le contexte, ensuite la tâche, enfin le format"
+     ],
+     "a": 1,
+     "e": "Tout donner d'emblée évite les relances et les réponses à refaire."
+    },
+    {
+     "q": "Pour obtenir un tableau d'une forme précise, le plus efficace est de :",
+     "o": [
+      "Écrire « fais un beau tableau clair »",
+      "Montrer un exemple du tableau attendu",
+      "Demander plusieurs versions et choisir la meilleure parmi elles",
+      "Répéter la demande jusqu'à obtenir le bon format"
+     ],
+     "a": 1,
+     "e": "Un exemple de sortie montre ce qu'une description laisse dans le flou."
+    },
+    {
+     "q": "Laquelle de ces consignes dit quoi faire plutôt que quoi éviter ?",
+     "o": [
+      "Pas de liste à puces, pas de titres",
+      "Écris trois paragraphes suivis de cinq lignes",
+      "Évite tout ce qui ressemble à une présentation",
+      "Ne fais surtout pas un texte trop long ni trop court"
+     ],
+     "a": 1,
+     "e": "Une consigne positive décrit le résultat ; une interdiction laisse deviner ce qui est attendu."
+    },
+    {
+     "q": "Pourquoi donner la raison d'une contrainte ?",
+     "o": [
+      "Pour que l'assistant en tire des choix cohérents",
+      "Pour allonger la consigne et la rendre plus formelle",
+      "Parce que l'assistant refuse une consigne sans justification",
+      "Pour que la réponse cite la contrainte mot pour mot"
+     ],
+     "a": 0,
+     "e": "Connaître le but permet d'adapter ce que la consigne ne précise pas."
+    },
+    {
+     "q": "Vous voulez seulement reformuler un courriel court. Quel réglage convient ?",
+     "o": [
+      "Recherche approfondie et effort maximal",
+      "Modèle léger et effort bas",
+      "Mode de réflexion approfondie, pour plus de sûreté",
+      "Le modèle le plus puissant disponible, par principe"
+     ],
+     "a": 1,
+     "e": "Une tâche simple n'a pas besoin du raisonnement le plus long : elle va plus vite et consomme moins."
+    }
+   ],
+   "drills": [
+    {
+     "type": "tf",
+     "q": "Une consigne écrite par l'assistant n'a pas besoin d'être testée.",
+     "a": false,
+     "e": "Une consigne se teste sur deux ou trois cas fictifs avant d'entrer dans la bibliothèque."
+    },
+    {
+     "type": "cloze",
+     "q": "« À partir du tableau ___, rédige le courriel » évite de tout redemander.",
+     "o": [
+      "ci-dessus",
+      "vierge",
+      "suivant"
+     ],
+     "a": 0,
+     "e": "Réutiliser la sortie précédente fait gagner un échange."
+    },
+    {
+     "type": "match",
+     "q": "Associez chaque besoin au bon réflexe.",
+     "pairs": [
+      [
+       "Format précis",
+       "Montrer un exemple de sortie"
+      ],
+      [
+       "Tâche qui revient",
+       "Faire écrire la consigne"
+      ],
+      [
+       "Raisonnement long",
+       "Réflexion approfondie"
+      ],
+      [
+       "Reformulation simple",
+       "Modèle léger, effort bas"
+      ]
+     ],
+     "e": "Chaque réflexe évite une relance."
+    },
+    {
+     "type": "order",
+     "q": "Remettez dans l'ordre la préparation d'une consigne réutilisable.",
+     "items": [
+      "Décrire le résultat attendu",
+      "Faire poser ses questions à l'assistant",
+      "Obtenir la consigne proposée",
+      "La tester sur deux cas fictifs",
+      "La ranger dans la bibliothèque"
+     ],
+     "e": "On teste avant de ranger."
+    },
+    {
+     "type": "tf",
+     "q": "Quand le format est délicat, trois à cinq exemples variés guident mieux qu'un seul.",
+     "a": true,
+     "e": "Des exemples variés évitent que l'assistant imite un détail sans importance."
+    }
+   ],
+   "bloc": "Socle : autonomie",
+   "voie": "socle"
+  },
+  {
+   "id": "so12",
+   "cote": "S12",
+   "titre": "Gérer ses tokens et ses limites d'usage",
+   "duree": "40 min",
+   "comp": [
+    "comprendre",
+    "organiser"
+   ],
+   "cadre": 1,
+   "obj": [
+    "Savoir ce qui consomme des tokens",
+    "Distinguer limite d'usage et limite de longueur",
+    "Organiser son travail pour consommer moins"
+   ],
+   "notions": [
+    [
+     "Ce qui consomme",
+     "La consommation dépend de la longueur de vos messages et des pièces jointes, de la longueur de la conversation, des outils utilisés (recherche web, recherche approfondie), du modèle choisi, du niveau d'effort, des documents créés et des tâches en plusieurs étapes."
+    ],
+    [
+     "Deux limites différentes",
+     "La limite d'usage fixe ce que vous pouvez faire sur une période ; chez Claude, par exemple, une limite de session qui se renouvelle toutes les cinq heures et des plafonds hebdomadaires. La limite de longueur fixe la taille d'une conversation : c'est la fenêtre de contexte."
+    ],
+    [
+     "La conversation longue",
+     "À chaque message, l'assistant reprend l'échange entier : une conversation très longue coûte de plus en plus. Quand elle approche de la limite, certains assistants la résument automatiquement, ce qui consomme encore davantage. Repartez d'une conversation neuve avec un résumé de reprise de quelques lignes."
+    ],
+    [
+     "Projets et documents de référence",
+     "Un document placé une fois dans un projet est mis en cache : chez Claude, il compte moins à chaque réutilisation que s'il était joint de nouveau. Le cache expire après une période d'inactivité. Retirez les fichiers devenus inutiles et gardez des instructions de projet courtes."
+    ],
+    [
+     "Régler avant d'envoyer",
+     "Pour une tâche simple, coupez la réflexion approfondie, baissez l'effort et désactivez la recherche web et les connecteurs dont la conversation n'a pas besoin. Ces outils consomment beaucoup de tokens."
+    ],
+    [
+     "Suivre sa consommation",
+     "Les assistants affichent votre consommation dans leurs réglages (chez Claude : Paramètres, puis Usage ; le nom du menu varie selon l'outil). Un coup d'œil avant un travail long évite d'être coupé au milieu."
+    ]
+   ],
+   "res": [
+    [
+     "limits",
+     "Anthropic : fonctionnement des limites d'usage et de longueur (en anglais)."
+    ],
+    [
+     "usagebp",
+     "Anthropic : bonnes pratiques pour ménager ses limites (en anglais)."
+    ]
+   ],
+   "ex": [
+    {
+     "t": "Relevez votre consommation dans les réglages de l'assistant. Menez une même tâche fictive de deux façons : en continuant une longue conversation, puis dans une conversation neuve ouverte avec un résumé de reprise. Relevez la consommation après chaque essai.",
+     "c": "Le carnet indique les deux relevés et la façon de faire que vous retenez."
+    },
+    {
+     "t": "Rédigez votre résumé de reprise type : sujet, décisions prises, documents utiles, prochaine étape, format attendu. Cinq lignes au plus.",
+     "c": "Le résumé est rangé dans votre bibliothèque et a servi au moins une fois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Lequel de ces éléments pèse sur la consommation ?",
+     "o": [
+      "La couleur du thème de l'application",
+      "La longueur de la conversation en cours",
+      "L'heure à laquelle vous écrivez votre message",
+      "Le nombre de conversations déjà archivées"
+     ],
+     "a": 1,
+     "e": "Plus l'échange est long, plus chaque message coûte."
+    },
+    {
+     "q": "Quelle est la différence entre limite d'usage et limite de longueur ?",
+     "o": [
+      "Aucune : ce sont deux noms pour la même chose",
+      "La première porte sur une période, la seconde sur une conversation",
+      "La première concerne les fichiers, la seconde les images jointes",
+      "La première vaut pour les offres gratuites, la seconde pour les payantes"
+     ],
+     "a": 1,
+     "e": "La limite d'usage se renouvelle dans le temps ; la limite de longueur tient à la fenêtre de contexte."
+    },
+    {
+     "q": "Votre conversation est devenue très longue. Le bon réflexe :",
+     "o": [
+      "Ouvrir une conversation neuve avec un résumé de reprise",
+      "Recoller tous les documents pour lui rafraîchir la mémoire",
+      "Passer au modèle le plus puissant pour tenir la longueur",
+      "Continuer : une longue conversation améliore toujours les réponses"
+     ],
+     "a": 0,
+     "e": "Le résumé relu remplace l'historique et coûte bien moins cher."
+    },
+    {
+     "q": "Vous interrogez chaque semaine le même guide interne public. Le plus économe :",
+     "o": [
+      "Le joindre à chaque nouvelle conversation",
+      "Le placer une fois dans un projet",
+      "Le recopier par morceaux dans plusieurs messages",
+      "Le résumer de mémoire au début de chaque échange"
+     ],
+     "a": 1,
+     "e": "Le contenu d'un projet réutilisé compte moins que le même fichier joint à chaque fois."
+    },
+    {
+     "q": "Pour trier une liste de dix titres, que désactiver ?",
+     "o": [
+      "Rien : tous les outils sont gratuits",
+      "La réflexion approfondie et la recherche web",
+      "Le correcteur orthographique de votre navigateur web",
+      "L'historique des conversations précédentes"
+     ],
+     "a": 1,
+     "e": "Une tâche simple n'a besoin ni d'un long raisonnement ni d'une recherche."
+    }
+   ],
+   "drills": [
+    {
+     "type": "tf",
+     "q": "Une conversation très longue coûte de plus en plus à chaque message.",
+     "a": true,
+     "e": "L'assistant reprend l'échange entier à chaque réponse."
+    },
+    {
+     "type": "cloze",
+     "q": "Un document placé dans un projet est mis en ___ et compte moins quand on le réutilise.",
+     "o": [
+      "cache",
+      "quarantaine",
+      "brouillon"
+     ],
+     "a": 0,
+     "e": "Chez Claude, le contenu d'un projet réutilisé compte moins dans les limites."
+    },
+    {
+     "type": "match",
+     "q": "Associez chaque situation au bon réglage.",
+     "pairs": [
+      [
+       "Tri simple",
+       "Effort bas"
+      ],
+      [
+       "Analyse d'un document dense",
+       "Réflexion approfondie"
+      ],
+      [
+       "Pas besoin d'actualité",
+       "Recherche web coupée"
+      ],
+      [
+       "Guide consulté chaque semaine",
+       "Document dans un projet"
+      ]
+     ],
+     "e": "Régler avant d'envoyer évite de consommer pour rien."
+    },
+    {
+     "type": "order",
+     "q": "Remettez dans l'ordre une reprise économe.",
+     "items": [
+      "Demander un résumé de la conversation",
+      "Le relire et le corriger",
+      "Ouvrir une conversation neuve",
+      "Coller le résumé de reprise",
+      "Poursuivre le travail"
+     ],
+     "e": "Le résumé relu remplace tout l'historique."
+    },
+    {
+     "type": "tf",
+     "q": "Désactiver les connecteurs inutiles aide à ménager ses limites.",
+     "a": true,
+     "e": "Les outils et les connecteurs consomment beaucoup de tokens."
     }
    ],
    "bloc": "Socle : autonomie",
@@ -3287,6 +3649,11 @@
     {
      "t": "Rédigez une fiche d'une page pour partager cette méthode avec un collègue.",
      "c": "Un collègue peut l'appliquer sans explication orale."
+    },
+    {
+     "t": "Facultatif : transformez la consigne de votre tâche la plus fréquente (par exemple la fiche d'identité d'un accord de confidentialité fictif) en gabarit de projet : instructions permanentes, format de sortie, deux exemples fictifs.",
+     "c": "Le gabarit produit le même format sur deux cas fictifs.",
+     "opt": true
     }
    ],
    "quiz": [
@@ -4174,6 +4541,11 @@
     {
      "t": "Rédigez une fiche d'une page pour partager cette méthode avec les autres chargés de transfert.",
      "c": "Un collègue du même métier peut l'appliquer sans explication orale."
+    },
+    {
+     "t": "Facultatif : transformez la consigne de votre tâche la plus fréquente (par exemple le premier courriel de prospection vers un industriel fictif) en gabarit de projet : instructions permanentes, format de sortie, deux exemples fictifs.",
+     "c": "Le gabarit produit le même format sur deux cas fictifs.",
+     "opt": true
     }
    ],
    "quiz": [
@@ -5057,6 +5429,11 @@
     {
      "t": "Rédigez une fiche d'une page pour partager cette méthode avec les autres ingénieurs brevet.",
      "c": "Un collègue du même métier peut l'appliquer sans explication orale."
+    },
+    {
+     "t": "Facultatif : transformez la consigne de votre tâche la plus fréquente (par exemple la note de synthèse d'un document publié) en gabarit de projet : instructions permanentes, format de sortie, deux exemples fictifs.",
+     "c": "Le gabarit produit le même format sur deux cas fictifs.",
+     "opt": true
     }
    ],
    "quiz": [
@@ -5944,6 +6321,11 @@
     {
      "t": "Rédigez une fiche d'une page pour partager cette méthode avec un collègue.",
      "c": "Un collègue du même métier peut l'appliquer sans explication orale."
+    },
+    {
+     "t": "Facultatif : transformez la consigne de votre tâche la plus fréquente (par exemple le compte rendu d'une réunion fictive) en gabarit de projet : instructions permanentes, format de sortie, deux exemples fictifs.",
+     "c": "Le gabarit produit le même format sur deux cas fictifs.",
+     "opt": true
     }
    ],
    "quiz": [
@@ -6363,7 +6745,7 @@
      "c": "Trois étiquettes affichées, une par courriel."
     },
     {
-     "t": "Lancer trois fois la même consigne rédactionnelle à température 0, puis à température 1. Comparer. [Non vérifié] Vérifier d'abord dans la documentation que le modèle choisi accepte ce paramètre ; sinon, utiliser Haiku 5.5.",
+     "t": "Lancer trois fois la même consigne rédactionnelle à température 0, puis à température 1, et comparer. Plusieurs modèles récents refusent ce réglage (documentation de l'API Claude) : vérifier d'abord que le modèle choisi l'accepte.",
      "c": "Différences notées dans le carnet."
     },
     {
@@ -6561,7 +6943,7 @@
     ],
     [
      "Découpage par unité de sens",
-     "[Inférence] Pour un recueil de procédures ou de modèles, découper par section plutôt que par page, et attacher des métadonnées (type, version, statut) améliore la pertinence des extraits."
+     "Pour un recueil de procédures ou de modèles, découpez par section plutôt que par page et attachez des métadonnées (type, version, statut) : chaque extrait retrouvé arrive complet et situé."
     ]
    ],
    "res": [
@@ -6726,10 +7108,6 @@
    "pv": {
     "juriste": {
      "obj.2": "Concevoir un RAG sur un corpus juridique",
-     "notions.3": [
-      "Découpage juridique",
-      "[Inférence] Pour un clausier, découper par clause plutôt que par page, et attacher des métadonnées (type de clause, version, statut) améliore la pertinence des extraits."
-     ],
      "ex.2": {
       "t": "Concevoir sur papier un RAG du clausier C.U.R.I.E. : unité de découpage, métadonnées, cinq questions tests et la clause attendue pour chacune.",
       "c": "Les cinq questions ont chacune une clause cible identifiée."
@@ -6755,7 +7133,11 @@
       ],
       "a": 0,
       "e": "Un découpage juridique respecte les unités de sens."
-     }
+     },
+     "notions.3": [
+      "Découpage juridique",
+      "Pour un clausier, découpez par clause plutôt que par page et attachez des métadonnées (type de clause, version, statut) : chaque extrait retrouvé arrive complet et situé."
+     ]
     }
    }
   },
@@ -6782,7 +7164,7 @@
     ],
     [
      "Workflow ou agent",
-     "[Inférence] Quand les étapes sont connues d'avance (extraire, comparer, rédiger), un enchaînement fixe est plus prévisible et moins coûteux qu'un agent autonome."
+     "Quand les étapes sont connues d'avance (extraire, comparer, rédiger), un enchaînement fixe se contrôle plus facilement qu'un agent autonome et consomme moins d'appels."
     ],
     [
      "MCP",
@@ -7016,8 +7398,20 @@
      "Avant de changer de modèle, essayer de monter l'effort. L'ordre conseillé : ajouter une auto-vérification, monter l'effort d'un cran, puis passer au modèle supérieur."
     ],
     [
-     "Exemple : le tuteur socratique",
-     "Le dépôt janestreet/agent_skills contient un skill de tuteur socratique : diagnostic initial, carte de compétences notée de 0 à 5, une question à la fois, révision espacée, évaluation finale. Licence MIT. C'est un exemple concret de skill pédagogique."
+     "Exemple : les skills officiels d'Anthropic",
+     "Anthropic publie des skills prêts à l'emploi, par exemple pour créer des documents Word, des classeurs Excel ou des présentations PowerPoint. Ils servent ici de modèles de structure : un nom, une description qui dit quand s'en servir, des instructions, parfois des scripts. À ce stade, les skills relèvent de l'utilisation sur projets personnels ; l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA."
+    ],
+    [
+     "Activer et déclencher",
+     "Sur claude.ai, les skills se gèrent dans Customize > Skills : on active un skill fourni ou on téléverse le sien sous forme de dossier compressé. L'assistant charge un skill quand la demande correspond à sa description ; on peut aussi le choisir en tapant « / ». ChatGPT propose des skills sur ses offres Business, Enterprise et Edu, selon le même standard ouvert."
+    ],
+    [
+     "Skill, instructions ou projet",
+     "Les instructions personnalisées valent pour toutes les conversations ; un projet regroupe les documents et les consignes d'un sujet ; un skill décrit une méthode réutilisable (étapes, format de sortie, contrôles) que l'assistant applique quand la tâche s'y prête."
+    ],
+    [
+     "Risques et règle d'usage",
+     "Un skill peut contenir des scripts et des instructions que l'assistant suit. Anthropic cite deux risques principaux : l'injection de prompt et la fuite de données. À ce stade, les skills relèvent de l'utilisation sur projets personnels ; l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA."
     ]
    ],
    "res": [
@@ -7038,8 +7432,8 @@
      "Parcourir le dépôt officiel et lire deux skills."
     ],
     [
-     "socratic",
-     "Lire le SKILL.md du tuteur socratique."
+     "skillsuse",
+     "Anthropic : activer, déclencher et partager des skills (en anglais)."
     ],
     [
      "modelblog",
@@ -7048,7 +7442,7 @@
    ],
    "ex": [
     {
-     "t": "Rédiger un SKILL.md pour une tâche récurrente de votre poste (par exemple la fiche de synthèse d'un document type), testé sur des données fictives.",
+     "t": "Sur un projet personnel, rédiger un SKILL.md pour une tâche fictive répétitive (par exemple la fiche de synthèse d'un document public), sans l'installer sur un compte professionnel.",
      "c": "Le fichier contient un nom, une description qui dit quand le déclencher, des étapes, un format de sortie et une règle de citation. Un test sur un document fictif est consigné dans le carnet."
     },
     {
@@ -7210,10 +7604,6 @@
    "voie": "expert",
    "pv": {
     "juriste": {
-     "ex.0": {
-      "t": "Rédiger un SKILL.md pour une tâche récurrente de juriste PI (par exemple la fiche d'identité d'un NDA), testé sur des données fictives.",
-      "c": "Le fichier contient un nom, une description qui dit quand le déclencher, des étapes, un format de sortie et une règle de citation. Un test sur un NDA fictif est consigné dans le carnet."
-     },
      "ex.2": {
       "t": "Concevoir la répartition des modèles d'une chaîne de pré-revue de NDA : extraction, analyse, relecture.",
       "c": "Un modèle est nommé par étape, avec une justification tirée de l'article et une règle d'escalade (auto-vérification, effort, modèle supérieur)."
@@ -7272,7 +7662,7 @@
     ],
     [
      "Pourquoi ce n'est pas au poste",
-     "Ces outils accèdent aux fichiers, à la messagerie ou au réseau de l'entreprise. Leur déploiement suppose une décision sur la sécurité, la confidentialité et les contrats avec l'éditeur. [Inférence] C'est la raison du cadre actuel de la SATT, limité au navigateur. Sur un ordinateur personnel, avec un compte personnel et des fichiers fictifs, ils s'explorent sans risque pour l'entreprise."
+     "Ces outils accèdent aux fichiers, à la messagerie ou au réseau de l'entreprise. Leur déploiement suppose une décision sur la sécurité, la confidentialité et les contrats avec l'éditeur ; le cadre actuel de la SATT reste donc limité au navigateur. Sur un ordinateur personnel, avec un compte personnel et des fichiers fictifs, ils s'explorent sans risque pour l'entreprise."
     ]
    ],
    "res": [
@@ -7445,7 +7835,7 @@
     ],
     [
      "Coût et complexité",
-     "[Inférence] Plusieurs agents multiplient les appels, donc les tokens, et rendent les erreurs plus difficiles à localiser. Ils se justifient quand des sous-tâches sont indépendantes ou demandent des expertises distinctes."
+     "Plusieurs agents multiplient les appels, donc les tokens, et rendent les erreurs plus difficiles à localiser. Ils se justifient quand des sous-tâches sont indépendantes ou demandent des expertises distinctes."
     ],
     [
      "Exemple à étudier",
@@ -7665,7 +8055,7 @@
     ],
     [
      "Tokenisation BPE",
-     "Le découpage en tokens est appris en fusionnant les paires de caractères les plus fréquentes. [Inférence] D'où certaines faiblesses : le modèle voit des tokens et non des lettres, ce qui gêne le comptage de lettres."
+     "Le découpage en tokens est appris en fusionnant les paires de caractères les plus fréquentes. Le modèle voit donc des tokens et non des lettres, ce qui explique en partie ses erreurs quand il compte des lettres."
     ],
     [
      "Attention",
@@ -8128,12 +8518,12 @@
    ],
    "notions": [
     [
-     "Skills spécialisés",
-     "Des skills spécialisés produisent des schémas, des présentations et des pages. Le dépôt officiel anthropics/skills en réunit plusieurs ; d'autres dépôts, listés ci-dessous, ont été vérifiés pour leur existence et leur licence."
+     "Skills officiels",
+     "Anthropic fournit des skills pour créer des documents Word, des classeurs Excel et des présentations PowerPoint. Au poste, les exercices de cet atelier se font avec la création de documents intégrée à l'assistant ; les skills officiels s'essaient sur un projet personnel."
     ],
     [
-     "Licences",
-     "Architecture-diagram-generator, huashu-design et hallmark sont sous licence MIT ; impeccable sous Apache-2.0 ; guizang-ppt-skill sous AGPL-3.0, licence plus contraignante à lire avant tout usage hors exercice."
+     "Règle d'usage",
+     "À ce stade, les skills relèvent de l'utilisation sur projets personnels ; l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA. Les skills publiés par des tiers ne servent pas d'exemple dans ce parcours."
     ],
     [
      "Données",
@@ -8143,27 +8533,11 @@
    "res": [
     [
      "anthskills",
-     "Dépôt officiel anthropics/skills : parcourir les skills de design disponibles."
+     "Dépôt officiel anthropics/skills : lire la structure d'un skill de document."
     ],
     [
-     "archdiag",
-     "Schémas HTML et SVG autonomes, skill Claude."
-    ],
-    [
-     "huashu",
-     "Pages et prototypes HTML."
-    ],
-    [
-     "guizang",
-     "Présentations HTML ; licence AGPL-3.0 à lire."
-    ],
-    [
-     "hallmark",
-     "Règles contre le rendu « fait par une IA »."
-    ],
-    [
-     "impeccable",
-     "Commandes /critique et /polish."
+     "skillsuse",
+     "Anthropic : activer et utiliser des skills (en anglais)."
     ]
    ],
    "ex": [
@@ -8180,26 +8554,26 @@
    ],
    "quiz": [
     {
-     "q": "Que produisent les skills spécialisés de cet atelier ?",
+     "q": "Que permettent les skills officiels présentés dans cet atelier ?",
      "o": [
-      "Des documents prêts à signer, relus par un expert",
-      "Des clés API pour accéder à de nouveaux modèles",
-      "Des schémas, présentations et pages",
-      "Des modèles de langage entraînés sur vos données"
+      "Signer des documents à la place de leur auteur",
+      "Accéder à de nouveaux modèles sans compte",
+      "Créer des documents Word, Excel et PowerPoint",
+      "Entraîner un modèle de langage sur vos données"
      ],
      "a": 2,
-     "e": "Ils produisent des supports visuels à partir d'instructions."
+     "e": "Anthropic les fournit pour produire des documents bureautiques."
     },
     {
-     "q": "Quelle licence porte guizang-ppt-skill ?",
+     "q": "Vous voulez ajouter un skill. Que faire d'abord ?",
      "o": [
-      "MIT, comme la plupart des autres dépôts listés",
-      "Apache-2.0, comme impeccable",
-      "Aucune licence : le dépôt est sans conditions",
-      "AGPL-3.0"
+      "L'installer puis prévenir si quelqu'un pose la question",
+      "Demander l'aval du RSI ou du référent IA",
+      "Choisir le skill le plus téléchargé du moment",
+      "Le tester sur un vrai dossier pour juger de son intérêt"
      ],
-     "a": 3,
-     "e": "Elle est signalée AGPL-3.0, à lire avant tout usage."
+     "a": 1,
+     "e": "À ce stade, les skills relèvent de l'utilisation sur projets personnels ; l'ajout d'un skill nécessite de demander l'aval du RSI ou du référent IA."
     },
     {
      "q": "Sur quelles données s'exercer ?",
@@ -8217,7 +8591,7 @@
      "o": [
       "anthropics/courses, dépôt de cours archivé",
       "anthropics/skills",
-      "janestreet/agent_skills, dépôt d'un tiers",
+      "Un dépôt personnel repéré sur un forum",
       "microsoft/autogen, dépôt d'un framework"
      ],
      "a": 1,
@@ -8244,26 +8618,22 @@
     },
     {
      "type": "match",
-     "q": "Associez chaque dépôt à sa fonction.",
+     "q": "Associez chaque skill officiel à ce qu'il produit.",
      "pairs": [
       [
-       "architecture-diagram-generator",
-       "Schémas HTML et SVG"
+       "Skill Word",
+       "Document de traitement de texte"
       ],
       [
-       "guizang-ppt-skill",
-       "Présentations HTML"
+       "Skill Excel",
+       "Classeur avec formules"
       ],
       [
-       "huashu-design",
-       "Pages et prototypes HTML"
-      ],
-      [
-       "impeccable",
-       "Commandes /critique et /polish"
+       "Skill PowerPoint",
+       "Présentation"
       ]
      ],
-     "e": "Fonctions décrites par les dépôts."
+     "e": "Ces trois skills sont fournis par Anthropic."
     },
     {
      "type": "tf",
@@ -8279,17 +8649,6 @@
    "voie": "bonus",
    "pv": {
     "juriste": {
-     "quiz.0": {
-      "q": "Que produisent les skills spécialisés de cet atelier ?",
-      "o": [
-       "Des contrats prêts à signer, relus par un juriste",
-       "Des clés API pour accéder à de nouveaux modèles",
-       "Des schémas, présentations et pages",
-       "Des modèles de langage entraînés sur vos données"
-      ],
-      "a": 2,
-      "e": "Ils produisent des supports visuels à partir d'instructions."
-     },
      "drills.1": {
       "type": "cloze",
       "q": "Une page de synthèse produite par un skill se ___ avant diffusion.",
@@ -8306,98 +8665,498 @@
   }
  ],
  "GLOSS": [
-  [
-   "Token",
-   "Unité de texte traitée par le modèle."
-  ],
-  [
-   "Fenêtre de contexte",
-   "Volume maximal de texte pris en compte en une fois."
-  ],
-  [
-   "Température",
-   "Réglage du caractère aléatoire des réponses."
-  ],
-  [
-   "Prompt système",
-   "Instructions de cadre valables pour toute la conversation."
-  ],
-  [
-   "Few-shot",
-   "Consigne accompagnée de quelques exemples."
-  ],
-  [
-   "Chaîne de pensée",
-   "Raisonnement explicité avant la conclusion."
-  ],
-  [
-   "Préremplissage",
-   "Début de réponse imposé dans l'API ; [Non vérifié] refusé par les modèles Claude récents."
-  ],
-  [
-   "Hallucination",
-   "Réponse plausible mais fausse."
-  ],
-  [
-   "Évaluation",
-   "Jeu de cas, réponses attendues et méthode de notation."
-  ],
-  [
-   "Tool use",
-   "Le modèle demande l'exécution d'un outil décrit ; votre code l'exécute."
-  ],
-  [
-   "RAG",
-   "Recherche d'extraits pertinents dans vos documents, injectés dans le prompt."
-  ],
-  [
-   "Embedding",
-   "Représentation numérique du sens d'un texte."
-  ],
-  [
-   "Agent",
-   "Modèle, outils et boucle de décision."
-  ],
-  [
-   "ReAct",
-   "Cycle Pensée, Action, Observation."
-  ],
-  [
-   "MCP",
-   "Protocole ouvert de connexion d'outils et de données aux applications d'IA."
-  ],
-  [
-   "Fine-tuning",
-   "Spécialisation d'un modèle pré-entraîné sur des données ciblées."
-  ],
-  [
-   "Rétropropagation",
-   "Calcul des gradients de la sortie vers l'entrée."
-  ],
-  [
-   "Injection de prompt",
-   "Instruction cachée dans un document pour détourner le modèle."
-  ],
-  [
-   "Skill",
-   "Dossier avec un fichier SKILL.md : instructions réutilisables chargées quand sa description correspond à la tâche."
-  ],
-  [
-   "Sous-agent",
-   "Agent qui travaille dans son propre contexte et renvoie un résumé."
-  ],
-  [
-   "Effort",
-   "Réglage de l'ampleur du raisonnement du modèle ; on le monte avant de changer de modèle."
-  ],
-  [
-   "Révision espacée",
-   "Retour sur une notion à intervalles croissants pour la fixer."
-  ],
-  [
-   "Méthode socratique",
-   "Apprentissage par questions, une à la fois, plutôt que par exposé."
-  ]
+  {
+   "t": "Modèle de langage",
+   "th": "Fonctionnement",
+   "d": "Programme entraîné sur de très grandes quantités de texte, qui produit une réponse en prédisant la suite la plus probable. C'est le moteur de Claude, ChatGPT, Copilot, Le Chat ou Gemini.",
+   "ex": "Quand vous posez une question, le modèle écrit sa réponse morceau par morceau, sans consulter de base de faits.",
+   "step": "so1"
+  },
+  {
+   "t": "Token",
+   "th": "Fonctionnement",
+   "d": "Morceau de texte traité par le modèle : un mot court, un fragment de mot ou un signe. Les limites de taille et de consommation se comptent en tokens.",
+   "ex": "Un long mot rare est découpé en plusieurs tokens ; un mot courant n'en fait souvent qu'un.",
+   "step": "so1"
+  },
+  {
+   "t": "Fenêtre de contexte",
+   "th": "Fonctionnement",
+   "d": "Quantité de texte que le modèle prend en compte en une fois : consignes, pièces jointes, historique et réponse. Au-delà, le début de l'échange n'est plus pris en compte.",
+   "ex": "Dans une conversation très longue, une consigne donnée au début peut être perdue de vue.",
+   "step": "so1"
+  },
+  {
+   "t": "Date de coupure",
+   "th": "Fonctionnement",
+   "d": "Date à laquelle s'arrêtent les données d'entraînement du modèle. Ce qui est postérieur lui est inconnu, sauf recherche web ou document fourni.",
+   "ex": "Sans recherche web, l'assistant ignore un décret paru le mois dernier.",
+   "step": "so1"
+  },
+  {
+   "t": "Hallucination",
+   "th": "Fonctionnement",
+   "d": "Réponse plausible, assurée et fausse. Le ton assuré ne prouve rien : toute référence se vérifie à la source.",
+   "ex": "Un numéro d'arrêt précis mais inexistant, cité avec aplomb.",
+   "step": "so1"
+  },
+  {
+   "t": "Température",
+   "th": "Fonctionnement",
+   "d": "Réglage, accessible par l'API, du caractère plus ou moins aléatoire des réponses. Plusieurs modèles récents n'acceptent plus de le modifier.",
+   "ex": "À température basse, deux essais de la même consigne donnent des réponses proches.",
+   "step": "s7"
+  },
+  {
+   "t": "Mode réflexion",
+   "th": "Fonctionnement",
+   "d": "Mode dans lequel l'assistant raisonne plus longuement avant de répondre. Utile pour une analyse ou une comparaison ; inutile et coûteux pour une tâche simple.",
+   "ex": "Activer la réflexion pour comparer trois options selon une grille, la couper pour reformuler un titre.",
+   "step": "so11"
+  },
+  {
+   "t": "Effort",
+   "th": "Fonctionnement",
+   "d": "Réglage de l'ampleur du travail du modèle sur une demande. Un effort élevé consomme davantage ; on le monte avant de changer de modèle.",
+   "ex": "Effort bas pour trier une liste, effort élevé pour analyser un document dense.",
+   "step": "so11"
+  },
+  {
+   "t": "Choix du modèle",
+   "th": "Fonctionnement",
+   "d": "Les assistants proposent plusieurs modèles, du plus léger au plus puissant. Le plus puissant n'est pas toujours le bon choix : il est plus lent et consomme plus.",
+   "ex": "Un modèle léger suffit pour reformuler un courriel court.",
+   "step": "so11"
+  },
+  {
+   "t": "Prompt",
+   "th": "Formuler",
+   "d": "La demande adressée à l'assistant, appelée aussi consigne. Sa qualité détermine largement celle de la réponse.",
+   "ex": "« Résume ce rapport fictif pour le conseil d'administration en huit lignes. »",
+   "step": "so3"
+  },
+  {
+   "t": "Brief",
+   "th": "Formuler",
+   "d": "Demande complète donnée en un seul message : objectif, lecteur, matière, format, limites et critère de réussite. Il évite les allers-retours.",
+   "ex": "Un brief de six lignes remplace quatre relances successives.",
+   "step": "so11"
+  },
+  {
+   "t": "Rôle",
+   "th": "Formuler",
+   "d": "Indication de la position à adopter (« agis comme assistant de direction »). Le rôle oriente le vocabulaire et l'angle ; il ne remplace pas le contexte.",
+   "ex": "Un rôle d'éditeur exigeant pour faire relire une note fictive.",
+   "step": "so3"
+  },
+  {
+   "t": "Contexte",
+   "th": "Formuler",
+   "d": "Ce que l'assistant doit savoir pour bien répondre : qui vous êtes, pourquoi vous demandez, pour qui. Sans contexte, il comble les vides par des généralités.",
+   "ex": "« Je prépare une réunion avec des chercheurs non spécialistes. »",
+   "step": "so3"
+  },
+  {
+   "t": "Balises",
+   "th": "Formuler",
+   "d": "Repères qui séparent la consigne du texte à traiter, par exemple <texte>…</texte>. L'assistant distingue ce qu'il doit faire de ce qu'il doit lire.",
+   "ex": "Placer le courriel fictif à analyser entre <courriel> et </courriel>.",
+   "step": "so3"
+  },
+  {
+   "t": "Gabarit",
+   "th": "Formuler",
+   "d": "Consigne réutilisable avec des zones à compléter. Elle se range dans la bibliothèque avec son usage et un exemple de résultat.",
+   "ex": "« Résume [DOCUMENT] pour [LECTEUR] en [N] lignes. »",
+   "step": "so10"
+  },
+  {
+   "t": "Variable",
+   "th": "Formuler",
+   "d": "Zone à compléter dans un gabarit, notée entre crochets. Elle rend la consigne réutilisable d'un cas à l'autre.",
+   "ex": "[LECTEUR] devient « comité de direction » ou « partenaire industriel ».",
+   "step": "so10"
+  },
+  {
+   "t": "Zero-shot",
+   "th": "Formuler",
+   "d": "Demande faite sans aucun exemple. Elle suffit pour les tâches courantes et bien décrites.",
+   "ex": "« Traduis ce paragraphe en anglais. »",
+   "step": "so8"
+  },
+  {
+   "t": "One-shot",
+   "th": "Formuler",
+   "d": "Demande accompagnée d'un seul exemple du résultat attendu. On commence par là avant d'ajouter d'autres exemples.",
+   "ex": "Un exemple de fiche remplie, puis la demande d'une fiche sur un autre cas fictif.",
+   "step": "so11"
+  },
+  {
+   "t": "Few-shot",
+   "th": "Formuler",
+   "d": "Demande accompagnée de quelques exemples, souvent trois à cinq, variés. Les exemples guident le format et le ton mieux qu'une explication.",
+   "ex": "Trois courriels fictifs de ton différent, puis la demande d'un quatrième.",
+   "step": "so8"
+  },
+  {
+   "t": "Exemple de sortie",
+   "th": "Formuler",
+   "d": "Modèle du résultat attendu, donné dans la demande. Il montre ce qu'une description laisse dans le flou.",
+   "ex": "« Réponds sous cette forme : point, risque, action. »",
+   "step": "so11"
+  },
+  {
+   "t": "Chaîne de pensée",
+   "th": "Formuler",
+   "d": "Raisonnement exposé avant la conclusion. Écrit avant, il sert la réponse ; écrit après, il la justifie seulement.",
+   "ex": "« Expose d'abord les critères, puis donne ta recommandation. »",
+   "step": "so8"
+  },
+  {
+   "t": "Chaînage de consignes",
+   "th": "Formuler",
+   "d": "Découpage d'une tâche longue en étapes successives, chacune contrôlée avant la suivante. La sortie d'une étape sert d'entrée à la suivante.",
+   "ex": "Extraire les dates, puis les classer, puis rédiger la note.",
+   "step": "so11"
+  },
+  {
+   "t": "Métaprompt",
+   "th": "Formuler",
+   "d": "Demande adressée à l'assistant pour qu'il écrive ou améliore une consigne. La consigne obtenue se teste avant d'être adoptée.",
+   "ex": "« Écris la consigne que je devrais te donner pour obtenir ce tableau ; pose-moi d'abord tes questions. »",
+   "step": "so11"
+  },
+  {
+   "t": "Itération",
+   "th": "Formuler",
+   "d": "Amélioration d'une réponse par corrections ciblées plutôt que par une nouvelle demande vague. La première réponse est un brouillon.",
+   "ex": "« Trop long : garde trois paragraphes et un ton plus direct. »",
+   "step": "so4"
+  },
+  {
+   "t": "Critère de réussite",
+   "th": "Formuler",
+   "d": "Ce qui permet de dire que le résultat est bon, écrit dans la demande. Il oriente la réponse et facilite la relecture.",
+   "ex": "« La note est réussie si un lecteur pressé comprend la décision attendue en deux lignes. »",
+   "step": "so11"
+  },
+  {
+   "t": "Instruction positive",
+   "th": "Formuler",
+   "d": "Consigne qui dit quoi faire plutôt que quoi éviter. Elle décrit le résultat au lieu de le laisser deviner.",
+   "ex": "« Écris trois paragraphes suivis » au lieu de « pas de liste ».",
+   "step": "so11"
+  },
+  {
+   "t": "Limite d'usage",
+   "th": "Tokens et limites",
+   "d": "Quantité d'utilisation permise sur une période. Elle dépend de l'offre, de la longueur des échanges, des outils, du modèle et de l'effort.",
+   "ex": "Une fois la limite atteinte, il faut attendre son renouvellement ou changer d'offre.",
+   "step": "so12"
+  },
+  {
+   "t": "Limite de session",
+   "th": "Tokens et limites",
+   "d": "Chez Claude, part de la limite d'usage qui se renouvelle toutes les cinq heures, à côté de plafonds hebdomadaires. D'autres assistants fonctionnent autrement.",
+   "ex": "La page d'usage indique le temps restant avant le renouvellement.",
+   "step": "so12"
+  },
+  {
+   "t": "Limite de longueur",
+   "th": "Tokens et limites",
+   "d": "Taille maximale d'une conversation, fixée par la fenêtre de contexte. Elle se distingue de la limite d'usage, qui porte sur une période.",
+   "ex": "Une conversation qui atteint la limite de longueur se poursuit mieux dans une conversation neuve.",
+   "step": "so12"
+  },
+  {
+   "t": "Cache",
+   "th": "Tokens et limites",
+   "d": "Mémoire de travail où l'assistant garde un contenu déjà lu. Chez Claude, un document de projet réutilisé compte moins dans les limites ; le cache expire après une période d'inactivité.",
+   "ex": "Un guide placé dans un projet et interrogé plusieurs fois dans la journée.",
+   "step": "so12"
+  },
+  {
+   "t": "Gestion automatique du contexte",
+   "th": "Tokens et limites",
+   "d": "Mécanisme qui résume les anciens messages quand une conversation approche de la limite de longueur. La conversation continue, mais consomme davantage.",
+   "ex": "L'assistant signale qu'il réorganise ses idées au milieu d'un long échange.",
+   "step": "so12"
+  },
+  {
+   "t": "Résumé de reprise",
+   "th": "Tokens et limites",
+   "d": "Quelques lignes qui permettent de poursuivre un travail dans une conversation neuve : sujet, décisions, documents utiles, prochaine étape, format attendu.",
+   "ex": "Cinq lignes collées en tête d'une conversation neuve remplacent tout l'historique.",
+   "step": "so12"
+  },
+  {
+   "t": "Instructions personnalisées",
+   "th": "Fonctions de l'assistant",
+   "d": "Texte que l'assistant lit avant chaque conversation : votre métier, votre style, vos interdits. Le nom varie selon l'outil (préférences, profil).",
+   "ex": "« Je travaille dans une SATT ; réponds en français, sans formule d'introduction. »",
+   "step": "so9"
+  },
+  {
+   "t": "Prompt système",
+   "th": "Fonctions de l'assistant",
+   "d": "Consignes de cadre valables pour toute une conversation, fixées avant les échanges. Dans les assistants grand public, les instructions personnalisées et celles d'un projet jouent ce rôle.",
+   "ex": "Les instructions permanentes d'un projet « Comptes rendus ».",
+   "step": "s7"
+  },
+  {
+   "t": "Projet",
+   "th": "Fonctions de l'assistant",
+   "d": "Espace qui regroupe conversations, documents de référence et instructions propres à un sujet. Les documents d'un projet partagé sont visibles de ses membres.",
+   "ex": "Un projet « Relances » avec un guide public et un gabarit de courriel.",
+   "step": "so9"
+  },
+  {
+   "t": "Assistant personnalisé",
+   "th": "Fonctions de l'assistant",
+   "d": "Version de l'assistant configurée pour une tâche : instructions permanentes et documents de référence. Selon l'outil : GPT, Gem, agent.",
+   "ex": "Un assistant réglé pour produire des comptes rendus au même format.",
+   "step": "me5"
+  },
+  {
+   "t": "Mémoire",
+   "th": "Fonctions de l'assistant",
+   "d": "Fonction qui retient des éléments d'une conversation à l'autre. Elle se consulte et s'efface ; aucune information confidentielle n'y a sa place.",
+   "ex": "Vérifier dans les réglages ce que l'assistant a retenu de vous.",
+   "step": "so9"
+  },
+  {
+   "t": "Recherche approfondie",
+   "th": "Fonctions de l'assistant",
+   "d": "Mode qui enchaîne de nombreuses recherches web et rend un rapport sourcé. Efficace pour un état des lieux ; coûteux en usage ; les sources se vérifient.",
+   "ex": "Un état des lieux des aides publiques à l'innovation, sources ouvertes une à une.",
+   "step": "so9"
+  },
+  {
+   "t": "Artefact",
+   "th": "Fonctions de l'assistant",
+   "d": "Document produit par l'assistant dans un espace à part : page, tableau, schéma, fichier. Le nom varie selon l'outil (Artifacts, Canvas).",
+   "ex": "Un tableau de suivi fictif créé puis modifié au fil de la conversation.",
+   "step": "so9"
+  },
+  {
+   "t": "Connecteur",
+   "th": "Fonctions de l'assistant",
+   "d": "Lien entre l'assistant et un autre service (messagerie, fichiers, agenda). Il relève du cadre 2 et consomme beaucoup de tokens.",
+   "ex": "Un connecteur de messagerie qui lirait vos courriels : hors pratique autorisée au poste.",
+   "step": "so12"
+  },
+  {
+   "t": "Skill",
+   "th": "Fonctions de l'assistant",
+   "d": "Dossier contenant un fichier SKILL.md : des instructions réutilisables, parfois des scripts, que l'assistant charge quand sa description correspond à la tâche. À ce stade, les skills relèvent de projets personnels ; leur ajout nécessite l'aval du RSI ou du référent IA.",
+   "ex": "Les skills officiels d'Anthropic pour créer des documents Word, Excel ou PowerPoint.",
+   "step": "s9b"
+  },
+  {
+   "t": "Description de skill",
+   "th": "Fonctions de l'assistant",
+   "d": "Ligne qui dit à quoi sert un skill et quand l'utiliser. C'est la seule partie que l'assistant lit avant de décider de le charger.",
+   "ex": "« Utiliser pour toute fiche de synthèse d'un document public. »",
+   "step": "s9b"
+  },
+  {
+   "t": "Source primaire",
+   "th": "Vérifier et protéger",
+   "d": "Document d'origine : texte officiel, décision, publication, brevet. Une affirmation se vérifie là, pas dans un résumé.",
+   "ex": "Légifrance pour un article de loi, Espacenet pour un brevet.",
+   "step": "so6"
+  },
+  {
+   "t": "Citation",
+   "th": "Vérifier et protéger",
+   "d": "Passage reproduit mot pour mot depuis le document. Demander de citer d'abord rend chaque affirmation vérifiable.",
+   "ex": "« Extrais les phrases qui fondent ta réponse, puis réponds à partir d'elles seules. »",
+   "step": "so6"
+  },
+  {
+   "t": "Injection de prompt",
+   "th": "Vérifier et protéger",
+   "d": "Instruction cachée dans un document, une page ou un skill pour détourner l'assistant. C'est l'un des deux risques principaux cités par Anthropic pour les skills.",
+   "ex": "Une page web qui contient, en texte invisible, « ignore les consignes précédentes ».",
+   "step": "s9b"
+  },
+  {
+   "t": "Pseudonymisation",
+   "th": "Vérifier et protéger",
+   "d": "Remplacement des éléments identifiants par des codes, avec une table de correspondance qui permet de revenir en arrière. Les données restent des données personnelles.",
+   "ex": "Remplacer un nom par « Partie A » tout en gardant la correspondance à part.",
+   "step": "so2"
+  },
+  {
+   "t": "Anonymisation",
+   "th": "Vérifier et protéger",
+   "d": "Traitement qui rend toute réidentification impossible, de façon irréversible. Retirer un nom ne suffit pas : le contexte suffit souvent à reconnaître le dossier.",
+   "ex": "Un montant, une technologie et une date peuvent encore désigner un dossier.",
+   "step": "so2"
+  },
+  {
+   "t": "Donnée personnelle",
+   "th": "Vérifier et protéger",
+   "d": "Toute information qui se rapporte à une personne identifiée ou identifiable, directement ou non. Elle ne se saisit pas dans un outil non validé.",
+   "ex": "Un nom, un courriel, mais aussi une fonction rare dans un petit service.",
+   "step": "so2"
+  },
+  {
+   "t": "RGPD",
+   "th": "Vérifier et protéger",
+   "d": "Règlement européen sur la protection des données personnelles. Il encadre la collecte, l'usage et la conservation de ces données.",
+   "ex": "Un traitement de données de salariés s'inscrit au registre des traitements.",
+   "step": "so2"
+  },
+  {
+   "t": "AI Act",
+   "th": "Vérifier et protéger",
+   "d": "Règlement (UE) 2024/1689 sur l'intelligence artificielle. Il prévoit notamment des mesures de maîtrise de l'IA pour le personnel des entreprises qui l'utilisent.",
+   "ex": "La veille de l'application suit ses évolutions, dont l'omnibus IA de 2026.",
+   "step": "so2"
+  },
+  {
+   "t": "Cadre autorisé",
+   "th": "Vérifier et protéger",
+   "d": "Pratique permise au poste par l'entreprise : 1 navigateur, 2 connecteurs et applications, 3 API, code et agents. Le profil fixe ce cadre ; au-delà, la mention « Projet perso » s'affiche.",
+   "ex": "À la SATT aujourd'hui : cadre 1, l'assistant dans le navigateur.",
+   "step": "so2"
+  },
+  {
+   "t": "Évaluation",
+   "th": "Expert",
+   "d": "Jeu de cas, réponses attendues et méthode de notation, pour mesurer la qualité d'une consigne plutôt que l'estimer.",
+   "ex": "Vingt courriels fictifs à classer, avec la bonne catégorie pour chacun.",
+   "step": "s6"
+  },
+  {
+   "t": "Non-régression",
+   "th": "Expert",
+   "d": "Contrôle qui relance tout le jeu d'évaluation après chaque modification de la consigne ou changement de modèle. Il repère ce qu'une amélioration a cassé ailleurs.",
+   "ex": "Une consigne améliorée sur un cas, relancée sur les vingt autres.",
+   "step": "s6"
+  },
+  {
+   "t": "Modèle juge",
+   "th": "Expert",
+   "d": "Modèle chargé de noter des réponses ouvertes à l'aide d'une grille. Sa notation se contrôle sur quelques cas par un humain.",
+   "ex": "Une grille en quatre critères pour noter des résumés fictifs.",
+   "step": "s6"
+  },
+  {
+   "t": "API",
+   "th": "Expert",
+   "d": "Interface qui permet à un programme d'appeler un modèle sans passer par la fenêtre de conversation. Elle relève du cadre 3.",
+   "ex": "Un script personnel qui envoie vingt textes fictifs à résumer.",
+   "step": "s7"
+  },
+  {
+   "t": "Clé d'API",
+   "th": "Expert",
+   "d": "Code secret qui autorise un programme à utiliser l'API sur votre compte. Elle ne se partage pas et ne s'écrit pas dans un fichier publié.",
+   "ex": "Une clé personnelle stockée dans une variable d'environnement, jamais dans le code.",
+   "step": "s7"
+  },
+  {
+   "t": "Tool use",
+   "th": "Expert",
+   "d": "Le modèle demande l'exécution d'un outil décrit dans la requête ; votre code l'exécute et lui renvoie le résultat.",
+   "ex": "Le modèle demande une recherche dans une base fictive, le programme la fait.",
+   "step": "s8"
+  },
+  {
+   "t": "RAG",
+   "th": "Expert",
+   "d": "Recherche des extraits pertinents dans vos documents, puis injection de ces extraits dans la consigne. Le modèle répond à partir d'eux.",
+   "ex": "Interroger un recueil de procédures fictif sans le coller en entier.",
+   "step": "s8"
+  },
+  {
+   "t": "Embedding",
+   "th": "Expert",
+   "d": "Représentation numérique du sens d'un texte. Deux textes proches par le sens ont des représentations proches.",
+   "ex": "Retrouver « résiliation » quand on cherche « fin anticipée du contrat ».",
+   "step": "s8"
+  },
+  {
+   "t": "Agent",
+   "th": "Expert",
+   "d": "Modèle doté d'outils et d'une boucle de décision : il choisit lui-même ses actions jusqu'à atteindre un objectif.",
+   "ex": "Un agent qui cherche, lit, compare puis rédige une synthèse.",
+   "step": "s9"
+  },
+  {
+   "t": "Sous-agent",
+   "th": "Expert",
+   "d": "Agent qui travaille dans son propre contexte sur une partie de la tâche et renvoie un résumé à l'agent principal.",
+   "ex": "Un sous-agent chargé d'extraire les dates pendant que l'agent principal rédige.",
+   "step": "s9b"
+  },
+  {
+   "t": "ReAct",
+   "th": "Expert",
+   "d": "Cycle Pensée, Action, Observation suivi par un agent : il raisonne, agit avec un outil, observe le résultat, puis recommence.",
+   "ex": "Pensée : il manque la date. Action : chercher. Observation : date trouvée.",
+   "step": "s9"
+  },
+  {
+   "t": "MCP",
+   "th": "Expert",
+   "d": "Protocole ouvert qui connecte des outils et des données aux applications d'IA. Il relève du cadre 3.",
+   "ex": "Un serveur MCP personnel qui expose une liste de lectures fictive.",
+   "step": "s8"
+  },
+  {
+   "t": "Agent de code",
+   "th": "Expert",
+   "d": "Agent qui lit, écrit et exécute du code sur un ordinateur. Il relève du cadre 3 et ne s'utilise pas au poste aujourd'hui.",
+   "ex": "Un essai sur ordinateur personnel, dans un dossier dédié, avec des fichiers fictifs.",
+   "step": "xc"
+  },
+  {
+   "t": "Fine-tuning",
+   "th": "Expert",
+   "d": "Spécialisation d'un modèle pré-entraîné sur des données ciblées, qui modifie ses paramètres. Fournir un modèle de document dans une consigne n'en est pas.",
+   "ex": "Réentraîner un modèle sur un corpus de comptes rendus pour imiter leur style.",
+   "step": "s11"
+  },
+  {
+   "t": "Rétropropagation",
+   "th": "Expert",
+   "d": "Méthode d'entraînement qui calcule, de la sortie vers l'entrée, comment ajuster chaque paramètre pour réduire l'erreur.",
+   "ex": "Au fil de l'entraînement, le modèle ajuste ses paramètres après chaque erreur de prédiction.",
+   "step": "s11"
+  },
+  {
+   "t": "Préremplissage",
+   "th": "Expert",
+   "d": "Début de réponse imposé au modèle dans une requête d'API. Plusieurs modèles Claude récents ne l'acceptent plus et renvoient une erreur.",
+   "ex": "Ouvrir la réponse par « { » pour obtenir du JSON, sur un modèle qui l'accepte encore.",
+   "step": "s7"
+  },
+  {
+   "t": "Révision espacée",
+   "th": "Apprendre",
+   "d": "Retour sur une notion à intervalles croissants pour la fixer. L'application ramène les questions à 1, 2, 4, 8 et 16 jours.",
+   "ex": "Une question manquée lundi revient mardi, puis jeudi.",
+   "step": ""
+  },
+  {
+   "t": "Méthode socratique",
+   "th": "Apprendre",
+   "d": "Apprentissage par questions, posées une à la fois, plutôt que par exposé. Le bouton tuteur du guide en fournit la consigne.",
+   "ex": "L'assistant vous demande d'expliquer une notion avant de corriger.",
+   "step": "so3"
+  }
+ ],
+ "GLOSS_THEMES": [
+  "Fonctionnement",
+  "Formuler",
+  "Tokens et limites",
+  "Fonctions de l'assistant",
+  "Vérifier et protéger",
+  "Expert",
+  "Apprendre"
  ],
  "COMPS": [
   {
@@ -8452,7 +9211,7 @@
   {
    "id": "socle",
    "nom": "Socle",
-   "desc": "Dix étapes pour maîtriser un assistant d'IA dans le navigateur, quel que soit l'outil. Pour tout salarié.",
+   "desc": "Douze étapes pour maîtriser un assistant d'IA dans le navigateur, quel que soit l'outil. Pour tout salarié.",
    "open": "Ouverte dès le départ."
   },
   {
@@ -8768,6 +9527,70 @@
    "titre": "Fiche de partage",
    "consigne": "Aide-moi à rédiger une fiche d'une page pour partager une méthode avec un collègue : usage, consigne, limites, exemple fictif. Voici ma méthode : [méthode].",
    "critere": "Un collègue peut l'appliquer sans explication orale."
+  },
+  {
+   "id": "d25",
+   "comp": "formuler",
+   "cadre": 1,
+   "titre": "Le brief en un message",
+   "consigne": "Je vais te demander [tâche]. Avant de répondre, dis-moi quelles informations manquent à ma demande pour que tu puisses la traiter en une seule réponse : objectif, lecteur, matière, format, limites, critère de réussite.",
+   "critere": "Vous avez réécrit la demande en un message et obtenu un résultat utilisable sans relance."
+  },
+  {
+   "id": "d26",
+   "comp": "formuler",
+   "cadre": 1,
+   "titre": "Montrer plutôt que décrire",
+   "consigne": "Voici un exemple du résultat que j'attends : [collez un exemple fictif]. Produis le même type de résultat pour [nouveau cas fictif], en respectant la structure de l'exemple.",
+   "critere": "Le résultat reprend la structure sans recopier le contenu de l'exemple."
+  },
+  {
+   "id": "d27",
+   "comp": "formuler",
+   "cadre": 1,
+   "titre": "La consigne écrite par l'assistant",
+   "consigne": "Écris la consigne que je devrais te donner pour obtenir [résultat] sur une tâche fictive. Pose-moi d'abord tes questions, puis propose la consigne avec ses zones à compléter entre crochets.",
+   "critere": "La consigne a été testée sur deux cas fictifs et rangée dans votre bibliothèque."
+  },
+  {
+   "id": "d28",
+   "comp": "organiser",
+   "cadre": 1,
+   "titre": "Résumé de reprise",
+   "consigne": "Résume cette conversation en cinq lignes pour que je puisse la poursuivre dans une conversation neuve : sujet, décisions, documents utiles, prochaine étape, format attendu.",
+   "critere": "La conversation neuve repart du résumé sans perte d'information utile."
+  },
+  {
+   "id": "d29",
+   "comp": "organiser",
+   "cadre": 1,
+   "titre": "Relevé de consommation",
+   "consigne": "Réponds à cette question générale sans faire de recherche web : [question sans actualité].",
+   "critere": "Vous avez relevé votre consommation dans les réglages avant et après, avec puis sans recherche web, et noté l'écart dans le carnet."
+  },
+  {
+   "id": "d30",
+   "comp": "organiser",
+   "cadre": 1,
+   "titre": "Demandes groupées",
+   "consigne": "Voici trois demandes liées sur le même document fictif : [demande 1], [demande 2], [demande 3]. Traite-les dans une seule réponse, une section par demande.",
+   "critere": "Une seule réponse couvre les trois demandes : deux échanges évités."
+  },
+  {
+   "id": "d31",
+   "comp": "dialoguer",
+   "cadre": 1,
+   "titre": "Enchaîner sur la sortie",
+   "consigne": "À partir du tableau que tu viens de produire, rédige le courriel de synthèse pour [destinataire fictif], en laissant de côté les lignes sans enjeu.",
+   "critere": "Le courriel reprend le tableau sans que vous ayez recollé la matière."
+  },
+  {
+   "id": "d32",
+   "comp": "dialoguer",
+   "cadre": 1,
+   "titre": "Le bon réglage",
+   "consigne": "Je vais te confier deux tâches : [reformulation courte] et [comparaison de deux documents fictifs]. Pour chacune, dis-moi quel mode, quel modèle et quel niveau d'effort conviennent, et pourquoi.",
+   "critere": "Vous avez appliqué le réglage proposé et constaté la différence de temps de réponse."
   }
  ],
  "NEWS": [
@@ -8786,7 +9609,7 @@
      "titre": "Les assistants s'installent dans la bureautique",
      "texte": "Plusieurs éditeurs annoncent des assistants intégrés au traitement de texte, au tableur ou aux réunions, souvent réservés aux offres entreprise et en version bêta. Pour un salarié, la question n'est pas seulement « est-ce utile ? » mais « est-ce autorisé chez nous ? » : ces intégrations relèvent du cadre 2 de l'application.",
      "u": "https://www.implicator.ai/llm-meter-week-of-nov-12-2026/",
-     "statut": "[Non vérifié] source secondaire"
+     "statut": "source secondaire, non vérifiée"
     },
     {
      "titre": "Lire une annonce sans se tromper",
