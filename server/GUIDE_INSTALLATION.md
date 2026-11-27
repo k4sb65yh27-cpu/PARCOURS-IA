@@ -1,6 +1,8 @@
 # Parcours IA : installation sur un serveur SATT
 
-Version 2, 27/11/2026. Nouveautés par rapport à la version 1 : classement facultatif (désactivé par défaut), deux tables de plus dans la base, quatre commandes d'administration.
+Version 3, 27/11/2026. Nouveautés par rapport à la version 2 : affichage adapté aux écrans d'ordinateur (navigation latérale à partir de 1024 px de large, colonne de progression à partir de 1280 px) et fichier `LICENCES-TIERS.txt`. Aucun changement côté serveur : même script PHP, même base, même `config.php`.
+
+Version 2 : classement facultatif (désactivé par défaut), deux tables de plus dans la base, quatre commandes d'administration.
 
 ## Ce que c'est
 
@@ -122,6 +124,8 @@ Le contenu de la formation est mis à jour chaque semaine. Pour une mise à jour
 - le dossier de données.
 
 Les navigateurs récupèrent la nouvelle version au prochain chargement, et la progression des utilisateurs est conservée.
+
+Mise à jour depuis la version 2 : remplacer le dossier comme ci-dessus, rien d'autre à faire.
 
 Mise à jour depuis la version 1 : le `api/config.php` conservé reste valable ; le classement y est considéré comme désactivé. Pour le régler, recopier depuis le `api/config.php` fourni les cinq réglages du bloc « Classement ». Les deux nouvelles tables se créent seules au premier appel.
 

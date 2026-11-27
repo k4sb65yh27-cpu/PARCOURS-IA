@@ -57,9 +57,7 @@ Les anciennes étapes 00 à 05 (comptes développeur, tutoriel Sheets, bases du 
 
 Un salarié atteint le niveau Autonomie sur les 8 compétences après environ 12 heures de travail (Socle puis Métier, durées annoncées du profil juriste), soit 6 à 8 semaines à 15 minutes par jour. La voie Expert ajoute environ 60 heures pour aller vers le niveau Référent.
 
-&#91;embedded content: Calcul sur le contenu de l'application au 25/11/2026 : durées annoncées par étape, règle de niveau de l'application, sans les défis\]
-
-La pente est forte au début : dès S2, la compréhension de l'outil et les règles d'usage sont acquises. Le palier de S5 à S10 est voulu : ces étapes consolident sans encore valider le niveau Autonomie, qui exige les cas d'usage Métier. \[Inférence\] Les durées des étapes Expert reprennent celles de l'ancien parcours, qui incluent des cours externes ; elles sont des ordres de grandeur. La révision espacée (1, 2, 4, 8, 16 jours) entretient les acquis en dehors de ces heures.
+La pente est forte au début : dès S2, la compréhension de l'outil et les règles d'usage sont acquises. Le palier de S5 à S10 est voulu : ces étapes consolident sans encore valider le niveau Autonomie, qui exige les cas d'usage Métier. Les durées des étapes Expert reprennent celles de l'ancien parcours, qui incluent des cours externes : ce sont des ordres de grandeur. La révision espacée (1, 2, 4, 8, 16 jours) entretient les acquis en dehors de ces heures.
 
 ## Compétences acquises au fil des étapes
 

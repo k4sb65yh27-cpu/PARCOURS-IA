@@ -44,6 +44,10 @@ function H1({ children, sub }: { children: React.ReactNode; sub?: React.ReactNod
     </div>
   )
 }
+/* Conteneur de page : une colonne sur mobile ; sur bureau (1024 px et plus), page élargie. */
+const PAGE = "mx-auto w-full max-w-xl px-4 pt-5 pb-10 lg:max-w-5xl lg:px-8 lg:pt-8"
+/* Panneaux répartis sur deux colonnes à partir de 1024 px, sans coupure à l'intérieur d'un panneau. */
+const COLS = "lg:columns-2 lg:gap-6 [&>*]:break-inside-avoid lg:[&>*]:mt-0 lg:[&>*]:mb-6"
 function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <section className={`rounded-2xl border-2 border-line p-4 ${className}`}>{children}</section>
 }
@@ -58,8 +62,9 @@ export function ReviewView({ onStart }: { onStart: (ids: string[], label: string
   const mx = Math.max(1, ...boxes)
   const d = dailyIds()
   return (
-    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
+    <div className={PAGE}>
       <H1 sub="Chaque question revient après 1, 2, 4, 8 puis 16 jours. Une erreur la renvoie au début.">Réviser</H1>
+      <div className={COLS}>
       <Panel className="bg-teal-soft/50">
         <div className="flex items-center gap-4">
           <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-teal text-white" style={{ borderBottom: "4px solid var(--teal-deep)" }}>
@@ -97,6 +102,7 @@ export function ReviewView({ onStart }: { onStart: (ids: string[], label: string
           {seen.length} questions vues sur {Object.keys(ITEMS).length}.
         </p>
       </Panel>
+      </div>
     </div>
   )
 }
@@ -238,7 +244,7 @@ export function GlossView({ onOpen }: { onOpen?: (s: Step) => void }) {
   const nq = norm(q.trim())
   const list = GLOSS.filter((g) => (!th || g.th === th) && (!nq || norm(`${g.t} ${g.d}`).includes(nq)))
   return (
-    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
+    <div className={PAGE}>
       <H1 sub={`${GLOSS.length} termes. Touchez un terme pour lire sa définition et un exemple.`}>Glossaire</H1>
       <label className="grid gap-1 text-sm font-extrabold">
         Rechercher
@@ -250,8 +256,8 @@ export function GlossView({ onOpen }: { onOpen?: (s: Step) => void }) {
           className="min-h-12 rounded-xl border-2 border-line bg-card px-3 text-base font-semibold"
         />
       </label>
-      <div className="-mx-4 mt-3 overflow-x-auto px-4 pb-1" role="group" aria-label="Filtrer par thème">
-        <div className="flex w-max gap-2">
+      <div className="-mx-4 mt-3 overflow-x-auto px-4 pb-1 lg:mx-0 lg:overflow-visible lg:px-0" role="group" aria-label="Filtrer par thème">
+        <div className="flex w-max gap-2 lg:w-auto lg:flex-wrap">
           {["", ...GLOSS_THEMES].map((x) => (
             <button
               key={x || "tous"}
@@ -271,7 +277,7 @@ export function GlossView({ onOpen }: { onOpen?: (s: Step) => void }) {
       <p className="mt-3 text-sm text-muted-foreground" aria-live="polite">
         {list.length === GLOSS.length ? "" : `${list.length} terme${list.length > 1 ? "s" : ""}`}
       </p>
-      <ul className="mt-1 grid gap-2">
+      <ul className="mt-1 grid items-start gap-2 lg:grid-cols-2 lg:gap-3">
         {list.map((g) => {
           const o = !!open[g.t]
           const st = glossStep(g.step)
@@ -351,7 +357,7 @@ export function BoardView() {
     }
   }
   return (
-    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
+    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10 lg:max-w-3xl lg:px-8 lg:pt-8">
       <H1 sub="Les points d'XP des salariés qui ont choisi d'y figurer.">Classement</H1>
       <Panel className="mb-4">
         <h2 className="font-black">Ma participation</h2>
@@ -508,9 +514,10 @@ export function ProfileView() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-xl px-4 pt-5 pb-10">
+    <div className={PAGE}>
       <H1 sub={next ? `${next[0] - s.xp} XP avant « ${next[1]} »` : "Grade le plus élevé atteint."}>{RANKS[r][1]}</H1>
 
+      <div className={COLS}>
       <AccountPanel />
 
       <Panel>
@@ -658,10 +665,10 @@ export function ProfileView() {
                 sfx.tap()
                 setGoal(g)
               }}
-              className="tile justify-center"
+              className="tile justify-center px-1 whitespace-nowrap"
               data-state={s.daily.goal === g ? "sel" : undefined}
             >
-              {g} XP
+              {g}&nbsp;XP
             </button>
           ))}
         </div>
@@ -747,8 +754,12 @@ export function ProfileView() {
         </button>
       </Panel>
 
+      </div>
       <p className="mt-6 text-center text-xs text-muted-foreground">
-        Exercices sur documents fictifs ou publics uniquement. Contenu mis à jour chaque semaine ; vos acquis sont conservés.
+        Exercices sur documents fictifs ou publics uniquement. Contenu mis à jour chaque semaine ; vos acquis sont conservés.{" "}
+        <a href={`${import.meta.env.BASE_URL}LICENCES-TIERS.txt`} target="_blank" rel="noreferrer" className="underline underline-offset-2">
+          Licences
+        </a>
       </p>
     </div>
   )

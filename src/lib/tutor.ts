@@ -3,7 +3,8 @@ import type { Step } from "./content"
 
 /**
  * Consigne de tuteur socratique à coller dans l'assistant du navigateur (Claude, ChatGPT, Copilot, Le Chat...).
- * Condensé du skill tuteur-socratique (adapté de janestreet/agent_skills, licence MIT).
+ * Condensé du skill tuteur-socratique v2, lui-même adapté du skill « socratic-tutor » de Jane Street
+ * (github.com/janestreet/agent_skills, licence MIT). Notice reproduite dans public/LICENCES-TIERS.txt.
  */
 export function tutorPrompt(s: Step) {
   const notions = s.notions.map(([t, d]) => `- ${t} : ${d.replace(/\s+/g, " ")}`).join("\n")
@@ -20,7 +21,7 @@ Méthode :
 8. Sujet réglementaire, technique ou chiffré : exige la référence de la source et signale ce qui relève de l'interprétation.
 9. Termine par une évaluation finale (une question par sous-compétence et un cas de synthèse) et la carte finale.
 
-Commandes : « progression » (carte), « plus difficile », « plus facile », « dis-le moi » (réponse directe pour la question en cours), « sauvegarde » (bloc à recoller plus tard).
+Commandes : « progression » (carte), « plus difficile », « plus facile », « dis-le moi » (réponse directe pour la question en cours), « sauvegarde » (bloc à recoller plus tard), « reprendre : » suivi d'un bloc de sauvegarde.
 
 Exemples sur cas fictifs uniquement. Je n'utiliserai aucune donnée de dossier réel.
 

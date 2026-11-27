@@ -19,6 +19,10 @@ Pile : React, Vite, Tailwind CSS, shadcn/ui, Magic UI (NumberTicker, Confetti, B
 
 Contrôle : `node scripts/check-lesson.cjs <dossier> http://localhost:4173/ src/data/content.json` joue une leçon sans faute et affiche les erreurs de page (tableau vide attendu).
 
+Mise en page par largeur (skill `docs/skills/interface_web_formation`) : une colonne avec onglets en bas sous 1024 px ; navigation latérale à partir de 1024 px ; colonne de progression à droite à partir de 1280 px. Contrôle : `node docs/skills/interface_web_formation/scripts/controle_largeurs.cjs http://localhost:4173/ <dossier> --largeurs 375,768,1024,1280,1440,1920 --prep tests/prep_juriste.cjs` (débordement, couverture du premier écran, erreurs), et `node tests/largeurs_ecrans.cjs <dossier> http://localhost:4173/ 1440 light` pour les écrans principaux.
+
+Tuteur socratique : la consigne copiée depuis le guide d'étape (`src/lib/tutor.ts`) condense le skill `docs/skills/tuteur-socratique`, adapté du skill « socratic-tutor » de Jane Street (MIT, notice dans `public/LICENCES-TIERS.txt`).
+
 ## Publication
 
 Le workflow `.github/workflows/pages.yml` publie `dist/` sur GitHub Pages à chaque envoi sur `main`. Dans les réglages du dépôt : Settings, Pages, Source : GitHub Actions.

@@ -117,7 +117,7 @@ OV = {
  },
  "s8": {
   "obj.2": V("Concevoir un RAG sur un corpus de documents"),
-  "notions.3": V(["Découpage par unité de sens", "[Inférence] Pour un recueil de procédures ou de modèles, découper par section plutôt que par page, et attacher des métadonnées (type, version, statut) améliore la pertinence des extraits."]),
+  "notions.3": V(["Découpage par unité de sens", "Pour un recueil de procédures ou de modèles, découpez par section plutôt que par page et attachez des métadonnées (type, version, statut) : chaque extrait retrouvé arrive complet et situé."]),
   "ex.2": V({"t": "Concevoir sur papier un RAG d'un recueil de procédures internes fictif : unité de découpage, métadonnées, cinq questions tests et la section attendue pour chacune.", "c": "Les cinq questions ont chacune une section cible identifiée."}),
   "quiz.4": V(mcq("Pour un recueil de procédures, quel découpage est le plus pertinent ?", ["Par page, quelle que soit la place des sections", "Par lettre, pour une recherche plus fine dans chaque passage", "Par section, avec des métadonnées (type, version)", "En un seul bloc, pour garder tout le contexte"], 2, "Une page peut couper une section en deux ou en mêler plusieurs.")),
   "drills.4": V(cloze("Cas pratique : pour un corpus de procédures fictives, découpez par ___ plutôt qu'en blocs arbitraires de caractères.", ["section", "caractère", "page imprimée"], 0, "Un découpage par unité de sens respecte la structure du document.")),

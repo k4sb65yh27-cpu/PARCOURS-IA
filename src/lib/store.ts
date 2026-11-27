@@ -273,6 +273,8 @@ export function dailyXp() {
 /* Nœuds du chemin : chaque étape se parcourt en quatre stations. */
 export type NodeKind = "notions" | "lecon" | "ex" | "exam"
 export const NODE_KINDS: NodeKind[] = ["notions", "lecon", "ex", "exam"]
+/* Libellé long de chaque nœud du chemin (tiroir, colonne de droite). */
+export const NAME_NODE: Record<NodeKind, string> = { notions: "Notions", lecon: "Leçon", ex: "Exercices pratiques", exam: "Examen de validation" }
 export function nodeDone(s: Step, k: NodeKind) {
   const x = peek(s.id)
   if (k === "notions") return x.notions || x.lessons > 0 || x.passed

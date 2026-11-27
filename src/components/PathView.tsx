@@ -5,11 +5,10 @@ import { BookOpen, Check, ClipboardCheck, Lock, Star, Trophy } from "lucide-reac
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
 import { BYID, PROFIL, UNITS, VOIES, profilOf, type Step, type Unit } from "@/lib/content"
 import { CadreNote } from "@/components/CadreNote"
-import { NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, voieOpen, type NodeKind } from "@/lib/store"
+import { NAME_NODE, NODE_KINDS, XP, currentNode, nodeDone, peek, unlocked, useStore, validated, voieOpen, type NodeKind } from "@/lib/store"
 import { sfx } from "@/lib/sound"
 
 const ICON: Record<NodeKind, typeof Star> = { notions: BookOpen, lecon: Star, ex: ClipboardCheck, exam: Trophy }
-const NAME: Record<NodeKind, string> = { notions: "Notions", lecon: "Leçon", ex: "Exercices pratiques", exam: "Examen de validation" }
 const SHORT: Record<NodeKind, string> = { notions: "Notions", lecon: "Leçon", ex: "Exercices", exam: "Examen" }
 /* Décalage horizontal des nœuds : un serpentin régulier. */
 const OFFS = [0, 52, 78, 52, 0, -52, -78, -52]
@@ -28,7 +27,7 @@ export function PathView({ onGo }: { onGo: Go }) {
 
   let n = 0
   return (
-    <div className="mx-auto w-full max-w-xl pb-10">
+    <div className="mx-auto w-full max-w-xl pb-10 lg:pt-4">
       <Nouveautes />
       {UNITS.map((u, ui) => (
         <section key={u.name} aria-label={`Bloc ${u.name}`} className="mb-8">
@@ -84,7 +83,7 @@ export function PathView({ onGo }: { onGo: Go }) {
       ))}
 
       <Drawer open={!!open} onOpenChange={(o) => !o && setOpen(null)}>
-        <DrawerContent className="safe-b">
+        <DrawerContent className="safe-b lg:!right-auto lg:!left-[calc(50%-270px)] lg:w-[540px] lg:border-x">
           {open && <NodeSheet step={open.step} kind={open.kind} onGo={(a) => { setOpen(null); onGo(a) }} />}
         </DrawerContent>
       </Drawer>
@@ -113,7 +112,7 @@ function UnitBanner({ u }: { u: Unit }) {
   const [voie, title] = u.name.includes(" : ") ? u.name.split(" : ") : ["", u.name]
   const done = u.steps.filter(validated).length
   return (
-    <div className="sticky top-[60px] z-10 bg-background/95 px-4 pt-3 pb-1 backdrop-blur-sm">
+    <div className="sticky top-[60px] z-10 bg-background/95 px-4 pt-3 pb-1 backdrop-blur-sm xl:top-0 xl:pt-5">
       <div
         className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-white"
         style={{ background: u.color.base, borderBottom: `4px solid ${u.color.deep}` }}
@@ -150,7 +149,7 @@ function PathNode({ u, kind, off, done, locked, current, big, onClick, ref }: No
   const size = big ? 80 : 70
   const bg = locked ? "var(--line)" : done ? "var(--sun)" : u.color.base
   const deep = locked ? "var(--line-deep)" : done ? "var(--sun-deep)" : u.color.deep
-  const label = `${NAME[kind]}${done ? ", terminé" : locked ? ", verrouillé" : current ? ", à faire maintenant" : ""}`
+  const label = `${NAME_NODE[kind]}${done ? ", terminé" : locked ? ", verrouillé" : current ? ", à faire maintenant" : ""}`
   return (
     <div className="relative" style={{ transform: `translateX(${off}px)` }}>
       {current && (
@@ -224,7 +223,7 @@ function NodeSheet({ step, kind, onGo }: { step: Step; kind: NodeKind; onGo: Go 
         <p className="text-xs font-black tracking-widest text-muted-foreground uppercase">
           Étape {step.cote} · {step.titre}
         </p>
-        <DrawerTitle className="text-2xl font-black">{NAME[kind]}</DrawerTitle>
+        <DrawerTitle className="text-2xl font-black">{NAME_NODE[kind]}</DrawerTitle>
         <DrawerDescription className="text-[0.95rem] font-semibold">
           {open ? desc[kind] : locked(step)}
         </DrawerDescription>
